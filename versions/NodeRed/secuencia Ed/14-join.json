@@ -1,0 +1,137 @@
+[
+    {
+        "id": "a1a2a3.inject1",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Parte 1: id",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "parts",
+                "v": "{\"id\":\"sensor_01\",\"type\":\"string\",\"ch\":\"\",\"index\":0,\"count\":3}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sensor_01",
+        "payload": "12345",
+        "payloadType": "str",
+        "x": 140,
+        "y": 2040,
+        "wires": [
+            [
+                "c3c2c1.join"
+            ]
+        ]
+    },
+    {
+        "id": "b1b2b3.inject2",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Parte 2: temperatura",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "parts",
+                "v": "{\"id\":\"sensor_01\",\"type\":\"string\",\"ch\":\"\",\"index\":1,\"count\":3}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sensor_01",
+        "payload": "25.7",
+        "payloadType": "num",
+        "x": 160,
+        "y": 2100,
+        "wires": [
+            [
+                "c3c2c1.join"
+            ]
+        ]
+    },
+    {
+        "id": "c3c2c1.join",
+        "type": "join",
+        "z": "da44a8e4.25bb58",
+        "name": "Unir Partes del Mensaje",
+        "mode": "manual",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "3",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 420,
+        "y": 2080,
+        "wires": [
+            [
+                "e1e2e3.debug"
+            ]
+        ]
+    },
+    {
+        "id": "d1d2d3.inject3",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Parte 3: humedad",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "parts",
+                "v": "{\"id\":\"sensor_01\",\"type\":\"string\",\"ch\":\"\",\"index\":2,\"count\":3}",
+                "vt": "json"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "sensor_01",
+        "payload": "62",
+        "payloadType": "num",
+        "x": 150,
+        "y": 2160,
+        "wires": [
+            [
+                "c3c2c1.join"
+            ]
+        ]
+    },
+    {
+        "id": "e1e2e3.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Mensaje Completo",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 2080,
+        "wires": []
+    }
+]

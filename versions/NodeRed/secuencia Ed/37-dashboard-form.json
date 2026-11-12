@@ -1,0 +1,58 @@
+[
+    {
+        "id": "q7r8s9t0.ui_form",
+        "type": "ui_form",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "label": "Registro de Usuario",
+        "group": "some-ui-group",
+        "order": 8,
+        "width": 0,
+        "height": 0,
+        "options": [
+            {
+                "label": "Nombre",
+                "value": "nombre",
+                "type": "text",
+                "required": true
+            },
+            {
+                "label": "Activo",
+                "value": "activo",
+                "type": "switch",
+                "required": false
+            }
+        ],
+        "formValue": "payload",
+        "payload": "",
+        "submit": "Registrar",
+        "cancel": "Cancelar",
+        "topic": "user_registration",
+        "topicType": "msg",
+        "splitLayout": false,
+        "x": 160,
+        "y": 4500,
+        "wires": [
+            [
+                "u1v2w3x4.debug_form"
+            ]
+        ]
+    },
+    {
+        "id": "u1v2w3x4.debug_form",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Datos del Formulario",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 4500,
+        "wires": []
+    }
+]

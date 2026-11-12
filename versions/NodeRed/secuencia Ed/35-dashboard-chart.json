@@ -1,0 +1,86 @@
+[
+    {
+        "id": "n3o4p5q6.inject_temp",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Simular Temp.",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 1,
+        "topic": "Temperatura",
+        "payload": "$random()*5 + 18",
+        "payloadType": "jsonata",
+        "x": 150,
+        "y": 3340,
+        "wires": [
+            [
+                "r7s8t9u0.function_round",
+                "v1w2x3y4.ui_chart"
+            ]
+        ]
+    },
+    {
+        "id": "r7s8t9u0.function_round",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "Redondear a 1 decimal",
+        "func": "msg.payload = parseFloat(msg.payload.toFixed(1));\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 3340,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "v1w2x3y4.ui_chart",
+        "type": "ui_chart",
+        "z": "da44a8e4.25bb58",
+        "group": "some-ui-group",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Gráfico de Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "15",
+        "ymax": "25",
+        "removeOlder": "1",
+        "removeOlderPoints": "60",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a",
+            "#d62728",
+            "#ff9896",
+            "#9467bd",
+            "#c5b0d5"
+        ],
+        "outputs": 1,
+        "useDifferentColor": false,
+        "x": 350,
+        "y": 3400,
+        "wires": [
+            []
+        ]
+    }
+]

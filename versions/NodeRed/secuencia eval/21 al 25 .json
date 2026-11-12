@@ -1,0 +1,616 @@
+// **Flujo 21: Control de Motor Paso a Paso**
+[
+    {
+        "id": "slider21",
+        "type": "ui_slider",
+        "z": "flow21",
+        "name": "Posición Motor",
+        "label": "Grados:",
+        "tooltip": "",
+        "group": "group21",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "position",
+        "min": 0,
+        "max": 360,
+        "step": 1,
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "function21"
+            ]
+        ]
+    },
+    {
+        "id": "dropdown21",
+        "type": "ui_dropdown",
+        "z": "flow21",
+        "name": "Velocidad",
+        "label": "Velocidad:",
+        "tooltip": "",
+        "place": "Seleccionar...",
+        "group": "group21",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "multiple": false,
+        "options": [
+            {
+                "label": "Lenta (10 rpm)",
+                "value": "10",
+                "type": "str"
+            },
+            {
+                "label": "Media (30 rpm)",
+                "value": "30",
+                "type": "str"
+            },
+            {
+                "label": "Rápida (60 rpm)",
+                "value": "60",
+                "type": "str"
+            }
+        ],
+        "payload": "",
+        "topic": "speed",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "join21"
+            ]
+        ]
+    },
+    {
+        "id": "button21",
+        "type": "ui_button",
+        "z": "flow21",
+        "name": "Calibrar",
+        "group": "group21",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Calibrar Motor",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "calibrate",
+        "payloadType": "str",
+        "topic": "action",
+        "x": 150,
+        "y": 180,
+        "wires": [
+            [
+                "join21"
+            ]
+        ]
+    },
+    {
+        "id": "function21",
+        "type": "function",
+        "z": "flow21",
+        "name": "Procesar Posición",
+        "func": "context.set('position', msg.payload);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "join21"
+            ]
+        ]
+    },
+    {
+        "id": "join21",
+        "type": "join",
+        "z": "flow21",
+        "name": "Combinar Controles",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 380,
+        "y": 120,
+        "wires": [
+            [
+                "function21b"
+            ]
+        ]
+    },
+    {
+        "id": "function21b",
+        "type": "function",
+        "z": "flow21",
+        "name": "Control Motor",
+        "func": "var position = msg.payload.position || context.get('position') || 0;\nvar speed = msg.payload.speed || context.get('speed') || 30;\nvar action = msg.payload.action || 'move';\n\ncontext.set('position', position);\ncontext.set('speed', speed);\n\nvar steps = Math.round(position * 200 / 360); // 200 steps per revolution\nvar rpm = parseInt(speed);\n\nif (action === 'calibrate') {\n    position = 0;\n    steps = 0;\n    context.set('position', 0);\n}\n\nmsg.payload = {\n    position: position,\n    speed: rpm,\n    steps: steps,\n    action: action,\n    status: action === 'calibrate' ? 'Calibrado' : 'Moviendo',\n    direction: steps >= 0 ? 'CW' : 'CCW'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 570,
+        "y": 120,
+        "wires": [
+            [
+                "template21"
+            ]
+        ]
+    },
+    {
+        "id": "template21",
+        "type": "ui_template",
+        "z": "flow21",
+        "group": "group21",
+        "name": "Visualización Motor",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<div style=\"text-align: center; padding: 20px;\">\n    <svg width=\"200\" height=\"200\" style=\"margin: 20px auto;\">\n        <circle cx=\"100\" cy=\"100\" r=\"80\" fill=\"#f0f0f0\" stroke=\"#333\" stroke-width=\"3\"/>\n        <line x1=\"100\" y1=\"100\" x2=\"{{100 + 70 * Math.cos((msg.payload.position - 90) * Math.PI / 180)}}\" y2=\"{{100 + 70 * Math.sin((msg.payload.position - 90) * Math.PI / 180)}}\" stroke=\"red\" stroke-width=\"4\" stroke-linecap=\"round\"/>\n        <circle cx=\"100\" cy=\"100\" r=\"8\" fill=\"#333\"/>\n        <text x=\"100\" y=\"190\" text-anchor=\"middle\" font-size=\"14\">{{msg.payload.position}}°</text>\n    </svg>\n    \n    <div style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px;\">\n        <div style=\"background: #e3f2fd; padding: 10px; border-radius: 5px;\">\n            <strong>Velocidad:</strong> {{msg.payload.speed}} RPM\n        </div>\n        <div style=\"background: #e8f5e8; padding: 10px; border-radius: 5px;\">\n            <strong>Pasos:</strong> {{msg.payload.steps}}\n        </div>\n        <div style=\"background: #fff3e0; padding: 10px; border-radius: 5px;\">\n            <strong>Dirección:</strong> {{msg.payload.direction}}\n        </div>\n        <div style=\"background: #fce4ec; padding: 10px; border-radius: 5px;\">\n            <strong>Estado:</strong> {{msg.payload.status}}\n        </div>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 760,
+        "y": 120,
+        "wires": [[]]
+    },
+    {
+        "id": "group21",
+        "type": "ui_group",
+        "name": "Control de Motor",
+        "tab": "tab21",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "tab21",
+        "type": "ui_tab",
+        "name": "Motor",
+        "icon": "settings",
+        "order": 21,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 22: Monitor de Sensores IoT**
+[
+    {
+        "id": "inject22",
+        "type": "inject",
+        "z": "flow22",
+        "name": "Simular Sensores",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "function22"
+            ]
+        ]
+    },
+    {
+        "id": "function22",
+        "type": "function",
+        "z": "flow22",
+        "name": "Generar Datos IoT",
+        "func": "var sensors = [\n    {\n        id: 'temp_001',\n        name: 'Sensor Temperatura Sala 1',\n        type: 'temperature',\n        value: (Math.random() * 15 + 20).toFixed(1),\n        unit: '°C',\n        location: 'Sala 1',\n        status: 'online'\n    },\n    {\n        id: 'hum_001',\n        name: 'Sensor Humedad Sala 1',\n        type: 'humidity',\n        value: (Math.random() * 30 + 40).toFixed(1),\n        unit: '%',\n        location: 'Sala 1',\n        status: 'online'\n    },\n    {\n        id: 'light_001',\n        name: 'Sensor Luz Sala 2',\n        type: 'light',\n        value: Math.floor(Math.random() * 1000 + 100),\n        unit: 'lux',\n        location: 'Sala 2',\n        status: Math.random() > 0.1 ? 'online' : 'offline'\n    },\n    {\n        id: 'motion_001',\n        name: 'Detector Movimiento',\n        type: 'motion',\n        value: Math.random() > 0.7 ? 1 : 0,\n        unit: 'bool',\n        location: 'Entrada',\n        status: 'online'\n    }\n];\n\n// Enviar cada sensor por separado\nfor (let sensor of sensors) {\n    node.send({\n        payload: sensor,\n        topic: sensor.type\n    });\n}\n\nreturn null;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "switch22"
+            ]
+        ]
+    },
+    {
+        "id": "switch22",
+        "type": "switch",
+        "z": "flow22",
+        "name": "Filtrar por Tipo",
+        "property": "topic",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "temperature",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "humidity",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "light",
+                "vt": "str"
+            },
+            {
+                "t": "eq",
+                "v": "motion",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 4,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "gauge22a"
+            ],
+            [
+                "gauge22b"
+            ],
+            [
+                "gauge22c"
+            ],
+            [
+                "text22d"
+            ]
+        ]
+    },
+    {
+        "id": "gauge22a",
+        "type": "ui_gauge",
+        "z": "flow22",
+        "name": "Temperatura",
+        "group": "group22",
+        "order": 1,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{msg.payload.value}}",
+        "min": "10",
+        "max": "40",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "25",
+        "seg2": "30",
+        "x": 770,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "gauge22b",
+        "type": "ui_gauge",
+        "z": "flow22",
+        "name": "Humedad",
+        "group": "group22",
+        "order": 2,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Humedad",
+        "label": "%",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "100",
+        "colors": [
+            "#ca3838",
+            "#00b500",
+            "#ca3838"
+        ],
+        "seg1": "30",
+        "seg2": "70",
+        "x": 760,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "gauge22c",
+        "type": "ui_gauge",
+        "z": "flow22",
+        "name": "Luminosidad",
+        "group": "group22",
+        "order": 3,
+        "width": "3",
+        "height": "3",
+        "gtype": "gage",
+        "title": "Luz",
+        "label": "lux",
+        "format": "{{msg.payload.value}}",
+        "min": "0",
+        "max": "1000",
+        "colors": [
+            "#1f77b4",
+            "#ff7f0e",
+            "#2ca02c"
+        ],
+        "seg1": "300",
+        "seg2": "700",
+        "x": 770,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "text22d",
+        "type": "ui_text",
+        "z": "flow22",
+        "name": "Detector Movimiento",
+        "group": "group22",
+        "order": 4,
+        "width": "3",
+        "height": "2",
+        "format": "<div style='text-align: center; padding: 10px;'><div style='font-size: 24px; margin-bottom: 5px;'>{{msg.payload.value == 1 ? '🚶' : '🔍'}}</div><div style='color: {{msg.payload.value == 1 ? \"red\" : \"green\"}}''>{{msg.payload.value == 1 ? 'MOVIMIENTO' : 'SIN MOVIMIENTO'}}</div></div>",
+        "layout": "row-spread",
+        "x": 790,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "function22b",
+        "type": "function",
+        "z": "flow22",
+        "name": "Recopilar Estado",
+        "func": "// Este nodo recopila el estado de todos los sensores\nvar sensors = context.get('sensors') || {};\n\n// Actualizar sensor actual\nsensors[msg.payload.id] = {\n    name: msg.payload.name,\n    value: msg.payload.value,\n    unit: msg.payload.unit,\n    location: msg.payload.location,\n    status: msg.payload.status,\n    lastUpdate: new Date().toLocaleTimeString('es-ES')\n};\n\ncontext.set('sensors', sensors);\n\n// Crear tabla de estado\nvar tableData = [];\nfor (let id in sensors) {\n    tableData.push({\n        id: id,\n        name: sensors[id].name,\n        value: sensors[id].value + ' ' + sensors[id].unit,\n        location: sensors[id].location,\n        status: sensors[id].status,\n        lastUpdate: sensors[id].lastUpdate\n    });\n}\n\nmsg.payload = tableData;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 380,
+        "y": 160,
+        "wires": [
+            [
+                "table22"
+            ]
+        ]
+    },
+    {
+        "id": "table22",
+        "type": "ui_table",
+        "z": "flow22",
+        "group": "group22b",
+        "name": "Estado Sensores",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "columns": [
+            {
+                "field": "name",
+                "title": "Sensor",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {}
+            },
+            {
+                "field": "value",
+                "title": "Valor",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {}
+            },
+            {
+                "field": "location",
+                "title": "Ubicación",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {}
+            },
+            {
+                "field": "status",
+                "title": "Estado",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {}
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 570,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "link22",
+        "type": "link out",
+        "z": "flow22",
+        "name": "Datos Sensores",
+        "links": [
+            "function22b"
+        ],
+        "x": 575,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "link22in",
+        "type": "link in",
+        "z": "flow22",
+        "name": "Recibir Datos",
+        "links": [
+            "link22"
+        ],
+        "x": 255,
+        "y": 160,
+        "wires": [
+            [
+                "function22b"
+            ]
+        ]
+    },
+    {
+        "id": "group22",
+        "type": "ui_group",
+        "name": "Sensores en Tiempo Real",
+        "tab": "tab22",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "group22b",
+        "type": "ui_group",
+        "name": "Estado de Sensores",
+        "tab": "tab22",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab22",
+        "type": "ui_tab",
+        "name": "IoT Monitor",
+        "icon": "sensors",
+        "order": 22,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 23: Control de Iluminación Smart**
+[
+    {
+        "id": "switch23a",
+        "type": "ui_switch",
+        "z": "flow23",
+        "name": "Luz Sala",
+        "label": "Sala Principal",
+        "tooltip": "",
+        "group": "group23",
+        "order": 1,
+        "width": "3",
+        "height": "1",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "sala",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "join23"
+            ]
+        ]
+    },
+    {
+        "id": "switch23b",
+        "type": "ui_switch",
+        "z": "flow23",
+        "name": "Luz Cocina",
+        "label": "Cocina",
+        "tooltip": "",
+        "group": "group23",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "cocina",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "join23"
+            ]
+        ]
+    },
+    {
+        "id": "switch23c",
+        "type": "ui_switch",
+        "z": "flow23",
+        "name": "Luz Dormitorio",
+        "label": "Dormitorio",
+        "tooltip": "",
+        "group": "group23",
+        "order": 3,
+        "width": "3",
+        "height": "1",
+        "passthru": true,
+        "decouple": "false",
+        "topic": "dormitorio",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 160,
+        "y": 140,
+        "wires": [
+            [
+                "join23"
+            ]
+        ]
+    },
+    {
+        "id": "slider23",
+        "type": "ui_slider",
+        "z": "flow23",
+        "name": "Intensidad Global",
+        "label": "Intensidad:",
+        "tooltip": "",
+        "group": "group23",
+        "order": 4,
+        "width": "6",
+        "height": "1",
+        "passthru": true,
+        "outs": "all",
+        "topic": "intensity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "x": 170,
+        "y

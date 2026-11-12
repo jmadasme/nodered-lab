@@ -1,0 +1,60 @@
+[
+    {
+        "id": "c1d2e3f4.status",
+        "type": "status",
+        "z": "da44a8e4.25bb58",
+        "name": "Monitorear estado del MQTT",
+        "scope": [
+            "g5h6i7j8.mqtt"
+        ],
+        "x": 190,
+        "y": 2540,
+        "wires": [
+            [
+                "k9l0m1n2.debug"
+            ]
+        ]
+    },
+    {
+        "id": "g5h6i7j8.mqtt",
+        "type": "mqtt out",
+        "z": "da44a8e4.25bb58",
+        "name": "Nodo a Monitorear",
+        "topic": "test",
+        "qos": "",
+        "retain": "",
+        "broker": "your-mqtt-broker",
+        "x": 240,
+        "y": 2480,
+        "wires": []
+    },
+    {
+        "id": "k9l0m1n2.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "¡Cambio de Estado!",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "status",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 2540,
+        "wires": []
+    },
+    {
+        "id": "your-mqtt-broker",
+        "type": "mqtt-broker",
+        "name": "Broker de Prueba",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientId": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true
+    }
+]

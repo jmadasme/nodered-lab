@@ -1,0 +1,62 @@
+[
+    {
+        "id": "y5z6a7b8.readfile",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Leer Archivo",
+        "props": [
+            {
+                "p": "filename",
+                "v": "/tmp/miarchivo.txt",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "x": 150,
+        "y": 3020,
+        "wires": [
+            [
+                "c1d2e3f4.filein"
+            ]
+        ]
+    },
+    {
+        "id": "c1d2e3f4.filein",
+        "type": "file in",
+        "z": "da44a8e4.25bb58",
+        "name": "Leer desde /tmp/miarchivo.txt",
+        "filename": "",
+        "format": "utf8",
+        "chunk": false,
+        "sendError": false,
+        "encoding": "none",
+        "x": 390,
+        "y": 3020,
+        "wires": [
+            [
+                "g5h6i7j8.debug"
+            ]
+        ]
+    },
+    {
+        "id": "g5h6i7j8.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Contenido del Archivo",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 3020,
+        "wires": []
+    }
+]

@@ -1,0 +1,55 @@
+[
+    {
+        "id": "mqtt-in-node",
+        "type": "mqtt in",
+        "z": "da44a8e4.25bb58",
+        "name": "Suscriptor a 'curso/nodered/test'",
+        "topic": "curso/nodered/test",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "your-mqtt-broker",
+        "x": 230,
+        "y": 700,
+        "wires": [
+            [
+                "debug-mqtt-in"
+            ]
+        ]
+    },
+    {
+        "id": "debug-mqtt-in",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Mensaje MQTT Recibido",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 500,
+        "y": 700,
+        "wires": []
+    },
+    {
+        "id": "your-mqtt-broker",
+        "type": "mqtt-broker",
+        "name": "Broker de Prueba",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientId": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

@@ -1,0 +1,44 @@
+[
+    {
+        "id": "m3n4o5p6.cron_inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Ejecutar cada minuto",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "*/1 * * * *",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Tarea programada ejecutada",
+        "payloadType": "str",
+        "x": 180,
+        "y": 3560,
+        "wires": [
+            [
+                "q7r8s9t0.debug_cron"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0.debug_cron",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Log de Tarea",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 3560,
+        "wires": []
+    }
+]

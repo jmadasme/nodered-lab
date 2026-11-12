@@ -1,0 +1,72 @@
+[
+    {
+        "id": "m3n4o5p6.inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Dato de Origen",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Este es un dato importante",
+        "payloadType": "str",
+        "x": 150,
+        "y": 2320,
+        "wires": [
+            [
+                "q7r8s9t0.linkout"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0.linkout",
+        "type": "link out",
+        "z": "da44a8e4.25bb58",
+        "name": "Enviar a 'bus-de-datos'",
+        "links": [
+            "u1v2w3x4.linkin"
+        ],
+        "x": 365,
+        "y": 2320,
+        "wires": []
+    },
+    {
+        "id": "u1v2w3x4.linkin",
+        "type": "link in",
+        "z": "da44a8e4.25bb58",
+        "name": "Recibir de 'bus-de-datos'",
+        "links": [
+            "q7r8s9t0.linkout"
+        ],
+        "x": 155,
+        "y": 2400,
+        "wires": [
+            [
+                "y5z6a7b8.debug"
+            ]
+        ]
+    },
+    {
+        "id": "y5z6a7b8.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Dato en Destino",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 340,
+        "y": 2400,
+        "wires": []
+    }
+]

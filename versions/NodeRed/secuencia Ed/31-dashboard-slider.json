@@ -1,0 +1,45 @@
+[
+    {
+        "id": "i9j0k1l2.ui_slider",
+        "type": "ui_slider",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "label": "Intensidad de Luz",
+        "tooltip": "",
+        "group": "some-ui-group",
+        "order": 7,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "brightness",
+        "topicType": "msg",
+        "min": 0,
+        "max": "255",
+        "step": 1,
+        "x": 170,
+        "y": 4420,
+        "wires": [
+            [
+                "m3n4o5p6.debug_slider"
+            ]
+        ]
+    },
+    {
+        "id": "m3n4o5p6.debug_slider",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Valor del Slider",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 390,
+        "y": 4420,
+        "wires": []
+    }
+]

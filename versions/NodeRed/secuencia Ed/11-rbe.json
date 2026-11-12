@@ -1,0 +1,81 @@
+[
+    {
+        "id": "e4a5b6c7.sensor",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Simular Lectura Sensor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$floor($random()*3)",
+        "payloadType": "jsonata",
+        "x": 170,
+        "y": 1760,
+        "wires": [
+            [
+                "d3c2b1a0.filter",
+                "a1b2c3d4.debugraw"
+            ]
+        ]
+    },
+    {
+        "id": "d3c2b1a0.filter",
+        "type": "rbe",
+        "z": "da44a8e4.25bb58",
+        "name": "Filtrar Repetidos",
+        "func": "rbe",
+        "gap": "",
+        "start": "",
+        "inout": "out",
+        "septopics": true,
+        "property": "payload",
+        "x": 400,
+        "y": 1800,
+        "wires": [
+            [
+                "f9e8d7c6.debugfiltered"
+            ]
+        ]
+    },
+    {
+        "id": "a1b2c3d4.debugraw",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Datos sin Filtrar",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 400,
+        "y": 1720,
+        "wires": []
+    },
+    {
+        "id": "f9e8d7c6.debugfiltered",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Solo Datos Nuevos",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 1800,
+        "wires": []
+    }
+]

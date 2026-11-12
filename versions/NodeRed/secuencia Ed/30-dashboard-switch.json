@@ -1,0 +1,49 @@
+[
+    {
+        "id": "a1b2c3d4.ui_switch",
+        "type": "ui_switch",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "label": "Activar Sistema de Alarma",
+        "tooltip": "",
+        "group": "some-ui-group",
+        "order": 6,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "alarm_status",
+        "topicType": "msg",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "x": 190,
+        "y": 4340,
+        "wires": [
+            [
+                "e5f6g7h8.debug_switch"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.debug_switch",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Estado del Interruptor",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 430,
+        "y": 4340,
+        "wires": []
+    }
+]

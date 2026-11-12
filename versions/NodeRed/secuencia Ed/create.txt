@@ -1,0 +1,6 @@
+CREATE TABLE sensores (
+    id SERIAL PRIMARY KEY,
+    nombre VARCHAR(50),
+    valor FLOAT,
+    fecha TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+);

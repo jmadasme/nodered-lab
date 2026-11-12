@@ -1,0 +1,43 @@
+[
+    {
+        "id": "g5h6i7j8.ui_text_input",
+        "type": "ui_text_input",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "label": "Ingrese su nombre",
+        "tooltip": "",
+        "group": "some-ui-group",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "300",
+        "topic": "name_input",
+        "topicType": "msg",
+        "x": 160,
+        "y": 4040,
+        "wires": [
+            [
+                "k9l0m1n2.text_input_debug"
+            ]
+        ]
+    },
+    {
+        "id": "k9l0m1n2.text_input_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Texto Ingresado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 4040,
+        "wires": []
+    }
+]

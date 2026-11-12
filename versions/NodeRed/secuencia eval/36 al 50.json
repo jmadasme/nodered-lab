@@ -1,0 +1,54 @@
+// **Flujo 36: Sistema de Videovigilancia**
+[
+    {
+        "id": "inject36",
+        "type": "inject",
+        "z": "flow36",
+        "name": "Simular Cámaras",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "function36"
+            ]
+        ]
+    },
+    {
+        "id": "function36",
+        "type": "function",
+        "z": "flow36",
+        "name": "Estado Cámaras",
+        "func": "var cameras = [\n    {\n        id: 'CAM001',\n        name: 'Entrada Principal',\n        status: Math.random() > 0.05 ? 'online' : 'offline',\n        recording: Math.random() > 0.2,\n        motionDetected: Math.random() > 0.8,\n        quality: ['720p', '1080p', '4K'][Math.floor(Math.random() * 3)],\n        location: 'Nivel 1 - Entrada',\n        lastActivity: new Date(Date.now() - Math.random() * 3600000).toLocaleTimeString('es-ES')\n    },\n    {\n        id: 'CAM002', \n        name: 'Parking Exterior',\n        status: Math.random() > 0.1 ? 'online' : 'offline',\n        recording: Math.random() > 0.3,\n        motionDetected: Math.random() > 0.7,\n        quality: ['720p', '1080p'][Math.floor(Math.random() * 2)],\n        location: 'Exterior - Zona A',\n        lastActivity: new Date(Date.now() - Math.random() * 7200000).toLocaleTimeString('es-ES')\n    },\n    {\n        id: 'CAM003',\n        name: 'Oficinas Planta 2',\n        status: Math.random() > 0.02 ? 'online' : 'maintenance', \n        recording: Math.random() > 0.15,\n        motionDetected: Math.random() > 0.9,\n        quality: ['1080p', '4K'][Math.floor(Math.random() * 2)],\n        location: 'Nivel 2 - Oficinas',\n        lastActivity: new Date(Date.now() - Math.random() * 1800000).toLocaleTimeString('es-ES')\n    },\n    {\n        id: 'CAM004',\n        name: 'Almacén',\n        status: Math.random() > 0.08 ? 'online' : 'error',\n        recording: Math.random() > 0.25,\n        motionDetected: Math.random() > 0.85,\n        quality: ['720p', '1080p'][Math.floor(Math.random() * 2)],\n        location: 'Nivel -1 - Almacén',\n        lastActivity: new Date(Date.now() - Math.random() * 5400000).toLocaleTimeString('es-ES')\n    }\n];\n\nvar stats = {\n    total: cameras.length,\n    online: cameras.filter(c => c.status === 'online').length,\n    recording: cameras.filter(c => c.recording).length,\n    alerts: cameras.filter(c => c.motionDetected || c.status !== 'online').length,\n    timestamp: new Date().toLocaleString('es-ES')\n};\n\nmsg.payload = {\n    cameras: cameras,\n    stats: stats\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "template36",
+                "table36"
+            ]
+        ]
+    },
+    {
+        "id": "template36",
+        "type": "ui_template",
+        "z": "flow36",
+        "group": "group36",
+        "name": "Dashboard Videovigilancia",
+        "order": 1,
+        "width": "12",
+        "height": "8",
+        "format": "<div style=\"background: linear-gradient(135deg, #2c3e50 0%, #3498db 100%); color: white; padding: 20px; border-radius: 15px;\">\n    <div style=\"display: flex; justify-content

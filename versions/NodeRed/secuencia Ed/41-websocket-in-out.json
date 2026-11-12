@@ -1,0 +1,32 @@
+[
+    {
+        "id": "a1b2c3d4.ws_in",
+        "type": "websocket in",
+        "z": "da44a8e4.25bb58",
+        "name": "WS Listener",
+        "server": "ws-server-config",
+        "x": 150,
+        "y": 4120,
+        "wires": [
+            [
+                "e5f6g7h8.ws_out"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.ws_out",
+        "type": "websocket out",
+        "z": "da44a8e4.25bb58",
+        "name": "WS Broadcast",
+        "server": "ws-server-config",
+        "x": 370,
+        "y": 4120,
+        "wires": []
+    },
+    {
+        "id": "ws-server-config",
+        "type": "websocket-listener",
+        "path": "/ws/test",
+        "wholemsg": "false"
+    }
+]

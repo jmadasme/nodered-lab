@@ -1,0 +1,1350 @@
+// **Flujo 11: Tabla Dinámica**
+[
+    {
+        "id": "inject11",
+        "type": "inject",
+        "z": "flow11",
+        "name": "Cargar Datos",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "function11"
+            ]
+        ]
+    },
+    {
+        "id": "function11",
+        "type": "function",
+        "z": "flow11",
+        "name": "Generar Tabla",
+        "func": "msg.payload = [\n    {\"id\": 1, \"nombre\": \"Juan\", \"edad\": 25, \"ciudad\": \"Madrid\"},\n    {\"id\": 2, \"nombre\": \"María\", \"edad\": 30, \"ciudad\": \"Barcelona\"},\n    {\"id\": 3, \"nombre\": \"Carlos\", \"edad\": 28, \"ciudad\": \"Valencia\"},\n    {\"id\": 4, \"nombre\": \"Ana\", \"edad\": 32, \"ciudad\": \"Sevilla\"}\n];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 120,
+        "wires": [
+            [
+                "text14b"
+            ]
+        ]
+    },
+    {
+        "id": "text14a",
+        "type": "ui_text",
+        "z": "flow14",
+        "name": "Mostrar Fecha",
+        "group": "group14",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 570,
+        "y": 60,
+        "wires": []
+    },
+    {
+        "id": "text14b",
+        "type": "ui_text",
+        "z": "flow14",
+        "name": "Mostrar Hora",
+        "group": "group14",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 560,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "group14",
+        "type": "ui_group",
+        "name": "Fecha y Hora",
+        "tab": "tab14",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab14",
+        "type": "ui_tab",
+        "name": "Calendario",
+        "icon": "event",
+        "order": 14,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 15: Template HTML Personalizado**
+[
+    {
+        "id": "inject15",
+        "type": "inject",
+        "z": "flow15",
+        "name": "Cargar Template",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "function15"
+            ]
+        ]
+    },
+    {
+        "id": "function15",
+        "type": "function",
+        "z": "flow15",
+        "name": "Generar HTML",
+        "func": "msg.payload = {\n    \"titulo\": \"Dashboard Personalizado\",\n    \"usuario\": \"Admin\",\n    \"fecha\": new Date().toLocaleDateString('es-ES'),\n    \"estado\": \"En línea\",\n    \"color\": \"green\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 340,
+        "y": 80,
+        "wires": [
+            [
+                "template15"
+            ]
+        ]
+    },
+    {
+        "id": "template15",
+        "type": "ui_template",
+        "z": "flow15",
+        "group": "group15",
+        "name": "Template Personalizado",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "format": "<div style=\"padding: 20px; border: 2px solid #4CAF50; border-radius: 10px; background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);\">\n    <h2 style=\"color: #2c3e50; text-align: center;\">{{msg.payload.titulo}}</h2>\n    <div style=\"display: flex; justify-content: space-between; margin: 20px 0;\">\n        <div>\n            <strong>Usuario:</strong> {{msg.payload.usuario}}<br>\n            <strong>Fecha:</strong> {{msg.payload.fecha}}\n        </div>\n        <div style=\"text-align: right;\">\n            <span style=\"color: {{msg.payload.color}}; font-weight: bold;\">● {{msg.payload.estado}}</span>\n        </div>\n    </div>\n    <div style=\"text-align: center; margin-top: 20px;\">\n        <button onclick=\"send({payload: 'button_clicked'})\" style=\"background: #4CAF50; color: white; border: none; padding: 10px 20px; border-radius: 5px; cursor: pointer;\">Acción Personalizada</button>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 550,
+        "y": 80,
+        "wires": [
+            [
+                "debug15"
+            ]
+        ]
+    },
+    {
+        "id": "debug15",
+        "type": "debug",
+        "z": "flow15",
+        "name": "Ver Click",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group15",
+        "type": "ui_group",
+        "name": "Templates HTML",
+        "tab": "tab15",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "tab15",
+        "type": "ui_tab",
+        "name": "Custom",
+        "icon": "code",
+        "order": 15,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 16: Múltiples Gráficos**
+[
+    {
+        "id": "inject16",
+        "type": "inject",
+        "z": "flow16",
+        "name": "Generar Datos",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "function16"
+            ]
+        ]
+    },
+    {
+        "id": "function16",
+        "type": "function",
+        "z": "flow16",
+        "name": "Datos Multi-serie",
+        "func": "var temp = Math.random() * 30 + 10;\nvar humidity = Math.random() * 60 + 30;\nvar pressure = Math.random() * 100 + 950;\n\n// Serie Temperatura\nnode.send([{\n    payload: temp,\n    topic: \"Temperatura\"\n}, {\n    payload: humidity,\n    topic: \"Humedad\"\n}, {\n    payload: pressure,\n    topic: \"Presión\"\n}]);\n\nreturn null;",
+        "outputs": 3,
+        "noerr": 0,
+        "x": 350,
+        "y": 80,
+        "wires": [
+            [
+                "chart16a"
+            ],
+            [
+                "chart16b"
+            ],
+            [
+                "chart16c"
+            ]
+        ]
+    },
+    {
+        "id": "chart16a",
+        "type": "ui_chart",
+        "z": "flow16",
+        "name": "Temperatura",
+        "group": "group16",
+        "order": 1,
+        "width": "6",
+        "height": "4",
+        "label": "Temperatura (°C)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#ff6b6b"
+        ],
+        "outputs": 1,
+        "x": 550,
+        "y": 40,
+        "wires": [[]]
+    },
+    {
+        "id": "chart16b",
+        "type": "ui_chart",
+        "z": "flow16",
+        "name": "Humedad",
+        "group": "group16",
+        "order": 2,
+        "width": "6",
+        "height": "4",
+        "label": "Humedad (%)",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#4ecdc4"
+        ],
+        "outputs": 1,
+        "x": 540,
+        "y": 80,
+        "wires": [[]]
+    },
+    {
+        "id": "chart16c",
+        "type": "ui_chart",
+        "z": "flow16",
+        "name": "Presión",
+        "group": "group16",
+        "order": 3,
+        "width": "12",
+        "height": "4",
+        "label": "Presión Atmosférica (hPa)",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "900",
+        "ymax": "1100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#45b7d1"
+        ],
+        "outputs": 1,
+        "x": 540,
+        "y": 120,
+        "wires": [[]]
+    },
+    {
+        "id": "group16",
+        "type": "ui_group",
+        "name": "Estación Meteorológica",
+        "tab": "tab16",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab16",
+        "type": "ui_tab",
+        "name": "Meteorología",
+        "icon": "wb_sunny",
+        "order": 16,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 17: Control de LEDs RGB**
+[
+    {
+        "id": "slider17r",
+        "type": "ui_slider",
+        "z": "flow17",
+        "name": "Rojo",
+        "label": "Rojo:",
+        "tooltip": "",
+        "group": "group17",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "r",
+        "min": 0,
+        "max": 255,
+        "step": 1,
+        "x": 130,
+        "y": 40,
+        "wires": [
+            [
+                "join17"
+            ]
+        ]
+    },
+    {
+        "id": "slider17g",
+        "type": "ui_slider",
+        "z": "flow17",
+        "name": "Verde",
+        "label": "Verde:",
+        "tooltip": "",
+        "group": "group17",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "g",
+        "min": 0,
+        "max": 255,
+        "step": 1,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "join17"
+            ]
+        ]
+    },
+    {
+        "id": "slider17b",
+        "type": "ui_slider",
+        "z": "flow17",
+        "name": "Azul",
+        "label": "Azul:",
+        "tooltip": "",
+        "group": "group17",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "b",
+        "min": 0,
+        "max": 255,
+        "step": 1,
+        "x": 130,
+        "y": 120,
+        "wires": [
+            [
+                "join17"
+            ]
+        ]
+    },
+    {
+        "id": "join17",
+        "type": "join",
+        "z": "flow17",
+        "name": "Combinar RGB",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "function17"
+            ]
+        ]
+    },
+    {
+        "id": "function17",
+        "type": "function",
+        "z": "flow17",
+        "name": "Generar Color",
+        "func": "var r = msg.payload.r || 0;\nvar g = msg.payload.g || 0;\nvar b = msg.payload.b || 0;\n\n// Convertir a hexadecimal\nvar hex = \"#\" + \n    (\"0\" + parseInt(r).toString(16)).slice(-2) +\n    (\"0\" + parseInt(g).toString(16)).slice(-2) +\n    (\"0\" + parseInt(b).toString(16)).slice(-2);\n\nmsg.payload = {\n    color: hex,\n    rgb: \"RGB(\" + r + \", \" + g + \", \" + b + \")\",\n    values: {r: r, g: g, b: b}\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 500,
+        "y": 80,
+        "wires": [
+            [
+                "template17"
+            ]
+        ]
+    },
+    {
+        "id": "template17",
+        "type": "ui_template",
+        "z": "flow17",
+        "group": "group17",
+        "name": "Visualizar LED",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "format": "<div style=\"text-align: center; padding: 20px;\">\n    <div style=\"width: 100px; height: 100px; border-radius: 50%; background-color: {{msg.payload.color}}; margin: 0 auto 20px; border: 3px solid #333; box-shadow: 0 0 20px {{msg.payload.color}};\"></div>\n    <p><strong>Color:</strong> {{msg.payload.color}}</p>\n    <p><strong>RGB:</strong> {{msg.payload.rgb}}</p>\n    <p><strong>R:</strong> {{msg.payload.values.r}} | <strong>G:</strong> {{msg.payload.values.g}} | <strong>B:</strong> {{msg.payload.values.b}}</p>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 680,
+        "y": 80,
+        "wires": [[]]
+    },
+    {
+        "id": "group17",
+        "type": "ui_group",
+        "name": "Control LED RGB",
+        "tab": "tab17",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab17",
+        "type": "ui_tab",
+        "name": "LED RGB",
+        "icon": "lightbulb_outline",
+        "order": 17,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 18: Sistema de Alarmas**
+[
+    {
+        "id": "switch18",
+        "type": "ui_switch",
+        "z": "flow18",
+        "name": "Sistema Activo",
+        "label": "Activar Sistema",
+        "tooltip": "",
+        "group": "group18",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "decouple": "false",
+        "topic": "system_active",
+        "style": "",
+        "onvalue": "true",
+        "onvalueType": "bool",
+        "onicon": "",
+        "oncolor": "",
+        "offvalue": "false",
+        "offvalueType": "bool",
+        "officon": "",
+        "offcolor": "",
+        "x": 150,
+        "y": 60,
+        "wires": [
+            [
+                "gate18"
+            ]
+        ]
+    },
+    {
+        "id": "inject18",
+        "type": "inject",
+        "z": "flow18",
+        "name": "Sensor de Movimiento",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "MOVIMIENTO_DETECTADO",
+        "payloadType": "str",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "gate18"
+            ]
+        ]
+    },
+    {
+        "id": "gate18",
+        "type": "gate",
+        "z": "flow18",
+        "name": "Puerta de Control",
+        "controlTopic": "system_active",
+        "defaultState": "closed",
+        "openCmd": "true",
+        "closeCmd": "false",
+        "toggleCmd": "toggle",
+        "defaultCmd": "default",
+        "statusCmd": "status",
+        "persist": false,
+        "storeName": "memory",
+        "x": 360,
+        "y": 90,
+        "wires": [
+            [
+                "function18"
+            ]
+        ]
+    },
+    {
+        "id": "function18",
+        "type": "function",
+        "z": "flow18",
+        "name": "Procesar Alarma",
+        "func": "var now = new Date();\nvar timestamp = now.toLocaleString('es-ES');\n\nif (msg.payload === \"MOVIMIENTO_DETECTADO\") {\n    msg.payload = {\n        alert: \"🚨 ALARMA ACTIVADA\",\n        message: \"Movimiento detectado en el área protegida\",\n        timestamp: timestamp,\n        level: \"CRÍTICO\",\n        color: \"red\"\n    };\n} else if (msg.payload === true) {\n    msg.payload = {\n        alert: \"✅ Sistema Activado\",\n        message: \"Sistema de seguridad en línea\",\n        timestamp: timestamp,\n        level: \"INFO\",\n        color: \"green\"\n    };\n} else if (msg.payload === false) {\n    msg.payload = {\n        alert: \"⏸️ Sistema Desactivado\",\n        message: \"Sistema de seguridad fuera de línea\",\n        timestamp: timestamp,\n        level: \"WARNING\",\n        color: \"orange\"\n    };\n}\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 540,
+        "y": 90,
+        "wires": [
+            [
+                "template18",
+                "notification18"
+            ]
+        ]
+    },
+    {
+        "id": "template18",
+        "type": "ui_template",
+        "z": "flow18",
+        "group": "group18",
+        "name": "Panel de Alarmas",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "format": "<div style=\"border: 2px solid {{msg.payload.color}}; border-radius: 10px; padding: 15px; background-color: rgba(255,255,255,0.9); margin: 10px 0;\">\n    <div style=\"color: {{msg.payload.color}}; font-size: 18px; font-weight: bold; margin-bottom: 10px;\">\n        {{msg.payload.alert}}\n    </div>\n    <div style=\"margin-bottom: 5px;\">\n        <strong>Mensaje:</strong> {{msg.payload.message}}\n    </div>\n    <div style=\"margin-bottom: 5px;\">\n        <strong>Nivel:</strong> <span style=\"color: {{msg.payload.color}};\">{{msg.payload.level}}</span>\n    </div>\n    <div style=\"font-size: 12px; color: #666;\">\n        <strong>Timestamp:</strong> {{msg.payload.timestamp}}\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 740,
+        "y": 60,
+        "wires": [[]]
+    },
+    {
+        "id": "notification18",
+        "type": "ui_toast",
+        "z": "flow18",
+        "position": "top right",
+        "displayTime": "5",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "ok": "OK",
+        "cancel": "",
+        "raw": false,
+        "className": "",
+        "name": "",
+        "x": 730,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "group18",
+        "type": "ui_group",
+        "name": "Sistema de Alarmas",
+        "tab": "tab18",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "tab18",
+        "type": "ui_tab",
+        "name": "Seguridad",
+        "icon": "security",
+        "order": 18,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 19: Geolocalización**
+[
+    {
+        "id": "worldmap19",
+        "type": "ui_worldmap",
+        "z": "flow19",
+        "group": "group19",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "name": "Mapa Mundial",
+        "lat": "40.4168",
+        "lon": "-3.7038",
+        "zoom": "10",
+        "layer": "OSM",
+        "cluster": "",
+        "maxage": "",
+        "usermenu": "hide",
+        "layers": "show",
+        "panit": "false",
+        "panlock": "false",
+        "zoomlock": "false",
+        "hiderightclick": "true",
+        "coords": "none",
+        "showgrid": "false",
+        "allowFileDrop": "false",
+        "path": "/worldmap",
+        "overlist": "DR,CO,RA,DN,HM",
+        "maplist": "OSM,Esri,Nat,OPV",
+        "mapname": "",
+        "mapurl": "",
+        "mapopt": "",
+        "mapwms": false,
+        "x": 550,
+        "y": 100,
+        "wires": [
+            [
+                "debug19"
+            ]
+        ]
+    },
+    {
+        "id": "inject19a",
+        "type": "inject",
+        "z": "flow19",
+        "name": "Madrid",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "function19a"
+            ]
+        ]
+    },
+    {
+        "id": "inject19b",
+        "type": "inject",
+        "z": "flow19",
+        "name": "Barcelona",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "function19b"
+            ]
+        ]
+    },
+    {
+        "id": "inject19c",
+        "type": "inject",
+        "z": "flow19",
+        "name": "Sevilla",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 140,
+        "wires": [
+            [
+                "function19c"
+            ]
+        ]
+    },
+    {
+        "id": "function19a",
+        "type": "function",
+        "z": "flow19",
+        "name": "Punto Madrid",
+        "func": "msg.payload = {\n    name: \"madrid\",\n    lat: 40.4168,\n    lon: -3.7038,\n    layer: \"Ciudades\",\n    icon: \"fa-building\",\n    iconColor: \"red\",\n    popup: \"Madrid - Capital de España\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 60,
+        "wires": [
+            [
+                "worldmap19"
+            ]
+        ]
+    },
+    {
+        "id": "function19b",
+        "type": "function",
+        "z": "flow19",
+        "name": "Punto Barcelona",
+        "func": "msg.payload = {\n    name: \"barcelona\",\n    lat: 41.3851,\n    lon: 2.1734,\n    layer: \"Ciudades\",\n    icon: \"fa-building\",\n    iconColor: \"blue\",\n    popup: \"Barcelona - Ciudad Condal\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 330,
+        "y": 100,
+        "wires": [
+            [
+                "worldmap19"
+            ]
+        ]
+    },
+    {
+        "id": "function19c",
+        "type": "function",
+        "z": "flow19",
+        "name": "Punto Sevilla",
+        "func": "msg.payload = {\n    name: \"sevilla\",\n    lat: 37.3886,\n    lon: -5.9823,\n    layer: \"Ciudades\",\n    icon: \"fa-building\",\n    iconColor: \"green\",\n    popup: \"Sevilla - Andalucía\"\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 140,
+        "wires": [
+            [
+                "worldmap19"
+            ]
+        ]
+    },
+    {
+        "id": "debug19",
+        "type": "debug",
+        "z": "flow19",
+        "name": "Click Mapa",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 750,
+        "y": 100,
+        "wires": []
+    },
+    {
+        "id": "group19",
+        "type": "ui_group",
+        "name": "Geolocalización",
+        "tab": "tab19",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab19",
+        "type": "ui_tab",
+        "name": "Mapas",
+        "icon": "map",
+        "order": 19,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 20: Dashboard de Estado del Sistema**
+[
+    {
+        "id": "inject20",
+        "type": "inject",
+        "z": "flow20",
+        "name": "Actualizar Estado",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "function20"
+            ]
+        ]
+    },
+    {
+        "id": "function20",
+        "type": "function",
+        "z": "flow20",
+        "name": "Generar Estado Sistema",
+        ",
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "table11"
+            ]
+        ]
+    },
+    {
+        "id": "table11",
+        "type": "ui_table",
+        "z": "flow11",
+        "group": "group11",
+        "name": "Tabla de Usuarios",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "columns": [
+            {
+                "field": "id",
+                "title": "ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "nombre",
+                "title": "Nombre",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "edad",
+                "title": "Edad",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "ciudad",
+                "title": "Ciudad",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 520,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group11",
+        "type": "ui_group",
+        "name": "Datos Tabulares",
+        "tab": "tab11",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab11",
+        "type": "ui_tab",
+        "name": "Tablas",
+        "icon": "grid_on",
+        "order": 11,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 12: Audio Control**
+[
+    {
+        "id": "button12",
+        "type": "ui_button",
+        "z": "flow12",
+        "name": "Reproducir Sonido",
+        "group": "group12",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "🔊 Reproducir",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "function12"
+            ]
+        ]
+    },
+    {
+        "id": "function12",
+        "type": "function",
+        "z": "flow12",
+        "name": "Generar Audio",
+        "func": "msg.payload = {\n    \"audio\": \"https://www.soundjay.com/misc/sounds/bell-ringing-05.wav\",\n    \"volume\": 0.5\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "audio12"
+            ]
+        ]
+    },
+    {
+        "id": "audio12",
+        "type": "ui_audio",
+        "z": "flow12",
+        "name": "Audio Player",
+        "group": "group12",
+        "voice": "native",
+        "always": "",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group12",
+        "type": "ui_group",
+        "name": "Control de Audio",
+        "tab": "tab12",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab12",
+        "type": "ui_tab",
+        "name": "Media",
+        "icon": "volume_up",
+        "order": 12,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 13: Formulario Completo**
+[
+    {
+        "id": "form_name",
+        "type": "ui_text_input",
+        "z": "flow13",
+        "name": "Nombre",
+        "label": "Nombre:",
+        "tooltip": "",
+        "group": "group13",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": 300,
+        "topic": "nombre",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "form_email",
+        "type": "ui_text_input",
+        "z": "flow13",
+        "name": "Email",
+        "label": "Email:",
+        "tooltip": "",
+        "group": "group13",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "email",
+        "delay": 300,
+        "topic": "email",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "form_age",
+        "type": "ui_numeric",
+        "z": "flow13",
+        "name": "Edad",
+        "label": "Edad:",
+        "tooltip": "",
+        "group": "group13",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": false,
+        "topic": "edad",
+        "format": "{{value}}",
+        "min": "18",
+        "max": "100",
+        "step": 1,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "form_submit",
+        "type": "ui_button",
+        "z": "flow13",
+        "name": "Enviar",
+        "group": "group13",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Enviar Formulario",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "submit",
+        "payloadType": "str",
+        "topic": "action",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "join13",
+        "type": "join",
+        "z": "flow13",
+        "name": "Unir Datos",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "switch13"
+            ]
+        ]
+    },
+    {
+        "id": "switch13",
+        "type": "switch",
+        "z": "flow13",
+        "name": "Check Submit",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "submit",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "function13"
+            ]
+        ]
+    },
+    {
+        "id": "function13",
+        "type": "function",
+        "z": "flow13",
+        "name": "Procesar Formulario",
+        "func": "var data = msg.payload;\nvar result = \"<h3>Datos del Formulario:</h3>\";\nresult += \"<p><strong>Nombre:</strong> \" + (data.nombre || \"No especificado\") + \"</p>\";\nresult += \"<p><strong>Email:</strong> \" + (data.email || \"No especificado\") + \"</p>\";\nresult += \"<p><strong>Edad:</strong> \" + (data.edad || \"No especificado\") + \"</p>\";\n\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "text13"
+            ]
+        ]
+    },
+    {
+        "id": "text13",
+        "type": "ui_text",
+        "z": "flow13",
+        "name": "Resultado",
+        "group": "group13",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 820,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "group13",
+        "type": "ui_group",
+        "name": "Formulario de Registro",
+        "tab": "tab13",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab13",
+        "type": "ui_tab",
+        "name": "Registro",
+        "icon": "person_add",
+        "order": 13,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 14: Control de Fecha/Hora**
+[
+    {
+        "id": "date_picker",
+        "type": "ui_date_picker",
+        "z": "flow14",
+        "name": "Selector de Fecha",
+        "label": "Seleccione fecha:",
+        "group": "group14",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "fecha",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "function14"
+            ]
+        ]
+    },
+    {
+        "id": "inject14",
+        "type": "inject",
+        "z": "flow14",
+        "name": "Hora Actual",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "function14b"
+            ]
+        ]
+    },
+    {
+        "id": "function14",
+        "type": "function",
+        "z": "flow14",
+        "name": "Formatear Fecha",
+        "func": "var fecha = new Date(msg.payload);\nvar opciones = { year: 'numeric', month: 'long', day: 'numeric' };\nmsg.payload = \"Fecha seleccionada: \" + fecha.toLocaleDateString('es-ES', opciones);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "text14a"
+            ]
+        ]
+    },
+    {
+        "id": "function14b",
+        "type": "function",
+        "z": "flow14",
+        "name": "Formatear Hora",
+        "func": "var ahora = new Date();\nmsg.payload = \"Hora actual: \" + ahora.toLocaleTimeString('es-ES');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0

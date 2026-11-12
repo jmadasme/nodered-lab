@@ -1,0 +1,59 @@
+n[
+    {
+        "id": "pwm-slider",
+        "type": "ui_slider",
+        "z": "da44a8e4.25bb58",
+        "name": "Intensidad LED",
+        "label": "Brillo",
+        "tooltip": "",
+        "group": "some-ui-group",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "payload",
+        "min": 0,
+        "max": "100",
+        "step": 1,
+        "x": 150,
+        "y": 1360,
+        "wires": [
+            [
+                "gpio-out-pwm"
+            ]
+        ]
+    },
+    {
+        "id": "gpio-out-pwm",
+        "type": "rpi-gpio out",
+        "z": "da44a8e4.25bb58",
+        "name": "PWM en GPIO12",
+        "pin": "12",
+        "set": true,
+        "level": "0",
+        "freq": "100",
+        "out": "pwm",
+        "x": 380,
+        "y": 1360,
+        "wires": []
+    },
+    {
+        "id": "some-ui-group",
+        "type": "ui_group",
+        "name": "Control Hardware",
+        "tab": "some-ui-tab",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "some-ui-tab",
+        "type": "ui_tab",
+        "name": "Raspberry Pi",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    }
+]

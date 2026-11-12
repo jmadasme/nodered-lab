@@ -1,0 +1,133 @@
+[
+    {
+        "id": "a1b2c3d4.sensor_humedad",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Simular Humedad",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 1,
+        "topic": "Humedad",
+        "payload": "$round($random()*100, 1)",
+        "payloadType": "jsonata",
+        "x": 160,
+        "y": 3640,
+        "wires": [
+            [
+                "e5f6g7h8.switch",
+                "i9j0k1l2.gauge"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.switch",
+        "type": "switch",
+        "z": "da44a8e4.25bb58",
+        "name": "Evaluar Nivel",
+        "property": "payload",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "lt",
+                "v": "30",
+                "vt": "num"
+            },
+            {
+                "t": "btwn",
+                "v": "30",
+                "vt": "num",
+                "v2": "70",
+                "v2t": "num"
+            },
+            {
+                "t": "gt",
+                "v": "70",
+                "vt": "num"
+            }
+        ],
+        "checkall": "false",
+        "repair": false,
+        "outputs": 3,
+        "x": 350,
+        "y": 3640,
+        "wires": [
+            [
+                "m3n4o5p6.template_alerta"
+            ],
+            [],
+            [
+                "m3n4o5p6.template_alerta"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.gauge",
+        "type": "ui_gauge",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "group": "some-ui-group",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Humedad del Suelo",
+        "label": "%",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "100",
+        "colors": [
+            "#b55000",
+            "#40a637",
+            "#0068b5"
+        ],
+        "seg1": "30",
+        "seg2": "70",
+        "x": 350,
+        "y": 3720,
+        "wires": []
+    },
+    {
+        "id": "m3n4o5p6.template_alerta",
+        "type": "template",
+        "z": "da44a8e4.25bb58",
+        "name": "Crear Mensaje",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "¡Alerta! Nivel de humedad crítico: {{payload}}%",
+        "output": "str",
+        "x": 550,
+        "y": 3640,
+        "wires": [
+            [
+                "q7r8s9t0.notification"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0.notification",
+        "type": "ui_toast",
+        "z": "da44a8e4.25bb58",
+        "position": "top right",
+        "displayTime": "3",
+        "highlight": "",
+        "sendall": true,
+        "outputs": 0,
+        "name": "",
+        "topic": "Alerta de Humedad",
+        "x": 750,
+        "y": 3640,
+        "wires": []
+    }
+]

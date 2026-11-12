@@ -1,0 +1,48 @@
+[
+    {
+        "id": "n3o4p5q6.httpin",
+        "type": "http in",
+        "z": "da44a8e4.25bb58",
+        "name": "Crear endpoint /hola",
+        "url": "/hola",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 160,
+        "y": 1960,
+        "wires": [
+            [
+                "r7s8t9u0.function"
+            ]
+        ]
+    },
+    {
+        "id": "r7s8t9u0.function",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "Preparar Respuesta",
+        "func": "msg.payload = {\n    \"mensaje\": \"Hola desde mi primera API en Node-RED!\",\n    \"timestamp\": new Date()\n};\n\n// Es importante establecer las cabeceras para una respuesta correcta\nmsg.headers = {\n    \"content-type\": \"application/json\"\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 370,
+        "y": 1960,
+        "wires": [
+            [
+                "v1w2x3y4.httpresponse"
+            ]
+        ]
+    },
+    {
+        "id": "v1w2x3y4.httpresponse",
+        "type": "http response",
+        "z": "da44a8e4.25bb58",
+        "name": "Enviar Respuesta",
+        "statusCode": "200",
+        "headers": {},
+        "x": 580,
+        "y": 1960,
+        "wires": []
+    }
+]

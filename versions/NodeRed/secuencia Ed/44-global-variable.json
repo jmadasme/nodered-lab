@@ -1,0 +1,103 @@
+[
+    {
+        "id": "i9j0k1l2.set_global",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Establecer Modo Sistema",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "operativo",
+        "payloadType": "str",
+        "x": 180,
+        "y": 4200,
+        "wires": [
+            [
+                "m3n4o5p6.function_set"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0.get_global",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Consultar Modo Sistema",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 180,
+        "y": 4260,
+        "wires": [
+            [
+                "u1v2w3x4.function_get"
+            ]
+        ]
+    },
+    {
+        "id": "m3n4o5p6.function_set",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "global.set('systemMode', payload)",
+        "func": "global.set('systemMode', msg.payload);\nnode.status({text: 'Modo: ' + msg.payload});\nreturn null; // No se necesita enviar mensaje",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 450,
+        "y": 4200,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "u1v2w3x4.function_get",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "msg.payload = global.get('systemMode')",
+        "func": "msg.payload = global.get('systemMode');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 470,
+        "y": 4260,
+        "wires": [
+            [
+                "y5z6a7b8.global_debug"
+            ]
+        ]
+    },
+    {
+        "id": "y5z6a7b8.global_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Modo Actual",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 700,
+        "y": 4260,
+        "wires": []
+    }
+]

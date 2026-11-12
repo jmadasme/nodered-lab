@@ -1,0 +1,36 @@
+[
+    {
+        "id": "gpio-in-button",
+        "type": "rpi-gpio in",
+        "z": "da44a8e4.25bb58",
+        "name": "Pulsador en GPIO18",
+        "pin": "18",
+        "intype": "tri",
+        "debounce": "25",
+        "read": false,
+        "x": 170,
+        "y": 1280,
+        "wires": [
+            [
+                "debug-button-press"
+            ]
+        ]
+    },
+    {
+        "id": "debug-button-press",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Estado del Pulsador",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 420,
+        "y": 1280,
+        "wires": []
+    }
+]

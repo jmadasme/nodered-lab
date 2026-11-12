@@ -1,0 +1,144 @@
+// **Flujo 25: Control de Acceso con RFID**
+[
+    {
+        "id": "inject25",
+        "type": "inject",
+        "z": "flow25",
+        "name": "Simular Tarjeta",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "rfid",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "scan",
+        "payloadType": "str",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "function25"
+            ]
+        ]
+    },
+    {
+        "id": "function25",
+        "type": "function",
+        "z": "flow25",
+        "name": "Simular Lectura RFID",
+        "func": "// Base de datos de tarjetas autorizadas\nvar authorizedCards = {\n    '12345678': {name: 'Juan Pérez', role: 'Admin', department: 'IT'},\n    '87654321': {name: 'María García', role: 'Usuario', department: 'Ventas'},\n    '11111111': {name: 'Carlos López', role: 'Usuario', department: 'Producción'},\n    '99999999': {name: 'Ana Martín', role: 'Supervisor', department: 'Calidad'}\n};\n\n// Simular diferentes tarjetas (incluye una no autorizada)\nvar cards = ['12345678', '87654321', '11111111', '99999999', '00000000'];\nvar randomCard = cards[Math.floor(Math.random() * cards.length)];\n\nvar user = authorizedCards[randomCard];\nvar authorized = user !== undefined;\n\nmsg.payload = {\n    cardId: randomCard,\n    authorized: authorized,\n    user: user || {name: 'Desconocido', role: 'Sin acceso', department: 'N/A'},\n    timestamp: new Date().toLocaleString('es-ES'),\n    location: 'Entrada Principal'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "switch25"
+            ]
+        ]
+    },
+    {
+        "id": "switch25",
+        "type": "switch",
+        "z": "flow25",
+        "name": "Verificar Acceso",
+        "property": "payload.authorized",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "function25a"
+            ],
+            [
+                "function25b"
+            ]
+        ]
+    },
+    {
+        "id": "function25a",
+        "type": "function",
+        "z": "flow25",
+        "name": "Acceso Permitido",
+        "func": "msg.payload.status = 'ACCESO PERMITIDO';\nmsg.payload.color = 'green';\nmsg.payload.icon = '✅';\nmsg.payload.action = 'open_door';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 60,
+        "wires": [
+            [
+                "join25"
+            ]
+        ]
+    },
+    {
+        "id": "function25b",
+        "type": "function",
+        "z": "flow25",
+        "name": "Acceso Denegado",
+        "func": "msg.payload.status = 'ACCESO DENEGADO';\nmsg.payload.color = 'red';\nmsg.payload.icon = '❌';\nmsg.payload.action = 'alarm';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 100,
+        "wires": [
+            [
+                "join25"
+            ]
+        ]
+    },
+    {
+        "id": "join25",
+        "type": "join",
+        "z": "flow25",
+        "name": "Registrar Evento",
+        "mode": "single",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 950,
+        "y": 80,
+        "wires": [
+            [
+                "template25",
+                "function25c"
+            ]
+        ]
+    },
+    {
+        "id": "function25c",
+        "type": "function",
+        "z": "flow25",
+        "name": "Historial de Accesos",
+        "func": "// Mantener historial de los últimos 10 accesos\nvar history = context.get('accessHistory') || [];\n\n// Agregar nuevo evento\nhistory.unshift({\n    timestamp: msg.payload.timestamp,\n    user: msg.payloa

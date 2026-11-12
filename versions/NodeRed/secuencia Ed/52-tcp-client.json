@@ -1,0 +1,41 @@
+[
+    {
+        "id": "inject-tcp-client",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Enviar Mensaje al Servidor",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hola desde el cliente TCP!",
+        "payloadType": "str",
+        "x": 200,
+        "y": 620,
+        "wires": [
+            [
+                "tcp-client-node"
+            ]
+        ]
+    },
+    {
+        "id": "tcp-client-node",
+        "type": "tcp out",
+        "z": "da44a8e4.25bb58",
+        "name": "Cliente TCP",
+        "host": "localhost",
+        "port": "18800",
+        "beserver": "client",
+        "base64": false,
+        "end": false,
+        "x": 450,
+        "y": 620,
+        "wires": []
+    }
+]

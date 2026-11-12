@@ -1,0 +1,63 @@
+[
+    {
+        "id": "a1b2c3d4.inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Array de Tareas",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"tarea\":\"Comprar pan\",\"prioridad\":\"alta\"},{\"tarea\":\"Revisar correos\",\"prioridad\":\"media\"},{\"tarea\":\"Llamar al cliente\",\"prioridad\":\"alta\"}]",
+        "payloadType": "json",
+        "x": 150,
+        "y": 2240,
+        "wires": [
+            [
+                "e5f6g7h8.split"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.split",
+        "type": "split",
+        "z": "da44a8e4.25bb58",
+        "name": "Dividir por Tarea",
+        "splt": "\\n",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "tarea",
+        "x": 350,
+        "y": 2240,
+        "wires": [
+            [
+                "i9j0k1l2.debug"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Tarea Individual",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 550,
+        "y": 2240,
+        "wires": []
+    }
+]

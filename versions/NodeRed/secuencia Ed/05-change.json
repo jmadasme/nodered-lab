@@ -1,0 +1,84 @@
+[
+    {
+        "id": "1a1b1c1d.e5e4e3",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Objeto Original",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"nombre\":\"Juan\",\"edad\":30,\"ciudad\":\"Santiago\"}",
+        "payloadType": "json",
+        "x": 150,
+        "y": 340,
+        "wires": [
+            [
+                "2b2c2d2e.d4d3d2"
+            ]
+        ]
+    },
+    {
+        "id": "2b2c2d2e.d4d3d2",
+        "type": "change",
+        "z": "da44a8e4.25bb58",
+        "name": "Modificar Payload",
+        "rules": [
+            {
+                "t": "set",
+                "p": "payload.edad",
+                "pt": "msg",
+                "to": "31",
+                "tot": "num"
+            },
+            {
+                "t": "change",
+                "p": "payload.ciudad",
+                "pt": "msg",
+                "from": "Santiago",
+                "to": "Valparaíso",
+                "reg": false
+            },
+            {
+                "t": "delete",
+                "p": "payload.nombre",
+                "pt": "msg"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 370,
+        "y": 340,
+        "wires": [
+            [
+                "3c3d3e3f.c3c2c1"
+            ]
+        ]
+    },
+    {
+        "id": "3c3d3e3f.c3c2c1",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Payload Modificado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 340,
+        "wires": []
+    }
+]

@@ -1,0 +1,87 @@
+[
+    {
+        "id": "a1b2c3d4.insert",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Insertar Nuevo Dato",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"nombre\":\"temperatura_sala\",\"valor\":22.5}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 860,
+        "wires": [
+            [
+                "e5f6g7h8.function"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.function",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "Crear Query INSERT",
+        "func": "msg.topic = `INSERT INTO sensores(nombre, valor) VALUES('${msg.payload.nombre}', ${msg.payload.valor});`;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 380,
+        "y": 860,
+        "wires": [
+            [
+                "i9j0k1l2.postgres"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.postgres",
+        "type": "postgres",
+        "z": "da44a8e4.25bb58",
+        "postgresdb": "your-db-config",
+        "name": "PostgreSQL DB",
+        "x": 600,
+        "y": 900,
+        "wires": [
+            [
+                "m3n4o5p6.debug"
+            ]
+        ]
+    },
+    {
+        "id": "m3n4o5p6.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Resultado INSERT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 790,
+        "y": 900,
+        "wires": []
+    },
+    {
+        "id": "your-db-config",
+        "type": "postgresdb",
+        "name": "Mi Base de Datos",
+        "host": "127.0.0.1",
+        "port": "5432",
+        "database": "nombre_db",
+        "username": "usuario_db",
+        "password": "password_db",
+        "ssl": false
+    }
+]

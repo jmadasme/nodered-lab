@@ -1,0 +1,63 @@
+[
+    {
+        "id": "a1b2c3d4.sort_inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Array Desordenado",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "[{\"nombre\":\"Carlos\",\"edad\":35},{\"nombre\":\"Ana\",\"edad\":28},{\"nombre\":\"Beatriz\",\"edad\":42}]",
+        "payloadType": "json",
+        "x": 160,
+        "y": 3800,
+        "wires": [
+            [
+                "e5f6g7h8.sort"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.sort",
+        "type": "sort",
+        "z": "da44a8e4.25bb58",
+        "name": "Ordenar por edad (desc)",
+        "order": "descending",
+        "as_num": true,
+        "target": "payload",
+        "targetType": "msg",
+        "msgKey": "payload.edad",
+        "seqKey": "payload",
+        "x": 380,
+        "y": 3800,
+        "wires": [
+            [
+                "i9j0k1l2.sort_debug"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.sort_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Array Ordenado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 3800,
+        "wires": []
+    }
+]

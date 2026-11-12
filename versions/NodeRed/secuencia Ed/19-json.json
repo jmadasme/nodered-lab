@@ -1,0 +1,60 @@
+[
+    {
+        "id": "e9f0g1h2.inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "String JSON de entrada",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"sensor\":\"HC-SR04\",\"distancia_cm\":25}",
+        "payloadType": "str",
+        "x": 170,
+        "y": 2780,
+        "wires": [
+            [
+                "i3j4k5l6.json"
+            ]
+        ]
+    },
+    {
+        "id": "i3j4k5l6.json",
+        "type": "json",
+        "z": "da44a8e4.25bb58",
+        "name": "Convertir a Objeto JS",
+        "property": "payload",
+        "action": "obj",
+        "pretty": false,
+        "x": 390,
+        "y": 2780,
+        "wires": [
+            [
+                "m7n8o9p0.debug"
+            ]
+        ]
+    },
+    {
+        "id": "m7n8o9p0.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Ver Objeto y su tipo",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "{\\\"Payload\\\":payload,\\\"Tipo\\\":$type(payload)}",
+        "targetType": "jsonata",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 2780,
+        "wires": []
+    }
+]

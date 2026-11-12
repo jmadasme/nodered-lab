@@ -1,0 +1,63 @@
+[
+    {
+        "id": "m3n4o5p6.batch_inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Generar mensajes",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$millis()",
+        "payloadType": "jsonata",
+        "x": 160,
+        "y": 3880,
+        "wires": [
+            [
+                "q7r8s9t0.batch"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0.batch",
+        "type": "batch",
+        "z": "da44a8e4.25bb58",
+        "name": "Agrupar cada 5 mensajes",
+        "mode": "count",
+        "count": "5",
+        "overlap": 0,
+        "interval": 10,
+        "allowEmptySequence": false,
+        "topics": [],
+        "x": 380,
+        "y": 3880,
+        "wires": [
+            [
+                "u1v2w3x4.batch_debug"
+            ]
+        ]
+    },
+    {
+        "id": "u1v2w3x4.batch_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Ver Lote",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 590,
+        "y": 3880,
+        "wires": []
+    }
+]

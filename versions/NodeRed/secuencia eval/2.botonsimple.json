@@ -1,0 +1,62 @@
+[
+    {
+        "id": "button1",
+        "type": "ui_button",
+        "z": "flow2",
+        "name": "Botón Click",
+        "group": "group2",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Presiona Aquí",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "¡Botón presionado!",
+        "payloadType": "str",
+        "topic": "button",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "debug1"
+            ]
+        ]
+    },
+    {
+        "id": "debug1",
+        "type": "debug",
+        "z": "flow2",
+        "name": "Ver resultado",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "x": 340,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group2",
+        "type": "ui_group",
+        "name": "Botones",
+        "tab": "tab2",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab2",
+        "type": "ui_tab",
+        "name": "Controles",
+        "icon": "touch_app",
+        "order": 2,
+        "disabled": false,
+        "hidden": false
+    }
+]

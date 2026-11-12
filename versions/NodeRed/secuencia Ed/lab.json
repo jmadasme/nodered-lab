@@ -1,0 +1,125 @@
+[
+    {
+        "id": "9da1b58955977a9a",
+        "type": "tab",
+        "label": "Camara USB",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "1dbb2469167a7df9",
+        "type": "inject",
+        "z": "9da1b58955977a9a",
+        "name": "Cada 1s",
+        "props": [],
+        "repeat": "0.2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "0.5",
+        "topic": "",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "b2109f552c0f8d52"
+            ]
+        ]
+    },
+    {
+        "id": "b2109f552c0f8d52",
+        "type": "http request",
+        "z": "9da1b58955977a9a",
+        "name": "Snapshot MJPG",
+        "method": "GET",
+        "ret": "bin",
+        "paytoqs": "ignore",
+        "url": "http://192.0.2.10:8080/?action=snapshot",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "insecureHTTPParser": false,
+        "authType": "",
+        "senderr": false,
+        "headers": [],
+        "x": 320,
+        "y": 240,
+        "wires": [
+            [
+                "d20a61f1b6c895aa"
+            ]
+        ]
+    },
+    {
+        "id": "d20a61f1b6c895aa",
+        "type": "function",
+        "z": "9da1b58955977a9a",
+        "name": "Convertir a Base64",
+        "func": "let base64 = msg.payload.toString('base64');\nmsg.payload = 'data:image/jpeg;base64,' + base64;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 520,
+        "y": 240,
+        "wires": [
+            [
+                "075886c67904d64c"
+            ]
+        ]
+    },
+    {
+        "id": "075886c67904d64c",
+        "type": "ui_template",
+        "z": "9da1b58955977a9a",
+        "group": "cam-group",
+        "name": "Mostrar snapshot",
+        "order": 1,
+        "width": "12",
+        "height": "8",
+        "format": "<div style=\"text-align:center;\">\n  <img ng-src=\"{{msg.payload}}\" width=\"640\" height=\"480\" />\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 720,
+        "y": 240,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "07a086832633b195",
+        "type": "comment",
+        "z": "9da1b58955977a9a",
+        "name": "",
+        "info": "http://192.0.2.10:8080/?action=stream",
+        "x": 160,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "cam-group",
+        "type": "ui_group",
+        "name": "Cámara USB",
+        "tab": "cam-tab",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "cam-tab",
+        "type": "ui_tab",
+        "name": "Monitor",
+        "icon": "dashboard",
+        "order": 1,
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "8d3ba1fc7a260753",
+        "type": "global-config",
+        "env": [],
+        "modules": {
+            "node-red-dashboard": "3.6.6"
+        }
+    }
+]

@@ -1,0 +1,64 @@
+[
+    {
+        "id": "s7t8u9v0.sensor_raw",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Lectura Sensor (0-1023)",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "$floor($random()*1023)",
+        "payloadType": "jsonata",
+        "x": 170,
+        "y": 3180,
+        "wires": [
+            [
+                "w1x2y3z4.range"
+            ]
+        ]
+    },
+    {
+        "id": "w1x2y3z4.range",
+        "type": "range",
+        "z": "da44a8e4.25bb58",
+        "name": "Escalar a 0-100",
+        "minin": "0",
+        "maxin": "1023",
+        "minout": "0",
+        "maxout": "100",
+        "action": "scale",
+        "round": true,
+        "property": "payload",
+        "x": 390,
+        "y": 3180,
+        "wires": [
+            [
+                "a5b6c7d8.debug"
+            ]
+        ]
+    },
+    {
+        "id": "a5b6c7d8.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Valor en Porcentaje",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 610,
+        "y": 3180,
+        "wires": []
+    }
+]

@@ -1,0 +1,477 @@
+// **Flujo 11: Tabla Dinámica**
+[
+    {
+        "id": "inject11",
+        "type": "inject",
+        "z": "flow11",
+        "name": "Cargar Datos",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "function11"
+            ]
+        ]
+    },
+    {
+        "id": "function11",
+        "type": "function",
+        "z": "flow11",
+        "name": "Generar Tabla",
+        "func": "msg.payload = [\n    {\"id\": 1, \"nombre\": \"Juan\", \"edad\": 25, \"ciudad\": \"Madrid\"},\n    {\"id\": 2, \"nombre\": \"María\", \"edad\": 30, \"ciudad\": \"Barcelona\"},\n    {\"id\": 3, \"nombre\": \"Carlos\", \"edad\": 28, \"ciudad\": \"Valencia\"},\n    {\"id\": 4, \"nombre\": \"Ana\", \"edad\": 32, \"ciudad\": \"Sevilla\"}\n];\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 320,
+        "y": 80,
+        "wires": [
+            [
+                "table11"
+            ]
+        ]
+    },
+    {
+        "id": "table11",
+        "type": "ui_table",
+        "z": "flow11",
+        "group": "group11",
+        "name": "Tabla de Usuarios",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "columns": [
+            {
+                "field": "id",
+                "title": "ID",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "nombre",
+                "title": "Nombre",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "edad",
+                "title": "Edad",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            },
+            {
+                "field": "ciudad",
+                "title": "Ciudad",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext",
+                "formatterParams": {
+                    "target": "_blank"
+                }
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 520,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group11",
+        "type": "ui_group",
+        "name": "Datos Tabulares",
+        "tab": "tab11",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab11",
+        "type": "ui_tab",
+        "name": "Tablas",
+        "icon": "grid_on",
+        "order": 11,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 12: Audio Control**
+[
+    {
+        "id": "button12",
+        "type": "ui_button",
+        "z": "flow12",
+        "name": "Reproducir Sonido",
+        "group": "group12",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "🔊 Reproducir",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "function12"
+            ]
+        ]
+    },
+    {
+        "id": "function12",
+        "type": "function",
+        "z": "flow12",
+        "name": "Generar Audio",
+        "func": "msg.payload = {\n    \"audio\": \"https://www.soundjay.com/misc/sounds/bell-ringing-05.wav\",\n    \"volume\": 0.5\n};\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "audio12"
+            ]
+        ]
+    },
+    {
+        "id": "audio12",
+        "type": "ui_audio",
+        "z": "flow12",
+        "name": "Audio Player",
+        "group": "group12",
+        "voice": "native",
+        "always": "",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "x": 540,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group12",
+        "type": "ui_group",
+        "name": "Control de Audio",
+        "tab": "tab12",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab12",
+        "type": "ui_tab",
+        "name": "Media",
+        "icon": "volume_up",
+        "order": 12,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 13: Formulario Completo**
+[
+    {
+        "id": "form_name",
+        "type": "ui_text_input",
+        "z": "flow13",
+        "name": "Nombre",
+        "label": "Nombre:",
+        "tooltip": "",
+        "group": "group13",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "text",
+        "delay": 300,
+        "topic": "nombre",
+        "x": 140,
+        "y": 60,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "form_email",
+        "type": "ui_text_input",
+        "z": "flow13",
+        "name": "Email",
+        "label": "Email:",
+        "tooltip": "",
+        "group": "group13",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "mode": "email",
+        "delay": 300,
+        "topic": "email",
+        "x": 140,
+        "y": 100,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "form_age",
+        "type": "ui_numeric",
+        "z": "flow13",
+        "name": "Edad",
+        "label": "Edad:",
+        "tooltip": "",
+        "group": "group13",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "wrap": false,
+        "passthru": false,
+        "topic": "edad",
+        "format": "{{value}}",
+        "min": "18",
+        "max": "100",
+        "step": 1,
+        "x": 130,
+        "y": 140,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "form_submit",
+        "type": "ui_button",
+        "z": "flow13",
+        "name": "Enviar",
+        "group": "group13",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Enviar Formulario",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "submit",
+        "payloadType": "str",
+        "topic": "action",
+        "x": 140,
+        "y": 180,
+        "wires": [
+            [
+                "join13"
+            ]
+        ]
+    },
+    {
+        "id": "join13",
+        "type": "join",
+        "z": "flow13",
+        "name": "Unir Datos",
+        "mode": "custom",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": true,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 340,
+        "y": 120,
+        "wires": [
+            [
+                "switch13"
+            ]
+        ]
+    },
+    {
+        "id": "switch13",
+        "type": "switch",
+        "z": "flow13",
+        "name": "Check Submit",
+        "property": "payload.action",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "eq",
+                "v": "submit",
+                "vt": "str"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 1,
+        "x": 490,
+        "y": 120,
+        "wires": [
+            [
+                "function13"
+            ]
+        ]
+    },
+    {
+        "id": "function13",
+        "type": "function",
+        "z": "flow13",
+        "name": "Procesar Formulario",
+        "func": "var data = msg.payload;\nvar result = \"<h3>Datos del Formulario:</h3>\";\nresult += \"<p><strong>Nombre:</strong> \" + (data.nombre || \"No especificado\") + \"</p>\";\nresult += \"<p><strong>Email:</strong> \" + (data.email || \"No especificado\") + \"</p>\";\nresult += \"<p><strong>Edad:</strong> \" + (data.edad || \"No especificado\") + \"</p>\";\n\nmsg.payload = result;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 670,
+        "y": 120,
+        "wires": [
+            [
+                "text13"
+            ]
+        ]
+    },
+    {
+        "id": "text13",
+        "type": "ui_text",
+        "z": "flow13",
+        "name": "Resultado",
+        "group": "group13",
+        "order": 5,
+        "width": 0,
+        "height": 0,
+        "format": "{{msg.payload}}",
+        "layout": "row-spread",
+        "x": 820,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "group13",
+        "type": "ui_group",
+        "name": "Formulario de Registro",
+        "tab": "tab13",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab13",
+        "type": "ui_tab",
+        "name": "Registro",
+        "icon": "person_add",
+        "order": 13,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 14: Control de Fecha/Hora**
+[
+    {
+        "id": "date_picker",
+        "type": "ui_date_picker",
+        "z": "flow14",
+        "name": "Selector de Fecha",
+        "label": "Seleccione fecha:",
+        "group": "group14",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "fecha",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "function14"
+            ]
+        ]
+    },
+    {
+        "id": "inject14",
+        "type": "inject",
+        "z": "flow14",
+        "name": "Hora Actual",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "1",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 120,
+        "wires": [
+            [
+                "function14b"
+            ]
+        ]
+    },
+    {
+        "id": "function14",
+        "type": "function",
+        "z": "flow14",
+        "name": "Formatear Fecha",
+        "func": "var fecha = new Date(msg.payload);\nvar opciones = { year: 'numeric', month: 'long', day: 'numeric' };\nmsg.payload = \"Fecha seleccionada: \" + fecha.toLocaleDateString('es-ES', opciones);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "text14a"
+            ]
+        ]
+    },
+    {
+        "id": "function14b",
+        "type": "function",
+        "z": "flow14",
+        "name": "Formatear Hora",
+        "func": "var ahora = new Date();\nmsg.payload = \"Hora actual: \" + ahora.toLocaleTimeString('es-ES');\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0

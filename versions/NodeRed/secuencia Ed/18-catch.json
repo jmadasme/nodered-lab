@@ -1,0 +1,75 @@
+[
+    {
+        "id": "o3p4q5r6.inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Provocar un Error",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 2620,
+        "wires": [
+            [
+                "s7t8u9v0.badfunction"
+            ]
+        ]
+    },
+    {
+        "id": "s7t8u9v0.badfunction",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "Código con Error",
+        "func": "// Este código fallará porque 'variable' no está definida\nmsg.payload = variable.noExiste;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 360,
+        "y": 2620,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "w1x2y3z4.catch",
+        "type": "catch",
+        "z": "da44a8e4.25bb58",
+        "name": "Atrapar Errores del Flujo",
+        "scope": null,
+        "uncaught": false,
+        "x": 180,
+        "y": 2700,
+        "wires": [
+            [
+                "a5b6c7d8.debugerror"
+            ]
+        ]
+    },
+    {
+        "id": "a5b6c7d8.debugerror",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "¡Error Capturado!",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "true",
+        "targetType": "full",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 390,
+        "y": 2700,
+        "wires": []
+    }
+]

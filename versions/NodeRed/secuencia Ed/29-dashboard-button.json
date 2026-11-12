@@ -1,0 +1,61 @@
+[
+    {
+        "id": "y5z6a7b8.ui_button",
+        "type": "ui_button",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "group": "some-ui-group",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Enviar Notificación",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "Botón presionado!",
+        "payloadType": "str",
+        "topic": "user_action",
+        "topicType": "msg",
+        "x": 170,
+        "y": 3960,
+        "wires": [
+            [
+                "c1d2e3f4.button_debug"
+            ]
+        ]
+    },
+    {
+        "id": "c1d2e3f4.button_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Acción de Botón",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 3960,
+        "wires": []
+    },
+    {
+        "id": "some-ui-group",
+        "type": "ui_group",
+        "name": "Controles",
+        "tab": "some-ui-tab",
+        "order": 2,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "some-ui-tab",
+        "type": "ui_tab",
+        "name": "Home",
+        "icon": "dashboard"
+    }
+]

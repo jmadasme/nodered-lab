@@ -1,0 +1,134 @@
+[
+    {
+        "id": "f2a3d7e7d1b12345",
+        "type": "tab",
+        "label": "Dashboard Barras",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "a1b2c3d4e5f67890",
+        "type": "inject",
+        "z": "f2a3d7e7d1b12345",
+        "name": "Simular datos",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 100,
+        "wires": [
+            [
+                "b2b2b2b2b2b2b2b2"
+            ]
+        ]
+    },
+    {
+        "id": "b2b2b2b2b2b2b2b2",
+        "type": "function",
+        "z": "f2a3d7e7d1b12345",
+        "name": "Generar valores",
+        "func": "// Simula temperatura y humedad\nvar temp = Math.floor(Math.random() * 10 + 20);\nvar hum = Math.floor(Math.random() * 40 + 40);\n\nmsg.payload = [\n    { series: [\"Medidas\"], labels: [\"Temperatura\", \"Humedad\"], data: [[temp, hum]] }\n];\n\n// También mandamos la temperatura como número separado para el gauge\nmsg.temp = temp;\n\nreturn [msg, { payload: temp }];",
+        "outputs": 2,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 370,
+        "y": 100,
+        "wires": [
+            [
+                "d3d3d3d3d3d3d3d3"
+            ],
+            [
+                "e4e4e4e4e4e4e4e4"
+            ]
+        ]
+    },
+    {
+        "id": "d3d3d3d3d3d3d3d3",
+        "type": "ui_chart",
+        "z": "f2a3d7e7d1b12345",
+        "name": "Gráfico Barras",
+        "group": "g1g1g1g1g1g1g1g1",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Temperatura vs Humedad",
+        "chartType": "bar",
+        "legend": "false",
+        "xformat": "auto",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#ff0000",
+            "#0000ff",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a"
+        ],
+        "outputs": 1,
+        "x": 620,
+        "y": 80,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "e4e4e4e4e4e4e4e4",
+        "type": "ui_gauge",
+        "z": "f2a3d7e7d1b12345",
+        "name": "Gauge Temperatura",
+        "group": "g1g1g1g1g1g1g1g1",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 630,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "g1g1g1g1g1g1g1g1",
+        "type": "ui_group",
+        "name": "Panel Control",
+        "tab": "t1t1t1t1t1t1t1t1",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "t1t1t1t1t1t1t1t1",
+        "type": "ui_tab",
+        "name": "Dashboard Demo",
+        "icon": "dashboard",
+        "order": 1
+    }
+]

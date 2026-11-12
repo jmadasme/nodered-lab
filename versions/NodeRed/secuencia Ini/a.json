@@ -1,0 +1,173 @@
+[
+    {
+        "id": "b5c55f58d1f71c6b",
+        "type": "tab",
+        "label": "Ejemplo Dashboard",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "0a8b6a0df2a3e295",
+        "type": "inject",
+        "z": "b5c55f58d1f71c6b",
+        "name": "Simular temperatura",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "5",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payloadType": "num",
+        "x": 180,
+        "y": 100,
+        "wires": [
+            [
+                "e6a249a317d58d63"
+            ]
+        ]
+    },
+    {
+        "id": "e6a249a317d58d63",
+        "type": "function",
+        "z": "b5c55f58d1f71c6b",
+        "name": "Generar valor aleatorio",
+        "func": "msg.payload = (Math.random() * 10 + 20).toFixed(1);\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 410,
+        "y": 100,
+        "wires": [
+            [
+                "e9e9070b19dcfb7a",
+                "bd8a87b13f93a3ac"
+            ]
+        ]
+    },
+    {
+        "id": "e9e9070b19dcfb7a",
+        "type": "ui_gauge",
+        "z": "b5c55f58d1f71c6b",
+        "name": "",
+        "group": "a83cc00e2b3a4011",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Temperatura",
+        "label": "°C",
+        "format": "{{value}}",
+        "min": 0,
+        "max": "50",
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 650,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "bd8a87b13f93a3ac",
+        "type": "ui_chart",
+        "z": "b5c55f58d1f71c6b",
+        "name": "",
+        "group": "a83cc00e2b3a4011",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "label": "Histórico Temperatura",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "50",
+        "removeOlder": "1",
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e",
+            "#2ca02c",
+            "#98df8a"
+        ],
+        "outputs": 1,
+        "x": 660,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "cf3b0f7469c6e423",
+        "type": "ui_slider",
+        "z": "b5c55f58d1f71c6b",
+        "name": "",
+        "label": "Setpoint",
+        "tooltip": "",
+        "group": "a83cc00e2b3a4011",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "",
+        "min": 0,
+        "max": "50",
+        "step": 1,
+        "x": 180,
+        "y": 200,
+        "wires": [
+            [
+                "c1a2d49b20a7a1cf"
+            ]
+        ]
+    },
+    {
+        "id": "c1a2d49b20a7a1cf",
+        "type": "ui_text",
+        "z": "b5c55f58d1f71c6b",
+        "group": "a83cc00e2b3a4011",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Setpoint actual",
+        "format": "{{msg.payload}} °C",
+        "layout": "row-spread",
+        "x": 420,
+        "y": 200,
+        "wires": []
+    },
+    {
+        "id": "a83cc00e2b3a4011",
+        "type": "ui_group",
+        "name": "Panel Temperatura",
+        "tab": "57a0e3f3dcfefdc3",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "57a0e3f3dcfefdc3",
+        "type": "ui_tab",
+        "name": "Dashboard Demo",
+        "icon": "dashboard",
+        "order": 1
+    }
+]

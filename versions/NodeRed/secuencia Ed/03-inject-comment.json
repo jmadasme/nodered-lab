@@ -1,0 +1,54 @@
+[
+    {
+        "id": "c7a8c9b0.385738",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Disparador Manual",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 220,
+        "wires": [
+            [
+                "f3d2a1b3.0c2d6"
+            ]
+        ]
+    },
+    {
+        "id": "f3d2a1b3.0c2d6",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Ver Salida",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 380,
+        "y": 220,
+        "wires": []
+    },
+    {
+        "id": "a1b2c3d4.5e4f3c",
+        "type": "comment",
+        "z": "da44a8e4.25bb58",
+        "name": "Flujo Básico 101",
+        "scope": "global",
+        "x": 140,
+        "y": 60,
+        "wires": [],
+        "info": "Este flujo demuestra la interacción más fundamental:\n1. El nodo 'Inject' inicia el flujo manualmente.\n2. Envía un objeto de mensaje (`msg`).\n3. El nodo 'Debug' recibe el `msg` y muestra su contenido (`msg.payload`) en la ventana de depuración."
+    }
+]

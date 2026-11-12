@@ -1,0 +1,65 @@
+[
+    {
+        "id": "run-command",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Ejecutar Comando",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1680,
+        "wires": [
+            [
+                "exec-date"
+            ]
+        ]
+    },
+    {
+        "id": "exec-date",
+        "type": "exec",
+        "z": "da44a8e4.25bb58",
+        "command": "date",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Obtener fecha del sistema",
+        "x": 380,
+        "y": 1680,
+        "wires": [
+            [
+                "debug-stdout"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "debug-stdout",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Salida del Comando (stdout)",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 630,
+        "y": 1680,
+        "wires": []
+    }
+]

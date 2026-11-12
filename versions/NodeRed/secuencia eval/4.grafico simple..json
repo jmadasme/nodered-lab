@@ -1,0 +1,96 @@
+[
+    {
+        "id": "inject4",
+        "type": "inject",
+        "z": "flow4",
+        "name": "Generar Dato",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 80,
+        "wires": [
+            [
+                "function4"
+            ]
+        ]
+    },
+    {
+        "id": "function4",
+        "type": "function",
+        "z": "flow4",
+        "name": "Generar Valor Aleatorio",
+        "func": "msg.payload = Math.random() * 100;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 80,
+        "wires": [
+            [
+                "chart1"
+            ]
+        ]
+    },
+    {
+        "id": "chart1",
+        "type": "ui_chart",
+        "z": "flow4",
+        "name": "Gráfico de Línea",
+        "group": "group4",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "label": "Datos en Tiempo Real",
+        "chartType": "line",
+        "legend": "false",
+        "xformat": "HH:mm:ss",
+        "interpolate": "linear",
+        "nodata": "",
+        "dot": false,
+        "ymin": "0",
+        "ymax": "100",
+        "removeOlder": 1,
+        "removeOlderPoints": "",
+        "removeOlderUnit": "3600",
+        "cutout": 0,
+        "useOneColor": false,
+        "useUTC": false,
+        "colors": [
+            "#1f77b4",
+            "#aec7e8",
+            "#ff7f0e"
+        ],
+        "outputs": 1,
+        "x": 580,
+        "y": 80,
+        "wires": [[]]
+    },
+    {
+        "id": "group4",
+        "type": "ui_group",
+        "name": "Gráficos",
+        "tab": "tab4",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab4",
+        "type": "ui_tab",
+        "name": "Análisis",
+        "icon": "show_chart",
+        "order": 4,
+        "disabled": false,
+        "hidden": false
+    }
+]

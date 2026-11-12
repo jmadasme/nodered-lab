@@ -1,0 +1,66 @@
+[
+    {
+        "id": "o3p4q5r6.post_inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Datos para Enviar",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"title\":\"mi post\",\"body\":\"Este es el contenido\",\"userId\":1}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 4740,
+        "wires": [
+            [
+                "s7t8u9v0.post_request"
+            ]
+        ]
+    },
+    {
+        "id": "s7t8u9v0.post_request",
+        "type": "http request",
+        "z": "da44a8e4.25bb58",
+        "name": "POST a JSONPlaceholder",
+        "method": "POST",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://jsonplaceholder.typicode.com/posts",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 380,
+        "y": 4740,
+        "wires": [
+            [
+                "w1x2y3z4.post_debug"
+            ]
+        ]
+    },
+    {
+        "id": "w1x2y3z4.post_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Respuesta del POST",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 4740,
+        "wires": []
+    }
+]

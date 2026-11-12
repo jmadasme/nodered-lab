@@ -1,0 +1,49 @@
+[
+    {
+        "id": "tcp-server-node",
+        "type": "tcp in",
+        "z": "da44a8e4.25bb58",
+        "name": "Servidor TCP en Puerto 18800",
+        "server": "server",
+        "host": "",
+        "port": "18800",
+        "datamode": "stream",
+        "datatype": "utf8",
+        "newline": "",
+        "topic": "",
+        "base64": false,
+        "x": 220,
+        "y": 550,
+        "wires": [
+            [
+                "debug-tcp-server"
+            ]
+        ]
+    },
+    {
+        "id": "debug-tcp-server",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Dato Recibido del Cliente",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 500,
+        "y": 550,
+        "wires": []
+    },
+    {
+        "id": "comment-tcp-server",
+        "type": "comment",
+        "z": "da44a8e4.25bb58",
+        "name": "Para probar: usa un cliente TCP (como netcat) para conectar a la IP de tu Node-RED, puerto 18800.",
+        "x": 380,
+        "y": 500,
+        "wires": []
+    }
+]

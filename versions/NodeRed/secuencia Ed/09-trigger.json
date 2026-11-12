@@ -1,0 +1,69 @@
+[
+    {
+        "id": "start-trigger",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Activar Riego",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "start",
+        "payloadType": "str",
+        "x": 150,
+        "y": 1600,
+        "wires": [
+            [
+                "on-off-trigger"
+            ]
+        ]
+    },
+    {
+        "id": "on-off-trigger",
+        "type": "trigger",
+        "z": "da44a8e4.25bb58",
+        "name": "Pulso de 2.5 segundos",
+        "op1": "Encendiendo bomba...",
+        "op2": "Apagando bomba.",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "2.5",
+        "extend": false,
+        "overrideDelay": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "topic": "topic",
+        "outputs": 1,
+        "x": 380,
+        "y": 1600,
+        "wires": [
+            [
+                "debug-pulse"
+            ]
+        ]
+    },
+    {
+        "id": "debug-pulse",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Estado de la Bomba",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 1600,
+        "wires": []
+    }
+]

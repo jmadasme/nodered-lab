@@ -1,0 +1,558 @@
+// **Flujo 25: Control de Acceso con RFID**
+[
+    {
+        "id": "inject25",
+        "type": "inject",
+        "z": "flow25",
+        "name": "Simular Tarjeta",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "rfid",
+                "v": "",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "scan",
+        "payloadType": "str",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "function25"
+            ]
+        ]
+    },
+    {
+        "id": "function25",
+        "type": "function",
+        "z": "flow25",
+        "name": "Simular Lectura RFID",
+        "func": "// Base de datos de tarjetas autorizadas\nvar authorizedCards = {\n    '12345678': {name: 'Juan Pérez', role: 'Admin', department: 'IT'},\n    '87654321': {name: 'María García', role: 'Usuario', department: 'Ventas'},\n    '11111111': {name: 'Carlos López', role: 'Usuario', department: 'Producción'},\n    '99999999': {name: 'Ana Martín', role: 'Supervisor', department: 'Calidad'}\n};\n\n// Simular diferentes tarjetas (incluye una no autorizada)\nvar cards = ['12345678', '87654321', '11111111', '99999999', '00000000'];\nvar randomCard = cards[Math.floor(Math.random() * cards.length)];\n\nvar user = authorizedCards[randomCard];\nvar authorized = user !== undefined;\n\nmsg.payload = {\n    cardId: randomCard,\n    authorized: authorized,\n    user: user || {name: 'Desconocido', role: 'Sin acceso', department: 'N/A'},\n    timestamp: new Date().toLocaleString('es-ES'),\n    location: 'Entrada Principal'\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "switch25"
+            ]
+        ]
+    },
+    {
+        "id": "switch25",
+        "type": "switch",
+        "z": "flow25",
+        "name": "Verificar Acceso",
+        "property": "payload.authorized",
+        "propertyType": "msg",
+        "rules": [
+            {
+                "t": "true"
+            },
+            {
+                "t": "false"
+            }
+        ],
+        "checkall": "true",
+        "repair": false,
+        "outputs": 2,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "function25a"
+            ],
+            [
+                "function25b"
+            ]
+        ]
+    },
+    {
+        "id": "function25a",
+        "type": "function",
+        "z": "flow25",
+        "name": "Acceso Permitido",
+        "func": "msg.payload.status = 'ACCESO PERMITIDO';\nmsg.payload.color = 'green';\nmsg.payload.icon = '✅';\nmsg.payload.action = 'open_door';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 60,
+        "wires": [
+            [
+                "join25"
+            ]
+        ]
+    },
+    {
+        "id": "function25b",
+        "type": "function",
+        "z": "flow25",
+        "name": "Acceso Denegado",
+        "func": "msg.payload.status = 'ACCESO DENEGADO';\nmsg.payload.color = 'red';\nmsg.payload.icon = '❌';\nmsg.payload.action = 'alarm';\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 760,
+        "y": 100,
+        "wires": [
+            [
+                "join25"
+            ]
+        ]
+    },
+    {
+        "id": "join25",
+        "type": "join",
+        "z": "flow25",
+        "name": "Registrar Evento",
+        "mode": "single",
+        "build": "object",
+        "property": "payload",
+        "propertyType": "msg",
+        "key": "topic",
+        "joiner": "\\n",
+        "joinerType": "str",
+        "accumulate": false,
+        "timeout": "",
+        "count": "",
+        "reduceRight": false,
+        "reduceExp": "",
+        "reduceInit": "",
+        "reduceInitType": "",
+        "reduceFixup": "",
+        "x": 950,
+        "y": 80,
+        "wires": [
+            [
+                "template25",
+                "function25c"
+            ]
+        ]
+    },
+    {
+        "id": "function25c",
+        "type": "function",
+        "z": "flow25",
+        "name": "Historial de Accesos",
+        "func": "// Mantener historial de los últimos 10 accesos\nvar history = context.get('accessHistory') || [];\n\n// Agregar nuevo evento\nhistory.unshift({\n    timestamp: msg.payload.timestamp,\n    user: msg.payload.user.name,
+    cardId: msg.payload.cardId,
+    status: msg.payload.status,
+    location: msg.payload.location,
+    color: msg.payload.color
+});\n\n// Mantener solo los últimos 10 registros\nif (history.length > 10) {\n    history = history.slice(0, 10);\n}\n\ncontext.set('accessHistory', history);\n\nmsg.payload = history;\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 950,
+        "y": 140,
+        "wires": [
+            [
+                "table25"
+            ]
+        ]
+    },
+    {
+        "id": "template25",
+        "type": "ui_template",
+        "z": "flow25",
+        "group": "group25",
+        "name": "Control de Acceso",
+        "order": 1,
+        "width": "8",
+        "height": "6",
+        "format": "<div style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px; box-shadow: 0 8px 32px rgba(0,0,0,0.3);\">\n    <div style=\"text-align: center; margin-bottom: 20px;\">\n        <h2 style=\"margin: 0 0 10px 0;\">🔐 Control de Acceso RFID</h2>\n        <div style=\"font-size: 14px; opacity: 0.8;\">{{msg.payload.location}}</div>\n    </div>\n    \n    <div style=\"background: {{msg.payload.color === 'green' ? 'rgba(76, 175, 80, 0.2)' : 'rgba(244, 67, 54, 0.2)'}}; border: 2px solid {{msg.payload.color}}; padding: 20px; border-radius: 10px; text-align: center; margin-bottom: 20px;\">\n        <div style=\"font-size: 48px; margin-bottom: 10px;\">{{msg.payload.icon}}</div>\n        <div style=\"font-size: 24px; font-weight: bold; color: {{msg.payload.color}}; margin-bottom: 10px;\">{{msg.payload.status}}</div>\n        <div style=\"font-size: 18px; margin-bottom: 5px;\">{{msg.payload.user.name}}</div>\n        <div style=\"font-size: 14px; opacity: 0.8;\">{{msg.payload.user.role}} - {{msg.payload.user.department}}</div>\n    </div>\n    \n    <div style=\"display: grid; grid-template-columns: 1fr 1fr; gap: 15px;\">\n        <div style=\"background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;\">\n            <div style=\"font-size: 12px; opacity: 0.8;\">ID Tarjeta</div>\n            <div style=\"font-size: 18px; font-weight: bold;\">{{msg.payload.cardId}}</div>\n        </div>\n        <div style=\"background: rgba(255,255,255,0.1); padding: 15px; border-radius: 8px;\">\n            <div style=\"font-size: 12px; opacity: 0.8;\">Hora</div>\n            <div style=\"font-size: 18px; font-weight: bold;\">{{msg.payload.timestamp}}</div>\n        </div>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 1150,
+        "y": 80,
+        "wires": [[]]
+    },
+    {
+        "id": "table25",
+        "type": "ui_table",
+        "z": "flow25",
+        "group": "group25b",
+        "name": "Historial de Accesos",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "columns": [
+            {
+                "field": "timestamp",
+                "title": "Hora",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "user",
+                "title": "Usuario",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "cardId",
+                "title": "Tarjeta",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "status",
+                "title": "Estado",
+                "width": "",
+                "align": "center",
+                "formatter": "plaintext"
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 1170,
+        "y": 140,
+        "wires": []
+    },
+    {
+        "id": "group25",
+        "type": "ui_group",
+        "name": "Acceso Actual",
+        "tab": "tab25",
+        "order": 1,
+        "disp": true,
+        "width": "8",
+        "collapse": false
+    },
+    {
+        "id": "group25b",
+        "type": "ui_group",
+        "name": "Historial",
+        "tab": "tab25",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab25",
+        "type": "ui_tab",
+        "name": "RFID",
+        "icon": "credit_card",
+        "order": 25,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 26: Sistema de Inventario**
+[
+    {
+        "id": "inject26",
+        "type": "inject",
+        "z": "flow26",
+        "name": "Cargar Inventario",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "load",
+        "payloadType": "str",
+        "x": 160,
+        "y": 60,
+        "wires": [
+            [
+                "function26"
+            ]
+        ]
+    },
+    {
+        "id": "function26",
+        "type": "function",
+        "z": "flow26",
+        "name": "Generar Inventario",
+        "func": "var inventory = [\n    {id: 'P001', name: 'Laptop Dell XPS 13', category: 'Electrónicos', stock: 15, minStock: 5, price: 999.99, location: 'A1-B2'},\n    {id: 'P002', name: 'Monitor Samsung 24\"', category: 'Electrónicos', stock: 8, minStock: 3, price: 199.99, location: 'A2-C1'},\n    {id: 'P003', name: 'Teclado Mecánico', category: 'Periféricos', stock: 25, minStock: 10, price: 79.99, location: 'B1-A3'},\n    {id: 'P004', name: 'Mouse Inalámbrico', category: 'Periféricos', stock: 2, minStock: 8, price: 29.99, location: 'B1-A4'},\n    {id: 'P005', name: 'Cable HDMI 2m', category: 'Cables', stock: 50, minStock: 20, price: 12.99, location: 'C3-D1'},\n    {id: 'P006', name: 'Disco SSD 1TB', category: 'Almacenamiento', stock: 1, minStock: 5, price: 89.99, location: 'A3-B1'}\n];\n\n// Calcular estadísticas\nvar totalItems = inventory.reduce((sum, item) => sum + item.stock, 0);\nvar totalValue = inventory.reduce((sum, item) => sum + (item.stock * item.price), 0);\nvar lowStock = inventory.filter(item => item.stock <= item.minStock);\nvar categories = [...new Set(inventory.map(item => item.category))];\n\nmsg.payload = {\n    inventory: inventory,\n    stats: {\n        totalItems: totalItems,\n        totalValue: Math.round(totalValue * 100) / 100,\n        lowStockCount: lowStock.length,\n        categories: categories.length,\n        lowStockItems: lowStock\n    }\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "function26split"
+            ]
+        ]
+    },
+    {
+        "id": "function26split",
+        "type": "function",
+        "z": "flow26",
+        "name": "Dividir Datos",
+        "func": "// Enviar datos a diferentes componentes\nnode.send([\n    {payload: msg.payload.inventory, topic: 'inventory'},\n    {payload: msg.payload.stats, topic: 'stats'},\n    {payload: msg.payload.stats.lowStockItems, topic: 'alerts'}\n]);\n\nreturn null;",
+        "outputs": 3,
+        "noerr": 0,
+        "x": 570,
+        "y": 60,
+        "wires": [
+            [
+                "table26"
+            ],
+            [
+                "template26"
+            ],
+            [
+                "template26b"
+            ]
+        ]
+    },
+    {
+        "id": "table26",
+        "type": "ui_table",
+        "z": "flow26",
+        "group": "group26",
+        "name": "Inventario Completo",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "columns": [
+            {
+                "field": "id",
+                "title": "ID",
+                "width": "80",
+                "align": "left",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "name",
+                "title": "Producto",
+                "width": "",
+                "align": "left",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "category",
+                "title": "Categoría",
+                "width": "120",
+                "align": "center",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "stock",
+                "title": "Stock",
+                "width": "80",
+                "align": "center",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "minStock",
+                "title": "Mín.",
+                "width": "60",
+                "align": "center",
+                "formatter": "plaintext"
+            },
+            {
+                "field": "price",
+                "title": "Precio",
+                "width": "80",
+                "align": "right",
+                "formatter": "money",
+                "formatterParams": {
+                    "symbol": "€"
+                }
+            },
+            {
+                "field": "location",
+                "title": "Ubicación",
+                "width": "100",
+                "align": "center",
+                "formatter": "plaintext"
+            }
+        ],
+        "outputs": 0,
+        "cts": false,
+        "x": 770,
+        "y": 40,
+        "wires": []
+    },
+    {
+        "id": "template26",
+        "type": "ui_template",
+        "z": "flow26",
+        "group": "group26b",
+        "name": "Dashboard Estadísticas",
+        "order": 1,
+        "width": "12",
+        "height": "4",
+        "format": "<div style=\"background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 20px; border-radius: 15px;\">\n    <h2 style=\"margin: 0 0 20px 0; text-align: center;\">📦 Sistema de Inventario</h2>\n    \n    <div style=\"display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;\">\n        <div style=\"background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; text-align: center;\">\n            <div style=\"font-size: 32px; margin-bottom: 10px;\">📊</div>\n            <div style=\"font-size: 28px; font-weight: bold;\">{{msg.payload.totalItems}}</div>\n            <div style=\"opacity: 0.8;\">Total Items</div>\n        </div>\n        \n        <div style=\"background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; text-align: center;\">\n            <div style=\"font-size: 32px; margin-bottom: 10px;\">💰</div>\n            <div style=\"font-size: 28px; font-weight: bold;\">€{{msg.payload.totalValue}}</div>\n            <div style=\"opacity: 0.8;\">Valor Total</div>\n        </div>\n        \n        <div style=\"background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; text-align: center;\">\n            <div style=\"font-size: 32px; margin-bottom: 10px;\">⚠️</div>\n            <div style=\"font-size: 28px; font-weight: bold; color: {{msg.payload.lowStockCount > 0 ? '#ff6b6b' : '#4caf50'}}\">{{msg.payload.lowStockCount}}</div>\n            <div style=\"opacity: 0.8;\">Stock Bajo</div>\n        </div>\n        \n        <div style=\"background: rgba(255,255,255,0.15); padding: 20px; border-radius: 12px; text-align: center;\">\n            <div style=\"font-size: 32px; margin-bottom: 10px;\">🏷️</div>\n            <div style=\"font-size: 28px; font-weight: bold;\">{{msg.payload.categories}}</div>\n            <div style=\"opacity: 0.8;\">Categorías</div>\n        </div>\n    </div>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 780,
+        "y": 80,
+        "wires": [[]]
+    },
+    {
+        "id": "template26b",
+        "type": "ui_template",
+        "z": "flow26",
+        "group": "group26c",
+        "name": "Alertas de Stock",
+        "order": 1,
+        "width": "12",
+        "height": "3",
+        "format": "<div ng-if=\"msg.payload.length > 0\" style=\"background: #ffebee; border-left: 4px solid #f44336; padding: 15px; margin: 10px 0;\">\n    <h3 style=\"color: #c62828; margin: 0 0 10px 0;\">⚠️ Productos con Stock Bajo</h3>\n    <div style=\"display: grid; gap: 10px;\">\n        <div ng-repeat=\"item in msg.payload\" style=\"background: white; padding: 10px; border-radius: 5px; border: 1px solid #ffcdd2; display: flex; justify-content: space-between; align-items: center;\">\n            <div>\n                <strong style=\"color: #c62828;\">{{item.name}}</strong>\n                <div style=\"font-size: 12px; color: #666;\">ID: {{item.id}} | Ubicación: {{item.location}}</div>\n            </div>\n            <div style=\"text-align: right;\">\n                <div style=\"font-size: 18px; font-weight: bold; color: #f44336;\">{{item.stock}}</div>\n                <div style=\"font-size: 12px; color: #666;\">Mín: {{item.minStock}}</div>\n            </div>\n        </div>\n    </div>\n</div>\n<div ng-if=\"msg.payload.length === 0\" style=\"background: #e8f5e8; border-left: 4px solid #4caf50; padding: 15px; margin: 10px 0; text-align: center;\">\n    <h3 style=\"color: #2e7d32; margin: 0;\">✅ Todos los productos tienen stock suficiente</h3>\n</div>",
+        "storeOutMessages": true,
+        "fwdInMessages": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "x": 770,
+        "y": 120,
+        "wires": [[]]
+    },
+    {
+        "id": "button26",
+        "type": "ui_button",
+        "z": "flow26",
+        "name": "Actualizar Stock",
+        "group": "group26b",
+        "order": 2,
+        "width": "3",
+        "height": "1",
+        "passthru": false,
+        "label": "🔄 Actualizar",
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "icon": "",
+        "payload": "refresh",
+        "payloadType": "str",
+        "topic": "",
+        "x": 170,
+        "y": 120,
+        "wires": [
+            [
+                "function26"
+            ]
+        ]
+    },
+    {
+        "id": "group26",
+        "type": "ui_group",
+        "name": "Inventario Detallado",
+        "tab": "tab26",
+        "order": 2,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "group26b",
+        "type": "ui_group",
+        "name": "Resumen Ejecutivo",
+        "tab": "tab26",
+        "order": 1,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "group26c",
+        "type": "ui_group",
+        "name": "Alertas",
+        "tab": "tab26",
+        "order": 3,
+        "disp": true,
+        "width": "12",
+        "collapse": false
+    },
+    {
+        "id": "tab26",
+        "type": "ui_tab",
+        "name": "Inventario",
+        "icon": "inventory",
+        "order": 26,
+        "disabled": false,
+        "hidden": false
+    }
+]
+
+// **Flujo 27: Monitor de Producción Industrial**
+[
+    {
+        "id": "inject27",
+        "type": "inject",
+        "z": "flow27",
+        "name": "Simular Línea",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "3",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 80,
+        "wires": [
+            [
+                "function27"
+            ]
+        ]
+    },
+    {
+        "id": "function27",
+        "type": "function",
+        "z": "flow27",
+        "name": "Datos de Producción",
+        "func": "// Simular datos de 3 líneas de producción\nvar lines = [\n    {\n        id: 'L001',\n        name: 'Línea A - Ensamblaje',\n        status: Math.random() > 0.1 ? 'running' : 'stopped',\n        speed: Math.round(Math.random() * 50 + 70), // 70-120 unidades/hora\n        efficiency: Math.round(Math.random() * 20 + 75), // 75-95%\n        quality: Math.round(Math.random() * 5 + 95), // 95-100%\n        temperature: Math.round(Math.random() * 10 + 45), // 45-55°C\n        pressure: Math.round((Math.random() * 0.5 + 2.5) * 100) / 100, // 2.5-3.0 bar\n        produced: Math.floor(Math.random() * 100 + 1200),\n        defective: Math.floor(Math.random() * 10),\n        target: 1500\n    },\n    {\n        id: 'L002',\n        name: 'Línea B - Pintura',\n        status: Math.random() > 0.05 ? 'running' : 'maintenance',\n        speed: Math.round(Math.random() * 30 + 40), // 40-70 unidades/hora\n        efficiency: Math.round(Math.random() * 15 + 80), // 80-95%\n        quality: Math.round(Math.random() * 3 + 97), // 97-100%\n        temperature: Math.round(Math.random() * 5 + 35), // 35-40°C\n        pressure: Math.round((Math.random() * 0.3 + 1.8) * 100) / 100, // 1.8-2.1 bar\n        produced: Math.floor(Math.random() * 80 + 800),\n        defective: Math.floor(Math.random() * 5),\n        target: 1000\n    },\n    {\n        id: 'L003',\n        name: 'Línea C - Empaque',\n        status: Math.random() > 0.15 ? 'running' : 'error',\n        speed: Math.round(Math.random() * 40 + 80), // 80-120 unidades/hora\n        efficiency: Math.round(Math.random() * 25 + 70), // 70-95%\n        quality: Math.round(Math.random() * 4 + 96), // 96-100%\n        temperature: Math.round(Math.random() * 8 + 25), // 25-33°C\n        pressure: Math.round((Math.random() * 0.4 + 1.5) * 100) / 100, // 1.5-1.9 bar\n        produced: Math.floor(Math.random() * 120 + 900),\n        defective: Math.floor(Math.random() * 8),\n        target: 1200\n    }\n];\n\n// Calcular totales\nvar totals = {\n    totalProduced: lines.reduce((sum, line) => sum + line.produced, 0),\n    totalDefective: lines.reduce((sum, line) => sum + line.defective, 0),\n    totalTarget: lines.reduce((sum, line) => sum + line.target, 0),\n    activeLines: lines.filter(line => line.status === 'running').length,\n    avgEfficiency: Math.round(lines.reduce((sum, line) => sum + line.efficiency, 0) / lines.length),\n    avgQuality: Math.round(lines.reduce((sum, line) => sum + line.quality, 0) / lines.length * 100) / 100\n};\n\nmsg.payload = {\n    lines: lines,\n    totals: totals,\n    timestamp: new Date().toLocaleString('es-ES')\n};\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 360,
+        "y": 80,
+        "wires": [
+            [
+                "function27split"
+            ]
+        ]
+    },
+    {
+        "id": "function27split",
+        "type": "function",
+        "z": "flow27",
+        "name": "Distribuir Datos",
+        "func": "// Enviar datos individuales de cada línea\nfor (let i = 0; i < msg.payload.lines.length; i++) {\n    node.send([{\n        payload: msg.payload.lines[i],\n        topic: 'line' + (i + 1)\n    }]);\n}\n\n// Enviar totales\nnode.send([null, null, null, {\n    payload: msg.payload,\n    topic: 'summary'\n}]);\n\nreturn null;",
+        "outputs": 4,
+        "noerr": 0,
+        "x": 570,
+        "y": 80,
+        "wires": [
+            [
+                "template27a"
+            ],
+            [
+                "template27b"
+            ],
+            [
+                "template27c"
+            ],
+            [
+                "template27summary"
+            ]
+        ]
+    }

@@ -1,0 +1,65 @@
+[
+    {
+        "id": "inject-mqtt-out",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Publicar Mensaje",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "5",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "curso/nodered/test",
+        "payload": "{\"temperatura\": 23.5, \"timestamp\": \"$millis()\"}",
+        "payloadType": "jsonata",
+        "x": 180,
+        "y": 780,
+        "wires": [
+            [
+                "mqtt-out-node"
+            ]
+        ]
+    },
+    {
+        "id": "mqtt-out-node",
+        "type": "mqtt out",
+        "z": "da44a8e4.25bb58",
+        "name": "Publicador MQTT",
+        "topic": "",
+        "qos": "",
+        "retain": "",
+        "broker": "your-mqtt-broker",
+        "x": 420,
+        "y": 780,
+        "wires": []
+    },
+    {
+        "id": "your-mqtt-broker",
+        "type": "mqtt-broker",
+        "name": "Broker de Prueba",
+        "broker": "test.mosquitto.org",
+        "port": "1883",
+        "clientId": "",
+        "usetls": false,
+        "protocolVersion": "4",
+        "keepalive": "60",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    }
+]

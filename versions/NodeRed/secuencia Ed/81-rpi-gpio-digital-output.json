@@ -1,0 +1,66 @@
+[
+    {
+        "id": "led-on",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Encender LED",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "1",
+        "payloadType": "num",
+        "x": 150,
+        "y": 1140,
+        "wires": [
+            [
+                "gpio-out-led"
+            ]
+        ]
+    },
+    {
+        "id": "led-off",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Apagar LED",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "0",
+        "payloadType": "num",
+        "x": 150,
+        "y": 1200,
+        "wires": [
+            [
+                "gpio-out-led"
+            ]
+        ]
+    },
+    {
+        "id": "gpio-out-led",
+        "type": "rpi-gpio out",
+        "z": "da44a8e4.25bb58",
+        "name": "LED en GPIO17",
+        "pin": "17",
+        "set": true,
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 380,
+        "y": 1170,
+        "wires": []
+    }
+]

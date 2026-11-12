@@ -1,0 +1,67 @@
+[
+    {
+        "id": "fast-inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Disparador Rápido",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "0.5",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 160,
+        "y": 1520,
+        "wires": [
+            [
+                "rate-limiter"
+            ]
+        ]
+    },
+    {
+        "id": "rate-limiter",
+        "type": "delay",
+        "z": "da44a8e4.25bb58",
+        "name": "Limitar a 1 msg / 3 seg",
+        "pauseType": "rate",
+        "timeout": "5",
+        "timeoutUnits": "seconds",
+        "rate": "1",
+        "nbRateUnits": "3",
+        "rateUnits": "second",
+        "randomFirst": "1",
+        "randomLast": "5",
+        "randomUnits": "seconds",
+        "drop": true,
+        "x": 380,
+        "y": 1520,
+        "wires": [
+            [
+                "debug-output"
+            ]
+        ]
+    },
+    {
+        "id": "debug-output",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Salida Lenta",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": true,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "payload",
+        "statusType": "auto",
+        "x": 590,
+        "y": 1520,
+        "wires": []
+    }
+]

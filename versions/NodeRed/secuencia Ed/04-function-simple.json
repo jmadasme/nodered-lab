@@ -1,0 +1,62 @@
+[
+    {
+        "id": "e6a2b3c4.195d4",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 280,
+        "wires": [
+            [
+                "d5f4e3b2.2a0b2"
+            ]
+        ]
+    },
+    {
+        "id": "d5f4e3b2.2a0b2",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "Formatear Fecha",
+        "func": "// El payload entrante es un timestamp numérico\nconst fecha = new Date(msg.payload);\n\n// Creamos un nuevo texto\nconst textoSalida = \"El flujo se ejecutó el: \" + fecha.toLocaleString();\n\n// Reemplazamos el payload original con nuestro nuevo texto\nmsg.payload = textoSalida;\n\n// Devolvemos el mensaje modificado para que continúe el flujo\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 330,
+        "y": 280,
+        "wires": [
+            [
+                "b4c3d2a1.4b3c3"
+            ]
+        ]
+    },
+    {
+        "id": "b4c3d2a1.4b3c3",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 510,
+        "y": 280,
+        "wires": []
+    }
+]

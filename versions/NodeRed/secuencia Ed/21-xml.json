@@ -1,0 +1,60 @@
+[
+    {
+        "id": "m3n4o5p6.xmlinject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Datos XML en String",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "<medicion><sensor>Luz</sensor><valor>850</valor></medicion>",
+        "payloadType": "str",
+        "x": 160,
+        "y": 2940,
+        "wires": [
+            [
+                "q7r8s9t0.xml"
+            ]
+        ]
+    },
+    {
+        "id": "q7r8s9t0.xml",
+        "type": "xml",
+        "z": "da44a8e4.25bb58",
+        "name": "Convertir XML a Objeto",
+        "property": "payload",
+        "attr": "",
+        "chr": "",
+        "x": 390,
+        "y": 2940,
+        "wires": [
+            [
+                "u1v2w3x4.debug"
+            ]
+        ]
+    },
+    {
+        "id": "u1v2w3x4.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Ver Objeto resultante",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 620,
+        "y": 2940,
+        "wires": []
+    }
+]

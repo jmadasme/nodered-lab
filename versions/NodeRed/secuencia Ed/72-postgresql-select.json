@@ -1,0 +1,69 @@
+[
+    {
+        "id": "q7r8s9t0.select",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Leer Todos los Datos",
+        "props": [
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "SELECT * FROM sensores ORDER BY fecha DESC LIMIT 10;",
+        "payloadType": "str",
+        "x": 170,
+        "y": 980,
+        "wires": [
+            [
+                "i9j0k1l2.postgres"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.postgres",
+        "type": "postgres",
+        "z": "da44a8e4.25bb58",
+        "postgresdb": "your-db-config",
+        "name": "PostgreSQL DB",
+        "x": 600,
+        "y": 900,
+        "wires": [
+            [
+                "m3n4o5p6.debug"
+            ]
+        ]
+    },
+    {
+        "id": "m3n4o5p6.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Resultado SELECT",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 420,
+        "y": 980,
+        "wires": []
+    },
+    {
+        "id": "your-db-config",
+        "type": "postgresdb",
+        "name": "Mi Base de Datos",
+        "host": "127.0.0.1",
+        "port": "5432",
+        "database": "nombre_db",
+        "username": "usuario_db",
+        "password": "password_db",
+        "ssl": false
+    }
+]

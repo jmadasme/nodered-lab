@@ -1,0 +1,66 @@
+[
+    {
+        "id": "b1c2d3e4.trigger",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Consultar API",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 140,
+        "y": 1880,
+        "wires": [
+            [
+                "f5g6h7i8.httprequest"
+            ]
+        ]
+    },
+    {
+        "id": "f5g6h7i8.httprequest",
+        "type": "http request",
+        "z": "da44a8e4.25bb58",
+        "name": "GET a JSONPlaceholder",
+        "method": "GET",
+        "ret": "obj",
+        "paytoqs": "ignore",
+        "url": "https://jsonplaceholder.typicode.com/posts/1",
+        "tls": "",
+        "persist": false,
+        "proxy": "",
+        "authType": "",
+        "senderr": false,
+        "x": 350,
+        "y": 1880,
+        "wires": [
+            [
+                "j9k0l1m2.debug"
+            ]
+        ]
+    },
+    {
+        "id": "j9k0l1m2.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Respuesta de la API",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 580,
+        "y": 1880,
+        "wires": []
+    }
+]

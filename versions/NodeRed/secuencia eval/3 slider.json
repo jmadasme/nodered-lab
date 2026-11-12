@@ -1,0 +1,72 @@
+[
+    {
+        "id": "slider1",
+        "type": "ui_slider",
+        "z": "flow3",
+        "name": "Control Deslizante",
+        "label": "Valor:",
+        "tooltip": "",
+        "group": "group3",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "outs": "all",
+        "topic": "slider",
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "x": 160,
+        "y": 80,
+        "wires": [
+            [
+                "gauge1"
+            ]
+        ]
+    },
+    {
+        "id": "gauge1",
+        "type": "ui_gauge",
+        "z": "flow3",
+        "name": "Medidor",
+        "group": "group3",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "gtype": "gage",
+        "title": "Nivel",
+        "label": "unidades",
+        "format": "{{value}}",
+        "min": 0,
+        "max": 100,
+        "colors": [
+            "#00b500",
+            "#e6e600",
+            "#ca3838"
+        ],
+        "seg1": "",
+        "seg2": "",
+        "x": 360,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "group3",
+        "type": "ui_group",
+        "name": "Medidores",
+        "tab": "tab3",
+        "order": 1,
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "tab3",
+        "type": "ui_tab",
+        "name": "Sensores",
+        "icon": "speed",
+        "order": 3,
+        "disabled": false,
+        "hidden": false
+    }
+]

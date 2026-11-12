@@ -1,0 +1,79 @@
+[
+    {
+        "id": "y5z6a7b8.udp_out",
+        "type": "udp out",
+        "z": "da44a8e4.25bb58",
+        "name": "Enviar a Puerto 4000",
+        "addr": "127.0.0.1",
+        "iface": "",
+        "port": "4000",
+        "ipv": "udp4",
+        "outport": "",
+        "base64": false,
+        "multicast": "false",
+        "x": 420,
+        "y": 4580,
+        "wires": []
+    },
+    {
+        "id": "c1d2e3f4.udp_inject",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Enviar mensaje UDP",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "Hola UDP!",
+        "payloadType": "str",
+        "x": 190,
+        "y": 4580,
+        "wires": [
+            [
+                "y5z6a7b8.udp_out"
+            ]
+        ]
+    },
+    {
+        "id": "g5h6i7j8.udp_in",
+        "type": "udp in",
+        "z": "da44a8e4.25bb58",
+        "name": "Escuchar en Puerto 4000",
+        "iface": "",
+        "port": "4000",
+        "ipv": "udp4",
+        "multicast": "false",
+        "group": "",
+        "datatype": "utf8",
+        "x": 200,
+        "y": 4660,
+        "wires": [
+            [
+                "k9l0m1n2.udp_debug"
+            ]
+        ]
+    },
+    {
+        "id": "k9l0m1n2.udp_debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Mensaje UDP Recibido",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 440,
+        "y": 4660,
+        "wires": []
+    }
+]

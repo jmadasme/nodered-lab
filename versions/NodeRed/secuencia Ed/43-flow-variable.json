@@ -1,0 +1,62 @@
+[
+    {
+        "id": "a1b2c3d4.inject_counter",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Pulsar Botón",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 150,
+        "y": 3480,
+        "wires": [
+            [
+                "e5f6g7h8.function_counter"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.function_counter",
+        "type": "function",
+        "z": "da44a8e4.25bb58",
+        "name": "Incrementar Contador",
+        "func": "// Obtener el valor actual del contador, si no existe, iniciar en 0\nlet count = flow.get('pulsaciones') || 0;\n\n// Incrementar el valor\ncount = count + 1;\n\n// Guardar el nuevo valor en la variable de flujo\nflow.set('pulsaciones', count);\n\n// Enviar el valor actual en el payload\nmsg.payload = \"El botón ha sido pulsado \" + count + \" veces.\";\n\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "x": 370,
+        "y": 3480,
+        "wires": [
+            [
+                "i9j0k1l2.debug_counter"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.debug_counter",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Ver Contador",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 610,
+        "y": 3480,
+        "wires": []
+    }
+]

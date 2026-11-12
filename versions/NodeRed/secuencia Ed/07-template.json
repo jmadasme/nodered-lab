@@ -1,0 +1,63 @@
+[
+    {
+        "id": "a1b2c3d4.template",
+        "type": "inject",
+        "z": "da44a8e4.25bb58",
+        "name": "Datos de Usuario",
+        "props": [
+            {
+                "p": "payload"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "{\"nombre\":\"Ana\",\"ciudad\":\"Concepción\"}",
+        "payloadType": "json",
+        "x": 160,
+        "y": 1440,
+        "wires": [
+            [
+                "e5f6g7h8.template"
+            ]
+        ]
+    },
+    {
+        "id": "e5f6g7h8.template",
+        "type": "template",
+        "z": "da44a8e4.25bb58",
+        "name": "Crear Saludo",
+        "field": "payload",
+        "fieldType": "msg",
+        "format": "handlebars",
+        "syntax": "mustache",
+        "template": "Hola, {{payload.nombre}} de {{payload.ciudad}}. ¡Bienvenida a Node-RED!",
+        "output": "str",
+        "x": 350,
+        "y": 1440,
+        "wires": [
+            [
+                "i9j0k1l2.debug"
+            ]
+        ]
+    },
+    {
+        "id": "i9j0k1l2.debug",
+        "type": "debug",
+        "z": "da44a8e4.25bb58",
+        "name": "Ver Saludo",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "targetType": "msg",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 540,
+        "y": 1440,
+        "wires": []
+    }
+]
