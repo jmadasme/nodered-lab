@@ -775,6 +775,57 @@ nodered-lab/
 
 ---
 
+## Ficha de evaluación
+
+**Madurez global: 3.5/5**
+
+| Criterio | Nota | Evidencia |
+|---|---:|---|
+| Madurez | 2/5 | Colección de laboratorio con 71 flujos válidos de 82; sin aplicación ni pruebas. |
+| Reproducibilidad | 3/5 | Los JSON válidos se importan, pero faltan package.json y settings.js y la configuración es manual. |
+| Documentación | 5/5 | Índice por flujo, inventario de nodos, clasificación de borradores y guía de importación. |
+| Honestidad de límites | 5/5 | Declara archivos rotos, duplicados, etiquetas engañosas y credenciales de marcador. |
+| Valor demostrativo | 4/5 | Biblioteca amplia de patrones MQTT, GPIO y dashboard reutilizables en proyectos propios. |
+| Facilidad de despliegue | 2/5 | Requiere instalar Node-RED, la paleta de dashboard y configurar brokers y pines a mano. |
+
+Archivo valioso de ejemplos Node-RED, mejor documentado que empaquetado: la mayoría de los flujos se importa, pero no hay configuración reproducible y los archivos rotos se asumen como parte del material.
+
+## Lo que no funcionó
+
+### Borradores JSONC — Diez flujos no importables
+
+Diez archivos usan comentarios // y varios arrays concatenados, formato que el editor de Node-RED rechaza al importar. Se incluyó un limpiador que elimina comentarios y une los arrays, pero no corrige todas las comillas malformadas; el README los marca como borradores y recomienda revisarlos antes de usarlos.
+
+### Archivo 83 — Byte inicial rompe el JSON
+
+83-rpi-gpio-pwm-output.json comienza con una letra n espuria antes del corchete de apertura, por lo que ningún parser lo acepta. El original se conservó sin modificar para no falsear el material histórico; el README explica cómo quitar ese byte sobre una copia antes de importarlo.
+
+### Dashboard 3.6.6 — Grupos definidos en otro flujo
+
+Los flujos 31, 32, 35, 37 y 50 usan los grupos some-ui-group y some-ui-tab, definidos en los archivos 29 y 33. Importarlos sueltos deja los widgets sin pestaña ni contenedor, un fallo que solo aparece al importar, no al leer el JSON. El README documenta el orden de importación necesario.
+
+### Dashboard 3.6.6 — Plantillas atadas a Angular
+
+Los ui_template usan ng-src y directivas de la generación Angular del dashboard, no compatibles con Dashboard 2.0. Migrarlos exige reescribir esas plantillas y revisar los nodos de UI; el README lo advierte y evita presentar la colección como portable entre versiones.
+
+## Preguntas típicas
+
+**¿Qué es este proyecto?**
+
+Una colección de 82 flujos Node-RED (322 nodos, 62 tipos y 18 pestañas de dashboard) sobre MQTT, GPIO de Raspberry Pi, cámaras, bases de datos y paneles.
+
+**¿Es una aplicación lista para ejecutar?**
+
+No. No incluye package.json, settings.js, flows.json ni pruebas; los flujos se importan manualmente en una instalación de Node-RED.
+
+**¿Cuántos flujos se pueden importar?**
+
+71 de 82 son JSON estricto; 10 son borradores con comentarios y arrays concatenados, y 83-rpi-gpio-pwm-output.json tiene un byte inicial que rompe el parseo.
+
+**¿Qué se puede reutilizar?**
+
+Patrones de MQTT, GPIO, cámara y dashboard, incluidos ui_template; hay que reemplazar brokers públicos, credenciales de marcador, rutas y pines, y migrar las plantillas Angular si se usa Dashboard 2.0.
+
 ## Documentación y licencia
 
 - [`docs/datasheet.md`](docs/datasheet.md): manual de usuario, especificaciones, catálogo y troubleshooting.

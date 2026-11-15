@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="760" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Mapa de flujos del repositorio nodered-lab</title>
+  <desc id="desc">Cuatro bloques: secuencia Ini, secuencia Ed, secuencia eval y laboratorio de cámara, con conteos y ruta sugerida.</desc>
+  <defs>
+    <style>
+      .bg { fill: #06141b; }
+      .panel { fill: #0b2029; stroke: #5B7C99; stroke-width: 1.2; }
+      .panel-teal { fill: #0d2a31; stroke: #2A9D8F; stroke-width: 1.5; }
+      .text { fill: #E8F0F2; font-family: Inter, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .muted { fill: #A9BEC6; font-family: Inter, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .accent { fill: #2A9D8F; }
+      .blue { fill: #457B9D; }
+      .steel { fill: #5B7C99; }
+      .h1 { font-size: 31px; font-weight: 700; }
+      .h2 { font-size: 20px; font-weight: 650; }
+      .body { font-size: 13.5px; }
+      .small { font-size: 11.5px; }
+      .num { font-size: 54px; font-weight: 750; fill: #2A9D8F; font-family: Inter, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .num-blue { font-size: 54px; font-weight: 750; fill: #457B9D; font-family: Inter, 'Segoe UI', Helvetica, Arial, sans-serif; }
+      .label { font-size: 11px; letter-spacing: 1.4px; }
+      .line { stroke: #2A9D8F; stroke-width: 2; fill: none; stroke-dasharray: 7 6; }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2A9D8F"/>
+    </marker>
+  </defs>
+
+  <rect class="bg" x="0" y="0" width="1200" height="760"/>
+
+  <rect x="52" y="36" width="8" height="8" rx="1" fill="#2A9D8F"/>
+  <text x="70" y="46" class="muted label">NODERED-LAB / MAPA</text>
+  <text x="52" y="86" class="text h1">Cuatro bloques, una progresión</text>
+  <text x="52" y="112" class="muted body">Empezá por los fundamentos, seguí por el catálogo de nodos, practicá con dashboards y terminá en el laboratorio de cámara.</text>
+  <line x1="52" y1="132" x2="1148" y2="132" stroke="#1d3b47" stroke-width="1"/>
+
+  <!-- 01 Ini -->
+  <rect x="52" y="156" width="536" height="238" rx="14" class="panel-teal"/>
+  <text x="76" y="214" class="num">01</text>
+  <text x="160" y="190" class="text h2">secuencia Ini</text>
+  <text x="160" y="214" class="muted body">Fundamentos y primeros dashboards</text>
+  <line x1="76" y1="232" x2="564" y2="232" stroke="#1d3b47" stroke-width="1"/>
+  <text x="76" y="258" class="text body">13 archivos · 10 ejercicios numerados · 3 dashboards</text>
+  <text x="76" y="282" class="muted small">Mensaje con hora · contador · condicional · clima · MQTT</text>
+  <text x="76" y="301" class="muted small">Alerta por email · proyecto IoT · gauge, barras y torta</text>
+  <text x="76" y="320" class="muted small">Incluye una copia idéntica de 03_mensaje_con_hora.</text>
+  <rect x="76" y="340" width="176" height="30" rx="15" fill="#112f3c" stroke="#457B9D"/>
+  <text x="164" y="360" text-anchor="middle" class="muted small">empezar acá</text>
+  <text x="564" y="372" text-anchor="end" class="muted small">13 JSON</text>
+
+  <!-- 02 Ed -->
+  <rect x="612" y="156" width="536" height="238" rx="14" class="panel-teal"/>
+  <text x="636" y="214" class="num">02</text>
+  <text x="720" y="190" class="text h2">secuencia Ed</text>
+  <text x="720" y="214" class="muted body">Catálogo de nodos, uno por archivo</text>
+  <line x1="636" y1="232" x2="1124" y2="232" stroke="#1d3b47" stroke-width="1"/>
+  <text x="636" y="258" class="text body">51 archivos · 50 ejercicios numerados + lab</text>
+  <text x="636" y="282" class="muted small">Inject, function, switch, delay, HTTP, JSON, CSV, XML</text>
+  <text x="636" y="301" class="muted small">Dashboard, MQTT, PostgreSQL, email, TCP, UDP, GPIO</text>
+  <text x="636" y="320" class="muted small">Recorrido 01–83 con huecos: faltan 24, 25, 34, 36, 38–40, 45, 48, 49 y 53–60.</text>
+  <rect x="636" y="340" width="190" height="30" rx="15" fill="#112f3c" stroke="#457B9D"/>
+  <text x="731" y="360" text-anchor="middle" class="muted small">consultar por nodo</text>
+  <text x="1124" y="372" text-anchor="end" class="muted small">51 JSON</text>
+
+  <!-- 03 eval -->
+  <rect x="52" y="418" width="536" height="238" rx="14" class="panel"/>
+  <text x="76" y="476" class="num-blue">03</text>
+  <text x="160" y="452" class="text h2">secuencia eval</text>
+  <text x="160" y="476" class="muted body">Ejercicios y prototipos de dashboard</text>
+  <line x1="76" y1="494" x2="564" y2="494" stroke="#1d3b47" stroke-width="1"/>
+  <text x="76" y="520" class="text body">18 archivos · 8 estrictos + 10 borradores JSONC</text>
+  <text x="76" y="544" class="muted small">Flujos 1–20 en colecciones; 21–35 por bloques; 36–50 incompletos</text>
+  <text x="76" y="563" class="muted small">Widgets, colores, formularios, tablas, imágenes, alarmas</text>
+  <text x="76" y="582" class="muted small">Los archivos con // y varios arrays requieren limpieza previa.</text>
+  <rect x="76" y="602" width="196" height="30" rx="15" fill="#112f3c" stroke="#457B9D"/>
+  <text x="174" y="622" text-anchor="middle" class="muted small">leer límites antes</text>
+  <text x="564" y="640" text-anchor="end" class="muted small">18 JSON</text>
+
+  <!-- 04 lab -->
+  <rect x="612" y="418" width="536" height="238" rx="14" class="panel"/>
+  <text x="636" y="476" class="num-blue">04</text>
+  <text x="720" y="452" class="text h2">laboratorio y anexos</text>
+  <text x="720" y="476" class="muted body">Cámara USB, Docker y material fuente</text>
+  <line x1="636" y1="494" x2="1124" y2="494" stroke="#1d3b47" stroke-width="1"/>
+  <text x="636" y="520" class="text body">1 flujo · 1 PDF de 2 páginas · 1 RAR cifrado</text>
+  <text x="636" y="544" class="muted small">lab.json: snapshot MJPG cada 0,2 s y vista en dashboard</text>
+  <text x="636" y="563" class="muted small">Guía de Consulta Docker: docker run interactivo explicado</text>
+  <text x="636" y="582" class="muted small">Pro.rar: respaldo con contraseña; no se documenta su interior.</text>
+  <rect x="636" y="602" width="184" height="30" rx="15" fill="#112f3c" stroke="#457B9D"/>
+  <text x="728" y="622" text-anchor="middle" class="muted small">material anexo</text>
+  <text x="1124" y="640" text-anchor="end" class="muted small">3 anexos</text>
+
+  <!-- Ruta -->
+  <path d="M 588 275 L 604 275" class="line" marker-end="url(#arrow)"/>
+  <path d="M 880 394 L 880 412" class="line" marker-end="url(#arrow)"/>
+  <path d="M 588 537 L 604 537" class="line" marker-end="url(#arrow)"/>
+
+  <rect x="52" y="682" width="1096" height="52" rx="10" fill="#0b2029" stroke="#1d3b47"/>
+  <text x="76" y="713" class="muted small">Ruta sugerida: 01 fundamentos → 02 un nodo por vez → 03 dashboards → 04 cámara. Importá de a un flujo y desplegá después de revisar la configuración.</text>
+  <text x="1124" y="713" text-anchor="end" class="muted small">docs/assets/mapa-flujos.svg</text>
+</svg>

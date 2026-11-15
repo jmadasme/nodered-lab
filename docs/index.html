@@ -134,6 +134,75 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   .stat{border-right:0;border-bottom:1px solid var(--line)}
   h1{font-size:42px}
 }
+
+/* ── Contenido heredado del proyecto original, en clave sobria ── */
+.rich{max-width:78ch}
+.rich p{margin:0 0 14px;color:#c3d4da}
+.rich h3{margin:26px 0 10px;font-size:19px;letter-spacing:-.02em}
+.rich h4{margin:22px 0 8px;font-size:15px;letter-spacing:-.01em}
+.rich ul,.rich ol{margin:0 0 16px;padding-left:22px;color:#c3d4da}
+.rich li{margin:0 0 6px}
+.rich figure{margin:22px 0;border:1px solid var(--line);border-radius:16px;padding:10px;background:rgba(11,34,43,.5)}
+.rich figure img{width:100%;display:block;border-radius:10px}
+.rich figcaption{font-family:var(--mono);font-size:11px;color:var(--muted);margin-top:9px;line-height:1.5}
+.rich .table-wrap{overflow-x:auto;margin:18px 0;border:1px solid var(--line);border-radius:12px}
+.rich table{border-collapse:collapse;width:100%;font-size:13.5px}
+.rich th,.rich td{padding:9px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.rich th{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);background:rgba(11,34,43,.6)}
+.rich tr:last-child td{border-bottom:0}
+.rich pre{margin:18px 0;padding:14px 16px;border:1px solid var(--line);border-radius:12px;background:#04141a;overflow-x:auto;font-family:var(--mono);font-size:12px;line-height:1.6;color:#cfe3e8}
+.rich code{font-family:var(--mono);font-size:.92em}
+.rich .note{margin:18px 0;padding:13px 16px;border-left:2px solid var(--accent);background:rgba(42,157,143,.07);color:#c3d4da;font-size:14px}
+.rich .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin:18px 0}
+.rich .card-grid .card{margin:0}
+
+
+.rich h3{margin:26px 0 8px}
+.rich p{margin:0 0 14px;color:var(--muted);line-height:1.7}
+.fail-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:6px}
+.fail{background:rgba(11,34,43,.55);border:1px solid var(--line);border-radius:14px;padding:18px}
+.fail .v{font-family:var(--mono);font-size:10.5px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm,#D6A86A)}
+.fail h3{font-size:16px;margin:8px 0 6px}
+.fail p{font-size:14px;margin:0;color:var(--muted)}
+.rating-head{display:flex;align-items:center;gap:20px;margin:6px 0 18px;padding:18px 20px;border:1px solid var(--line);border-radius:16px;background:rgba(11,34,43,.55)}
+.rating-avg{font-family:var(--mono);font-size:40px;line-height:1;color:var(--accent)}
+.rating-avg small{font-size:14px;color:var(--muted)}
+.rating-head p{margin:4px 0 0;font-size:14px;color:var(--muted);max-width:70ch}
+.rating{display:grid;gap:2px}
+.rating-row{display:grid;grid-template-columns:165px minmax(90px,1fr) 48px;gap:14px;align-items:center;padding:11px 0;border-bottom:1px solid var(--line)}
+.rating-row:last-child{border-bottom:0}
+.rating-name{font-size:13.5px;font-weight:600}
+.rating-bar{height:6px;border-radius:99px;background:rgba(148,190,200,.14);overflow:hidden}
+.rating-bar i{display:block;height:100%;border-radius:99px;background:linear-gradient(90deg,var(--accent),var(--accent2))}
+.rating-score{font-family:var(--mono);font-size:12.5px;color:var(--accent);text-align:right}
+.rating-note{grid-column:2/-1;font-size:12.5px;color:var(--muted);margin-top:-4px}
+.faq{display:grid;gap:0;margin-top:4px}
+.faq details{border-bottom:1px solid var(--line);padding:14px 0}
+.faq summary{cursor:pointer;font-weight:600;font-size:15px;list-style:none}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::before{content:"+";display:inline-block;width:18px;color:var(--accent);font-family:var(--mono)}
+.faq details[open] summary::before{content:"–"}
+.faq p{margin:10px 0 0 18px;font-size:14px;color:var(--muted)}
+@media(max-width:720px){
+  .fail-grid{grid-template-columns:1fr}
+  .rating-head{flex-direction:column;align-items:flex-start}
+  .rating-row{grid-template-columns:120px 1fr 44px}
+}
+
+
+.detail h2{margin:34px 0 10px;font-size:24px;letter-spacing:-.02em}
+.detail h3{margin:24px 0 8px;font-size:17px}
+.detail p{margin:0 0 14px;color:var(--muted);line-height:1.75}
+.detail ul,.detail ol{margin:0 0 16px 20px;color:var(--muted)}
+.detail li{margin:6px 0}
+.detail table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13.5px}
+.detail th,.detail td{border-bottom:1px solid var(--line);padding:9px 10px;text-align:left;vertical-align:top}
+.detail th{font-family:var(--mono);font-size:11px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+.detail pre{background:rgba(6,20,27,.75);border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto;font-size:13px}
+.detail code{font-family:var(--mono);font-size:.92em}
+.detail img{max-width:100%;border-radius:12px;border:1px solid var(--line)}
+.detail blockquote{border-left:2px solid var(--accent);margin:14px 0;padding:2px 0 2px 16px;color:var(--muted)}
+
 </style>
 <link rel="stylesheet" href="assets/community.css?v=1">
 </head>
@@ -168,50 +237,940 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   </div>
 </div></section>
 
-<section class="stats"><div class="wrap stats-grid"><div class="stat"><div class="stat-num">3</div><div class="stat-label">secuencias</div></div><div class="stat"><div class="stat-num">MQTT</div><div class="stat-label">mensajería</div></div><div class="stat"><div class="stat-num">GPIO</div><div class="stat-label">Raspberry Pi</div></div><div class="stat"><div class="stat-num">JSON</div><div class="stat-label">importable</div></div></div></section>
+<section class="stats"><div class="wrap stats-grid"><div class="stat"><div class="stat-num">3</div><div class="stat-label">secuencias</div></div><div class="stat"><div class="stat-num">MQTT</div><div class="stat-label">mensajería</div></div><div class="stat"><div class="stat-num">GPIO</div><div class="stat-label">Raspberry Pi</div></div><div class="stat"><div class="stat-num">JSON</div><div class="stat-label">importable</div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El concepto</div><h2>Qué es y por qué existe</h2></div><div class="rich reveal"><p>Colección de 82 flujos Node-RED reunidos durante años de experimentación: 322 nodos de 62 tipos y 18 pestañas de dashboard que cubren MQTT, GPIO de Raspberry Pi, cámaras, bases de datos y paneles de control. Sirve como biblioteca de ejemplos y como registro de patrones de integración para quien ya opera Node-RED y busca recetas concretas que importar y adaptar.</p><p>No es una aplicación ejecutable ni un paquete: no incluye package.json, settings.js, flows.json ni pruebas. Su valor es documental y didáctico, con 71 archivos JSON estrictamente importables y un README que clasifica cada flujo, señala los borradores y advierte sobre brokers públicos, credenciales de marcador y rutas locales que deben reemplazarse.</p></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El proyecto en detalle</div><h2>Documentación preservada</h2><p class="section-sub">El README original, completo y en su contexto.</p></div><div class="detail rich reveal"><div align="center">
 
-<section class="section" id="proyecto"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">01 — El proyecto</div><h2>Qué resuelve</h2><p class="section-sub">Laboratorio de flujos Node-RED organizado en secuencias de inicio, evaluación y edición. Incluye ejemplos de MQTT, dashboards y GPIO de Raspberry Pi.</p></div>
-  <div class="two">
-    <div class="card reveal"><span class="tag">Problema</span><h3>El punto de partida</h3><p>Node-RED se aprende haciendo, pero los ejemplos sueltos no muestran una secuencia de dificultad.</p></div>
-    <div class="card reveal"><span class="tag">Solución</span><h3>La propuesta</h3><p>Flujos agrupados por etapa, listos para importar y con notas de qué necesita cada uno.</p></div>
-  </div>
-</div></section>
+# Node-RED Lab
 
-<section class="section" id="versiones"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">02 — Versiones</div><h2>La historia, completa.</h2><p class="section-sub">Cada carpeta conserva una etapa del proyecto. No se borraron las anteriores: se pusieron en contexto.</p></div>
-  <div class="versions"><article class="version reveal">
-  <div class="version-top"><h3>NodeRed</h3><span class="count">1 archivo</span></div>
-  <p>Colección completa de flujos JSON, dashboards, MQTT, GPIO y PDF de consulta Docker.</p>
-  <a href="https://github.com/jmadasme/nodered-lab/tree/main/versions/NodeRed" target="_blank" rel="noopener">Ver carpeta <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
-</article></div>
-</div></section>
+### Flujos, dashboards, MQTT y GPIO para aprender haciendo
 
-<section class="section tight"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">03 — Cómo se usa</div><h2>De la carpeta a la práctica.</h2></div>
-  <div class="timeline"><div class="step reveal"><div class="step-n">01</div><h4>Instalá Node-RED</h4><p>Seguí la guía oficial o usá el contenedor Docker.</p></div><div class="step reveal"><div class="step-n">02</div><h4>Importá un flujo</h4><p>Menú → Import → seleccioná el JSON.</p></div><div class="step reveal"><div class="step-n">03</div><h4>Ajustá broker y pines</h4><p>Cambiá las credenciales y el GPIO por los de tu entorno.</p></div><div class="step reveal"><div class="step-n">04</div><h4>Desplegá</h4><p>Ejecutá y observá el dashboard o el debug.</p></div></div>
-</div></section>
+[![Node-RED](https://img.shields.io/badge/Node--RED-3.x-2A9D8F?style=flat-square&amp;labelColor=06141b)](https://nodered.org/)
+[![Dashboard](https://img.shields.io/badge/dashboard-3.6.6-457B9D?style=flat-square&amp;labelColor=06141b)](https://flows.nodered.org/node/node-red-dashboard)
+[![Licencia](https://img.shields.io/badge/licencia-MIT-5B7C99?style=flat-square&amp;labelColor=06141b)](LICENSE)
+[![Estado](https://img.shields.io/badge/estado-laboratorio-2A9D8F?style=flat-square&amp;labelColor=06141b)](#límites-y-estado-real)
 
-<section class="section tight"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">04 — Decisiones</div><h2>Lo que lo hace distinto</h2></div>
-  <div class="features"><div class="feature reveal"><h4>Secuencia Ini</h4><p>Primeros pasos: mensajes, timestamps, contadores y clima.</p></div><div class="feature reveal"><h4>Secuencia eval</h4><p>Ejercicios de evaluación con switches, sliders y gráficos.</p></div><div class="feature reveal"><h4>Secuencia Ed</h4><p>Flujos de edición y ejemplos más avanzados.</p></div><div class="feature reveal"><h4>MQTT</h4><p>Publicar y recibir para conectar sensores.</p></div><div class="feature reveal"><h4>GPIO</h4><p>Control de pines de Raspberry Pi.</p></div><div class="feature reveal"><h4>Docker</h4><p>PDF de consulta para levantar Node-RED en contenedor.</p></div></div>
-</div></section>
+**82 archivos JSON · 322 nodos · 62 tipos de nodo · 18 pestañas de dashboard**
 
-<section class="section tight" id="stack"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">05 — Stack y arranque</div><h2>Con qué está construido</h2></div>
-  <div class="stack-grid">
-    <div class="reveal"><div class="chips"><span class="chip">Node-RED</span><span class="chip">MQTT</span><span class="chip">Raspberry Pi</span><span class="chip">Docker</span><span class="chip">JSON</span></div><div class="note"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m12 3 1.8 5.2L19 10l-5.2 1.8L12 17l-1.8-5.2L5 10l5.2-1.8L12 3z"/></svg><span>Los flujos son de laboratorio: revisá broker, tópicos y pines antes de desplegarlos.</span></div></div>
-    <div class="terminal reveal"><div class="terminal-bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div><pre>git clone https://github.com/jmadasme/nodered-lab.git
-cd nodered-lab/versions/NodeRed
-# Importá los JSON desde la UI de Node-RED</pre></div>
-  </div>
-</div></section>
+[Mapa de flujos](docs/assets/mapa-flujos.svg) · [Arquitectura](docs/assets/arquitectura-nodered.svg) · [Mockup de dashboard](docs/assets/dashboard-mockup.svg) · [Datasheet](docs/datasheet.md) · [Desarrolladores](docs/developer.md) · [Referencias](docs/REFERENCES.md)
 
-<section class="section tight" id="docs"><div class="wrap">
-  <div class="section-head reveal"><div class="kicker">06 — Documentación</div><h2>Para usar y para entender.</h2><p class="section-sub">Cada documento está en el repositorio, versionado junto al código.</p></div>
-  <div class="docs"><a class="doc reveal" href="https://github.com/jmadasme/nodered-lab/blob/main/docs/datasheet.md" target="_blank" rel="noopener"><span class="tag">DATASHEET</span><h4>Manual de operación</h4><p>Instalación, uso, configuración y troubleshooting.</p></a><a class="doc reveal" href="https://github.com/jmadasme/nodered-lab/blob/main/docs/developer.md" target="_blank" rel="noopener"><span class="tag">DEVELOPER</span><h4>Guía de código</h4><p>Arquitectura, módulos, contratos y extensión.</p></a><a class="doc reveal" href="https://github.com/jmadasme/nodered-lab/blob/main/docs/REFERENCES.md" target="_blank" rel="noopener"><span class="tag">REFERENCES</span><h4>Referencias</h4><p>Fuentes oficiales y documentación de las tecnologías.</p></a><a class="doc reveal" href="https://github.com/jmadasme/nodered-lab/blob/main/docs/BITACORA.md" target="_blank" rel="noopener"><span class="tag">BITÁCORA</span><h4>Bitácora</h4><p>Decisiones, problemas y lecciones del proyecto.</p></a></div>
-</div></section>
+</div>
+<hr/>
+<blockquote>
+<p><strong>Aviso de alcance.</strong> Este repositorio es una <strong>colección de flujos de laboratorio</strong>, no una aplicación Node-RED lista para producción. Varios flujos usan brokers públicos, credenciales de ejemplo, rutas locales, pines de Raspberry Pi y datos simulados. Antes de ejecutarlos, revisá <a href="#límites-y-estado-real">Límites y estado real</a> y ajustá broker, pines, rutas y credenciales.</p>
+</blockquote>
+<hr/>
+<h2 id="indice">Índice</h2>
+<ul>
+<li><a href="#qué-es-node-red">Qué es Node-RED</a></li>
+<li><a href="#qué-es-este-repositorio">Qué es este repositorio</a></li>
+<li><a href="#principio-de-funcionamiento">Principio de funcionamiento</a></li>
+<li><a href="#mapa-de-flujos">Mapa de flujos</a></li>
+<li><a href="#requisitos">Requisitos</a></li>
+<li><a href="#instalación">Instalación</a></li>
+<li><a href="#cómo-importar-un-flujo">Cómo importar un flujo</a></li>
+<li><a href="#primer-flujo-en-cinco-minutos">Primer flujo en cinco minutos</a></li>
+<li><a href="#mqtt">MQTT</a></li>
+<li><a href="#dashboard">Dashboard</a></li>
+<li><a href="#gpio-de-raspberry-pi">GPIO de Raspberry Pi</a></li>
+<li><a href="#postgresql-correo-y-archivos">PostgreSQL, correo y archivos</a></li>
+<li><a href="#http-apis-y-cámara-usb">HTTP, APIs y cámara USB</a></li>
+<li><a href="#ejemplos-de-uso-realistas">Ejemplos de uso realistas</a></li>
+<li><a href="#diagrama-de-conexión">Diagrama de conexión</a></li>
+<li><a href="#calibración">Calibración</a></li>
+<li><a href="#seguridad-y-buenas-prácticas">Seguridad y buenas prácticas</a></li>
+<li><a href="#límites-y-estado-real">Límites y estado real</a></li>
+<li><a href="#solución-de-problemas">Solución de problemas</a></li>
+<li><a href="#estructura-del-repositorio">Estructura del repositorio</a></li>
+<li><a href="#documentación-y-licencia">Documentación y licencia</a></li>
+</ul>
+<hr/>
+<h2 id="que-es-node-red">Qué es Node-RED</h2>
+<p>Node-RED es una herramienta de programación visual y de bajo código para aplicaciones orientadas a eventos. Nació en IBM en 2013 (Nick O'Leary y Dave Conway-Jones) y hoy es un proyecto de la OpenJS Foundation. Corre sobre <strong>Node.js</strong>, se edita en el navegador y guarda los flujos como <strong>JSON</strong>.</p>
+<p>La idea es conectar <strong>nodos</strong> con cables. Cada nodo recibe un objeto <code>msg</code>, lo transforma y lo entrega al siguiente. El runtime se encarga del orden, de las llamadas asíncronas, de la red y del estado.</p>
+<pre><code>[ inject ] ──msg──&gt; [ function ] ──msg──&gt; [ debug ]
+   dispara            transforma            muestra
+</code></pre>
+<p>No es un lenguaje ni un sistema operativo: es un <strong>orquestador de mensajes</strong>. Sirve para pegar servicios, protocolos y dispositivos que de otro modo requerirían scripts separados. La lógica compleja va en un nodo <code>function</code> (JavaScript); la simple se resuelve con nodos de configuración.</p>
+<p>El <strong>editor</strong> (navegador) sirve para arrastrar, cablear, configurar y desplegar; el <strong>runtime</strong> (Node.js) carga los flujos, instancia los nodos y expone HTTP/WebSocket; el <strong>flujo</strong> es un array JSON; el <strong>mensaje</strong> es el objeto <code>msg</code> que viaja de nodo en nodo.</p>
+<p>Las propiedades más usadas son <code>msg.payload</code> (dato principal), <code>msg.topic</code> (tema MQTT, asunto o consulta), <code>msg.headers</code> (HTTP), <code>msg.req</code>/<code>msg.res</code> (petición/respuesta), <code>msg.parts</code> (mensajes partidos) y <code>msg._msgid</code> (identificador). Además hay <strong>contexto</strong>: <code>context</code> por nodo, <code>flow</code> por pestaña y <code>global</code> por runtime; los flujos <code>43</code> y <code>44</code> lo demuestran.</p>
+<h3 id="por-que-se-usa-en-iot">Por qué se usa en IoT</h3>
+<p>Habla HTTP, MQTT, TCP, UDP, WebSocket y serial sin escribir servidores; tiene nodos para GPIO, bases de datos, correo y archivos; el dashboard se arma con widgets y se actualiza por WebSocket. Es fácil de prototipar y de enseñar porque el flujo se ve. La contraparte: <strong>un flujo visual también puede ser inseguro, difícil de versionar y frágil si no se documenta</strong>. Ese es el motivo de este README y de <code>docs/</code>.</p>
+<hr/>
+<h2 id="que-es-este-repositorio">Qué es este repositorio</h2>
+<p><code>nodered-lab</code> reúne flujos Node-RED usados como material de aprendizaje y laboratorio. Proviene de <code>jmadasme/NodeRed</code>, según <a href="https://github.com/jmadasme/nodered-lab/blob/main/VERSION.md"><code>versions/NodeRed/VERSION.md</code></a>. La copia conserva el contenido original y excluye credenciales, bases de datos y artefactos de ejecución.</p>
+<p><strong>No contiene</strong> <code>package.json</code>, <code>node_modules</code>, <code>flows.json</code>, <code>flows_cred.json</code>, <code>settings.js</code>, credenciales reales ni un servidor listo para desplegar. <strong>Sí contiene</strong> 82 archivos JSON, un PDF de Docker, un RAR cifrado y tres secuencias didácticas.</p>
+<h3 id="procedencia-y-cifras">Procedencia y cifras</h3>
+<table>
+<thead>
+<tr>
+<th>Dato</th>
+<th>Valor</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Origen declarado</td>
+<td><code>jmadasme/NodeRed</code></td>
+</tr>
+<tr>
+<td>Carpetas</td>
+<td><code>secuencia Ini</code>, <code>secuencia Ed</code>, <code>secuencia eval</code></td>
+</tr>
+<tr>
+<td>Archivos JSON</td>
+<td>82</td>
+</tr>
+<tr>
+<td>JSON estrictamente válidos</td>
+<td>71</td>
+</tr>
+<tr>
+<td>Requieren limpieza (JSONC)</td>
+<td>10</td>
+</tr>
+<tr>
+<td>Error de formato</td>
+<td>1 (<code>83-rpi-gpio-pwm-output.json</code>)</td>
+</tr>
+<tr>
+<td>Nodos en los 71 válidos</td>
+<td>322</td>
+</tr>
+<tr>
+<td>Tipos de nodo</td>
+<td>62</td>
+</tr>
+<tr>
+<td>Pestañas de dashboard</td>
+<td>18</td>
+</tr>
+<tr>
+<td>Nodos de dashboard</td>
+<td>98</td>
+</tr>
+<tr>
+<td>Saltos CRLF</td>
+<td>81 de 82 archivos</td>
+</tr>
+<tr>
+<td>Licencia</td>
+<td>MIT (ver <a href="LICENSE"><code>LICENSE</code></a>)</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>Sobre <code>VERSION.md</code>.</strong> Menciona usar los <code>.example</code> cuando existan. En esta copia <strong>no hay archivos <code>.example</code></strong>: los valores de configuración son marcadores dentro de los propios JSON y deben reemplazarse a mano.</p>
+</blockquote>
+<hr/>
+<h2 id="principio-de-funcionamiento">Principio de funcionamiento</h2>
+<p>Node-RED es software, pero este laboratorio toca el mundo físico. Entender ese puente ahorra la mitad del diagnóstico.</p>
+<p><strong>Del mundo físico al mensaje.</strong> Un sensor o pulsador cambia una magnitud (temperatura, humedad, presión, luz, posición). Un circuito la convierte en una señal dentro del rango de la Raspberry Pi (0–3,3 V en GPIO digital). El nodo <code>rpi-gpio in</code> lee el pin y publica un <code>msg.payload</code>; un <code>function</code>, <code>range</code> o <code>switch</code> normaliza, escala o clasifica; el mensaje se publica por MQTT, se guarda en PostgreSQL, se muestra en el dashboard o dispara un correo.</p>
+<p><strong>Del mensaje al mundo físico.</strong> El dashboard, un <code>inject</code>, un mensaje MQTT o una petición HTTP generan un <code>msg</code>. <code>rpi-gpio out</code> escribe el pin: nivel alto/bajo para un LED o relé, o PWM para regular intensidad. Un transistor, MOSFET, optoacoplador o relé adapta los 3,3 V a la carga real.</p>
+<p><strong>La parte de red.</strong> MQTT viaja sobre TCP/IP; un <em>broker</em> recibe publicaciones y las reparte según tópico y QoS. HTTP usa peticiones/respuestas; <code>http in</code> crea un endpoint y <code>http response</code> lo contesta. WebSocket mantiene una conexión bidireccional que el dashboard usa para actualizar widgets sin recargar. PostgreSQL y SMTP son TCP clásico con autenticación. La cámara USB suele exponer un stream MJPEG por HTTP; el flujo pide un <em>snapshot</em> JPEG y lo convierte a <code>data:</code> URI.</p>
+<p><img alt="Arquitectura de ejecución" loading="lazy" src="rich/arquitectura-nodered.svg"/></p>
+<hr/>
+<h2 id="mapa-de-flujos">Mapa de flujos</h2>
+<p>La colección es una progresión. No es necesario importar todo; de hecho, <strong>conviene importar de a un flujo</strong> para entender qué nodo resuelve qué problema.</p>
+<p><img alt="Mapa de flujos" loading="lazy" src="rich/mapa-flujos.svg"/></p>
+<h3 id="secuencia-ini-fundamentos-13-archivos"><code>secuencia Ini</code> — fundamentos (13 archivos)</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo(s)</th>
+<th>Qué enseña</th>
+<th>Nodos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>02</code>–<code>05</code></td>
+<td>Primer dashboard, hora, contador con <code>context</code> y condicional.</td>
+<td><code>inject</code>, <code>ui_text</code>, <code>function</code>, <code>switch</code>, <code>debug</code></td>
+</tr>
+<tr>
+<td><code>06</code>–<code>08</code></td>
+<td>Open-Meteo, gráfico y MQTT local publicar/recibir.</td>
+<td><code>http request</code>, <code>ui_chart</code>, <code>mqtt in/out</code></td>
+</tr>
+<tr>
+<td><code>09</code>–<code>10</code></td>
+<td>Alerta por correo y mini proyecto IoT con gauge, historial y umbral.</td>
+<td><code>e-mail</code>, <code>ui_gauge</code>, <code>ui_chart</code>, <code>switch</code></td>
+</tr>
+<tr>
+<td><code>a.json</code>, <code>b.json</code>, <code>c.json</code></td>
+<td>Dashboards de temperatura, barras y torta.</td>
+<td><code>ui_gauge</code>, <code>ui_chart</code>, <code>ui_slider</code>, <code>ui_text</code></td>
+</tr>
+</tbody>
+</table>
+<p><code>03_mensaje_con_hora - copia.json</code> es una copia idéntica (mismo MD5) del original. <strong>Ruta sugerida:</strong> <code>02</code> → <code>03</code> → <code>04</code> → <code>05</code> → <code>06</code> → <code>07</code> → <code>08</code> → <code>09</code> → <code>10</code> → <code>a</code>/<code>b</code>/<code>c</code>.</p>
+<h3 id="secuencia-ed-catalogo-de-nodos-51-archivos"><code>secuencia Ed</code> — catálogo de nodos (51 archivos)</h3>
+<p>Cada archivo aísla un nodo o una técnica. Los números no son consecutivos: faltan, entre otros, 24, 25, 34, 36, 38–40, 45, 48, 49 y 53–60.</p>
+<p><strong>Bloques:</strong> <code>01–10</code> inject/debug/function/change/switch/template/delay/trigger/exec · <code>11–23</code> RBE, HTTP, join/split, link, status, catch, JSON, CSV, XML, file · <code>26–28</code> range, sort, batch · <code>29–37</code> widgets de dashboard · <code>41–47</code> WebSocket, UDP, variables, cron, POST · <code>50–52</code> flujo completo y TCP · <code>61–62</code> MQTT · <code>71–73</code> PostgreSQL · <code>81–83</code> GPIO · <code>lab</code> cámara USB.</p>
+<h3 id="secuencia-eval-ejercicios-y-dashboards-18-archivos"><code>secuencia eval</code> — ejercicios y dashboards (18 archivos)</h3>
+<p>Ocho archivos son JSON estricto: <code>1-10.json</code>, <code>11-20.json</code>, <code>1-30.json</code> (que en realidad contiene 21–30), <code>1.-dashboard basico.json</code>, <code>2.botonsimple.json</code>, <code>3 slider.json</code>, <code>4.grafico simple..json</code> y <code>5 switch interruptor.json</code>. Los otros diez son borradores JSONC: <code>6 al 20</code>, <code>11 al 20</code> (tres variantes), <code>21 al 25</code>, <code>21 al 35</code>, <code>25 al 35</code>, <code>25 al 5w vesion 2</code>, <code>31-35</code> y <code>36 al 50</code>. Cubren textos, dropdowns, toasts, formularios, tablas, imágenes, alarmas, motor, sensores, iluminación, clima, RFID, inventario y videovigilancia.</p>
+<p><strong>Qué significa JSONC acá:</strong> el archivo tiene comentarios <code>//</code> y, en varios casos, <strong>varios arrays consecutivos</strong> en lugar de un único array. Node-RED espera un array JSON estricto. Son borradores de cuaderno, no exportaciones directas. Ver <a href="#cómo-importar-un-flujo">Cómo importar</a>.</p>
+<h3 id="anexos">Anexos</h3>
+<table>
+<thead>
+<tr>
+<th>Archivo</th>
+<th>Descripción</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Guía de Consulta Docker.pdf</code></td>
+<td>2 páginas sobre <code>docker run -it --name ... bash</code>.</td>
+</tr>
+<tr>
+<td><code>Pro.rar</code></td>
+<td>RAR v5 de 4 KB, <strong>cifrado con contraseña</strong>. No se documenta su interior.</td>
+</tr>
+<tr>
+<td><code>VERSION.md</code></td>
+<td>Nota de procedencia.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="requisitos">Requisitos</h2>
+<p><strong>Software:</strong> Node.js 18/20 LTS y Node-RED 3.x (4.x debería funcionar). Para los widgets, <code>node-red-dashboard</code> <strong>3.6.6</strong>; para GPIO, <code>node-red-node-pi-gpio</code>; para correo, <code>node-red-node-email</code>; para PostgreSQL, <code>node-red-contrib-postgresql</code>. Opcionales: Mosquitto 2.x (MQTT local), PostgreSQL 13+ y Docker 20+. Navegador reciente para editor y dashboard.</p>
+<p><strong>Hardware:</strong> PC con Linux, macOS o Windows y 2 GB de RAM recomendados. Para GPIO: Raspberry Pi 3/4/5 con header de 40 pines, dos LEDs, resistencias de 220–330 Ω, un pulsador, 10 kΩ opcional, protoboard y cables. Para cámara: USB compatible con UVC servida por MJPEG-streamer.</p>
+<p><strong>Red:</strong> 1880/TCP (editor y dashboard), 1883/TCP o 8883/TLS (MQTT), 5432/TCP (PostgreSQL), 465/587/TCP (SMTP), 8080/TCP (cámara), 18800/TCP (TCP) y 4000/UDP.</p>
+<blockquote>
+<p><strong>No hay <code>requirements.txt</code>.</strong> No es una aplicación Python: las dependencias se instalan como <strong>paquetes de la paleta</strong> con <code>npm</code> dentro de <code>~/.node-red</code>, o se declaran en un <code>package.json</code> si convertís la colección en una instancia ejecutable. Tampoco hay <code>package.json</code> en esta copia.</p>
+</blockquote>
+<hr/>
+<h2 id="instalacion">Instalación</h2>
+<h3 id="opcion-a-node-red-nativo">Opción A: Node-RED nativo</h3>
+<pre><code class="language-bash">node --version
+npm --version
 
+sudo npm install -g --unsafe-perm node-red
+node-red
+</code></pre>
+<p>Abrí <code>http://localhost:1880</code>. Si el puerto está ocupado, Node-RED lo indica; se cambia con <code>--port</code> o en <code>settings.js</code>.</p>
+<h3 id="opcion-b-raspberry-pi">Opción B: Raspberry Pi</h3>
+<pre><code class="language-bash">bash &lt;(curl -sL https://raw.githubusercontent.com/node-red/linux-installers/master/deb/update-nodejs-and-nodered)
+sudo systemctl enable --now nodered.service
+</code></pre>
+<p>El GPIO requiere que el usuario del servicio tenga permisos sobre <code>/dev/gpiochip*</code> o pertenezca al grupo <code>gpio</code>.</p>
+<h3 id="opcion-c-docker">Opción C: Docker</h3>
+<pre><code class="language-bash">docker run -it -p 1880:1880 -v node_red_data:/data --name nodered nodered/node-red
+</code></pre>
+<p><code>-it</code> habilita consola interactiva; <code>-p</code> publica el editor; <code>-v</code> persiste flujos y credenciales; <code>--name</code> fija el nombre.</p>
+<h3 id="instalar-los-nodos-de-la-paleta">Instalar los nodos de la paleta</h3>
+<p>Con Node-RED detenido o desde <strong>Menu → Manage palette → Install</strong>:</p>
+<pre><code class="language-bash">cd ~/.node-red
+npm install node-red-dashboard@3.6.6
+npm install node-red-node-pi-gpio
+npm install node-red-node-email
+npm install node-red-contrib-postgresql
+</code></pre>
+<p>Reiniciá con <code>sudo systemctl restart nodered.service</code> o volvé a lanzar <code>node-red</code>.</p>
+<blockquote>
+<p><strong>Versión del dashboard.</strong> <code>lab.json</code> declara <code>node-red-dashboard: 3.6.6</code> en su <code>global-config</code>. Esa es la referencia. No es <strong>Dashboard 2.0</strong> de FlowFuse (<code>@flowfuse/node-red-dashboard</code>), que usa otra arquitectura. Estos flujos son de la generación Angular clásica (<code>ui_template</code> con <code>ng-src</code>).</p>
+</blockquote>
+<h3 id="servicios-opcionales">Servicios opcionales</h3>
+<pre><code class="language-bash"># MQTT local
+sudo apt install mosquitto mosquitto-clients
+sudo systemctl enable --now mosquitto
+
+# PostgreSQL
+sudo apt install postgresql
+sudo -u postgres psql
+</code></pre>
+<p>Para un laboratorio, Mosquitto puede quedar con <code>listener 1883</code> y <code>allow_anonymous true</code>; <strong>no lo uses en una red no confiable</strong>. El esquema de PostgreSQL está en <a href="versions/NodeRed/secuencia%20Ed/create.txt"><code>create.txt</code></a>: tabla <code>sensores</code> con <code>id</code>, <code>nombre</code>, <code>valor</code> y <code>fecha</code>. En <code>docs/datasheet.md</code> están los comandos completos de creación de base y usuario.</p>
+<hr/>
+<h2 id="como-importar-un-flujo">Cómo importar un flujo</h2>
+<ol>
+<li>Abrí <code>http://localhost:1880</code>.</li>
+<li>Menú <strong>☰ → Import</strong>.</li>
+<li>Elegí <strong>Clipboard</strong> y pegá el JSON, o <strong>select a file</strong> y elegí el <code>.json</code>.</li>
+<li>Decidí si va a un <strong>flujo nuevo</strong> o al <strong>flujo actual</strong>.</li>
+<li>Importá.</li>
+<li>Revisá broker MQTT, base de datos, correo y grupos de dashboard.</li>
+<li>Pulsá <strong>Deploy</strong>.</li>
+</ol>
+<h3 id="que-revisar-despues-de-importar">Qué revisar después de importar</h3>
+<ul>
+<li><strong>Nodos desconocidos</strong>: <code>unknown node type</code> significa que falta el paquete. Instalalo según <a href="#requisitos">Requisitos</a>.</li>
+<li><strong>Broker MQTT</strong>: los flujos usan <code>test.mosquitto.org</code>, <code>localhost</code> o IDs como <code>your-mqtt-broker</code>. Si el broker no existe en tu instancia, Node-RED lo marca en rojo.</li>
+<li><strong>Grupos de dashboard</strong>: varios archivos de <code>secuencia Ed</code> usan IDs <code>some-ui-group</code> y <code>some-ui-tab</code>, definidos en <code>29-dashboard-button.json</code> y <code>33-dashboard-text-output.json</code>. Si importás <code>31</code>, <code>32</code>, <code>35</code>, <code>37</code> o <code>50</code> sueltos, el widget puede quedar sin grupo; creá uno y asignalo.</li>
+<li><strong>Pines GPIO</strong>: 17, 18 y 12 son de Raspberry Pi; en una PC no funcionan.</li>
+<li><strong>Rutas</strong>: <code>/tmp/miarchivo.txt</code> y <code>/tmp/milog.log</code> deben existir o ser accesibles.</li>
+<li><strong>Credenciales</strong>: correo y PostgreSQL traen marcadores; no hay contraseñas reales.</li>
+</ul>
+<h3 id="importacion-masiva-a-flowsjson">Importación masiva a <code>flows.json</code></h3>
+<p>Node-RED guarda los flujos en <code>~/.node-red/flows.json</code> (o <code>/data/flows.json</code> en Docker). Es un <strong>único array</strong>. Con Node-RED detenido:</p>
+<pre><code class="language-bash">cp ~/.node-red/flows.json ~/.node-red/flows.json.bak
+jq -s 'add' archivo1.json archivo2.json archivo3.json &gt; ~/.node-red/flows.json
+</code></pre>
+<p>Cuidado: los nodos de configuración con el mismo <code>id</code> se pisan. Es mejor importar desde la interfaz y revisar conflictos.</p>
+<h3 id="limpiar-un-archivo-jsonc">Limpiar un archivo JSONC</h3>
+<p>Los 10 borradores de <code>secuencia eval</code> no se importan tal cual: hay que quitar las líneas que empiezan con <code>//</code>, unir los arrays consecutivos y eliminar caracteres de control. En <a href="https://github.com/jmadasme/nodered-lab/blob/main/developer.md"><code>docs/developer.md</code></a> está el script completo. Trabajá siempre sobre una copia: <strong>algunos archivos tienen comillas mal escapadas y el limpiador automático no los repara todos</strong>.</p>
+<h3 id="validar-antes-de-importar">Validar antes de importar</h3>
+<pre><code class="language-bash">python3 -m json.tool archivo.json &gt; /dev/null &amp;&amp; echo "JSON válido"
+</code></pre>
+<p>Si falla, el mensaje indica línea y columna. Recordá que <code>//</code> no es JSON válido.</p>
+<hr/>
+<h2 id="primer-flujo-en-cinco-minutos">Primer flujo en cinco minutos</h2>
+<ol>
+<li>Importá <code>versions/NodeRed/secuencia Ini/02_hola_dashboard.json</code>.</li>
+<li>Deploy.</li>
+<li>Abrí <code>http://localhost:1880/ui</code>.</li>
+<li>Pulsá <strong>Enviar Hola</strong>.</li>
+<li>El widget muestra <code>Hola Dashboard</code>.</li>
+</ol>
+<p>Para ver el mensaje: arrastrá un <code>debug</code>, conectalo a la salida del <code>inject</code>, Deploy, abrí la pestaña <strong>Debug</strong> (el insecto) y pulsá el inject. Ves <code>payload</code>, <code>topic</code> y <code>_msgid</code>. Ese ciclo <strong>editar → deploy → observar</strong> es todo Node-RED; el resto son nodos.</p>
+<hr/>
+<h2 id="mqtt">MQTT</h2>
+<p>MQTT es publicación/suscripción sobre TCP. Un <strong>broker</strong> recibe mensajes y los reparte a quienes se suscribieron a un tópico. Es el estándar de facto en IoT por su bajo consumo y tolerancia a redes inestables.</p>
+<h3 id="brokers-que-aparecen">Brokers que aparecen</h3>
+<table>
+<thead>
+<tr>
+<th>Broker</th>
+<th>Dónde</th>
+<th>Uso</th>
+<th>Advertencia</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test.mosquitto.org:1883</code></td>
+<td><code>61</code>, <code>62</code>, <code>17</code></td>
+<td>Pruebas públicas</td>
+<td>Sin auth ni TLS; <strong>todo es público</strong>. No envíes datos reales.</td>
+</tr>
+<tr>
+<td><code>localhost:1883</code></td>
+<td><code>08</code></td>
+<td>Mosquitto local</td>
+<td>Requiere instalarlo y arrancarlo.</td>
+</tr>
+<tr>
+<td><code>your-mqtt-broker</code></td>
+<td>Config ID</td>
+<td>Marcador</td>
+<td>Crear el broker en la instancia.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="topicos-de-ejemplo">Tópicos de ejemplo</h3>
+<table>
+<thead>
+<tr>
+<th>Tópico</th>
+<th>Flujo</th>
+<th>Dirección</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>curso/nodered/test</code></td>
+<td><code>61</code>, <code>62</code></td>
+<td>Publica y suscribe.</td>
+</tr>
+<tr>
+<td><code>profe/salida</code></td>
+<td><code>08</code></td>
+<td>Publica.</td>
+</tr>
+<tr>
+<td><code>profe/entrada</code></td>
+<td><code>08</code></td>
+<td>Suscribe.</td>
+</tr>
+<tr>
+<td><code>test</code></td>
+<td><code>17</code></td>
+<td>Salida de estado.</td>
+</tr>
+<tr>
+<td><code>casa/luz</code></td>
+<td><code>1-30.json</code></td>
+<td>Ejemplo simulado.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="probar-con-mosquitto">Probar con Mosquitto</h3>
+<pre><code class="language-bash">mosquitto_sub -h localhost -t 'curso/nodered/test' -v
+mosquitto_pub -h localhost -t 'curso/nodered/test' -m '{"temperatura":23.5}'
+</code></pre>
+<h3 id="probar-con-python">Probar con Python</h3>
+<pre><code class="language-python">import paho.mqtt.client as mqtt
+
+client = mqtt.Client()
+client.on_connect = lambda c, u, f, rc: c.subscribe("curso/nodered/test", qos=1)
+client.on_message = lambda c, u, m: print(m.topic, m.payload.decode())
+client.connect("localhost", 1883, 60)
+client.loop_forever()
+</code></pre>
+<p><code>pip install paho-mqtt</code> dentro de un entorno virtual.</p>
+<h3 id="qos-y-retencion">QoS y retención</h3>
+<table>
+<thead>
+<tr>
+<th>QoS</th>
+<th>Garantía</th>
+<th>Cuándo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>0</td>
+<td>Como máximo una vez</td>
+<td>Telemetría frecuente; perder una muestra no importa.</td>
+</tr>
+<tr>
+<td>1</td>
+<td>Al menos una vez</td>
+<td>Mayoría de casos; puede duplicar.</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Exactamente una vez</td>
+<td>Comandos críticos; más costoso.</td>
+</tr>
+</tbody>
+</table>
+<p><code>retain: true</code> guarda el último mensaje para que un suscriptor nuevo lo reciba al conectarse. Útil para estados (<code>luz = ON</code>), no para eventos.</p>
+<h3 id="seguridad">Seguridad</h3>
+<p>En producción usá <strong>TLS</strong> (8883), usuario/contraseña y <strong>ACL</strong> por dispositivo. No publiques coordenadas, credenciales ni datos personales en <code>test.mosquitto.org</code>. Un cliente sin TLS envía todo en claro, incluido el password.</p>
+<hr/>
+<h2 id="dashboard">Dashboard</h2>
+<p>El paquete <code>node-red-dashboard</code> agrega la interfaz en <code>http://localhost:1880/ui</code>. Jerarquía:</p>
+<pre><code>ui_tab (pestaña)
+  └── ui_group (grupo/tarjeta)
+        └── widget (texto, gauge, chart, slider, switch, ...)
+</code></pre>
+<h3 id="widgets-usados">Widgets usados</h3>
+<table>
+<thead>
+<tr>
+<th>Nodo</th>
+<th>Función</th>
+<th>Ejemplo</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ui_text</code></td>
+<td>Texto estático o dinámico.</td>
+<td><code>33</code></td>
+</tr>
+<tr>
+<td><code>ui_gauge</code></td>
+<td>Medidor semicircular con mín/máx.</td>
+<td><code>10_proyecto_iot</code></td>
+</tr>
+<tr>
+<td><code>ui_chart</code></td>
+<td>Línea, barra o torta.</td>
+<td><code>07</code>, <code>b.json</code>, <code>c.json</code></td>
+</tr>
+<tr>
+<td><code>ui_slider</code></td>
+<td>Valor continuo.</td>
+<td><code>31</code></td>
+</tr>
+<tr>
+<td><code>ui_switch</code></td>
+<td>Booleano.</td>
+<td><code>30</code></td>
+</tr>
+<tr>
+<td><code>ui_button</code></td>
+<td>Acción puntual.</td>
+<td><code>29</code></td>
+</tr>
+<tr>
+<td><code>ui_numeric</code></td>
+<td>Entrada numérica.</td>
+<td><code>1-10</code></td>
+</tr>
+<tr>
+<td><code>ui_text_input</code></td>
+<td>Entrada de texto.</td>
+<td><code>32</code></td>
+</tr>
+<tr>
+<td><code>ui_dropdown</code></td>
+<td>Selección.</td>
+<td><code>11-20</code></td>
+</tr>
+<tr>
+<td><code>ui_list</code></td>
+<td>Lista.</td>
+<td><code>11-20</code></td>
+</tr>
+<tr>
+<td><code>ui_date_picker</code></td>
+<td>Fecha.</td>
+<td><code>11-20</code></td>
+</tr>
+<tr>
+<td><code>ui_table</code></td>
+<td>Tabla de objetos.</td>
+<td><code>1-30</code></td>
+</tr>
+<tr>
+<td><code>ui_form</code></td>
+<td>Formulario.</td>
+<td><code>37</code></td>
+</tr>
+<tr>
+<td><code>ui_toast</code></td>
+<td>Notificación.</td>
+<td><code>11-20</code></td>
+</tr>
+<tr>
+<td><code>ui_template</code></td>
+<td>HTML/Angular.</td>
+<td><code>lab.json</code></td>
+</tr>
+</tbody>
+</table>
+<h3 id="payloads-que-entiende">Payloads que entiende</h3>
+<p><strong>Gauge y texto:</strong> número o cadena.</p>
+<pre><code class="language-javascript">msg.payload = 23.5;
+return msg;
+</code></pre>
+<p><strong>Chart de una serie:</strong></p>
+<pre><code class="language-javascript">msg.payload = [{
+    series: ["Temperatura"],
+    labels: ["12:00", "12:05", "12:10"],
+    data: [[23.5, 23.8, 24.1]]
+}];
+return msg;
+</code></pre>
+<p>Para varias series, usá un array de objetos <code>{ series, data }</code> (uno por serie) con <code>data</code> como array de arrays. <strong>Tabla:</strong> array de objetos; las claves son columnas.</p>
+<pre><code class="language-javascript">msg.payload = [
+    { id: 1, nombre: "Ana", edad: 22 },
+    { id: 2, nombre: "Luis", edad: 30 }
+];
+return msg;
+</code></pre>
+<p><strong>Formulario:</strong> un objeto con los campos. <strong>Toast:</strong> texto en <code>msg.payload</code>, título en <code>msg.topic</code>.</p>
+<pre><code class="language-javascript">msg.payload = "La temperatura superó el umbral";
+msg.topic = "Alerta";
+return msg;
+</code></pre>
+<h3 id="ui_template"><code>ui_template</code></h3>
+<p><code>lab.json</code> usa una plantilla Angular:</p>
+<pre><code class="language-html">&lt;div style="text-align:center;"&gt;
+  &lt;img ng-src="{{msg.payload}}" width="640" height="480" /&gt;
+&lt;/div&gt;
+</code></pre>
+<p><code>ng-src</code> es de AngularJS (dashboard 3.x); en Dashboard 2.0 el binding es distinto. <strong>Riesgo:</strong> <code>ui_template</code> inserta HTML. No pongas datos de usuario sin sanitizar; podés inyectar scripts en el navegador de quien mire el dashboard.</p>
+<h3 id="layout">Layout</h3>
+<p>Una pestaña por dominio, no una por widget. Un grupo por tarjeta lógica. Los widgets con <code>width: 0</code> ocupan el ancho automático. Un chart con muchas muestras consume memoria en el navegador: limitá el historial. El dashboard <strong>no tiene autenticación por defecto</strong>; si lo exponés fuera de <code>localhost</code>, poné un proxy con TLS y auth.</p>
+<p><img alt="Mockup de dashboard" loading="lazy" src="rich/dashboard-mockup.svg"/></p>
+<hr/>
+<h2 id="gpio-de-raspberry-pi">GPIO de Raspberry Pi</h2>
+<p>Los flujos GPIO usan <code>node-red-node-pi-gpio</code>. <strong>No funcionan en Windows, macOS ni en una PC x86</strong>: necesitan una Raspberry Pi con header de 40 pines.</p>
+<h3 id="pinout-usado">Pinout usado</h3>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">Pin físico</th>
+<th style="text-align: right;">BCM</th>
+<th>Función</th>
+<th>Flujo</th>
+<th>Conexión sugerida</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">3V3</td>
+<td>Referencia</td>
+<td>—</td>
+<td>Pull-up de 10 kΩ al pulsador (opcional).</td>
+</tr>
+<tr>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">GND</td>
+<td>Masa</td>
+<td>—</td>
+<td>Masa común.</td>
+</tr>
+<tr>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">GND</td>
+<td>Masa</td>
+<td>—</td>
+<td>Cátodo del LED digital.</td>
+</tr>
+<tr>
+<td style="text-align: right;">11</td>
+<td style="text-align: right;"><strong>GPIO17</strong></td>
+<td>Salida digital</td>
+<td><code>81</code></td>
+<td>GPIO17 → 220–330 Ω → ánodo LED → GND.</td>
+</tr>
+<tr>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;"><strong>GPIO18</strong></td>
+<td>Entrada digital</td>
+<td><code>82</code></td>
+<td>GPIO18 → pulsador → GND; pull-up externo a 3V3 si el nodo está en tri-state.</td>
+</tr>
+<tr>
+<td style="text-align: right;">14</td>
+<td style="text-align: right;">GND</td>
+<td>Masa</td>
+<td>—</td>
+<td>Masa del pulsador.</td>
+</tr>
+<tr>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">GND</td>
+<td>Masa</td>
+<td>—</td>
+<td>Cátodo del LED PWM.</td>
+</tr>
+<tr>
+<td style="text-align: right;">32</td>
+<td style="text-align: right;"><strong>GPIO12</strong></td>
+<td>Salida PWM</td>
+<td><code>83</code></td>
+<td>GPIO12 → 220–330 Ω → ánodo LED → GND.</td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>No confundir numeración.</strong> Los flujos usan <strong>BCM</strong> (17, 18, 12), no el número físico. GPIO17 está en el pin 11; GPIO18 en el 12; GPIO12 en el 32.</p>
+</blockquote>
+<h3 id="configuracion-de-los-nodos">Configuración de los nodos</h3>
+<table>
+<thead>
+<tr>
+<th>Flujo</th>
+<th>Nodo</th>
+<th>Configuración</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>81</code></td>
+<td><code>rpi-gpio out</code></td>
+<td>Pin 17, salida digital, nivel inicial 0.</td>
+</tr>
+<tr>
+<td><code>82</code></td>
+<td><code>rpi-gpio in</code></td>
+<td>Pin 18, <code>tri</code> (tri-state), debounce 25 ms.</td>
+</tr>
+<tr>
+<td><code>83</code></td>
+<td><code>rpi-gpio out</code></td>
+<td>Pin 12, <code>pwm</code>, frecuencia 100 Hz.</td>
+</tr>
+</tbody>
+</table>
+<p>En <code>82</code>, <code>tri</code> significa <strong>sin pull-up/pull-down interno</strong>. Sin resistencia externa, el pin queda flotante y el pulsador puede leer ruido. Conectá 10 kΩ entre GPIO18 y 3V3, y el pulsador entre GPIO18 y GND. Si tu versión del paquete lo permite, cambiá el nodo a <code>up</code> para usar el pull-up interno.</p>
+<h3 id="diagrama-de-conexion">Diagrama de conexión</h3>
+<pre><code>Raspberry Pi 40 pines
+┌──────────────────────────────────────────────────────────┐
+│ 3V3 (pin 1) ──[10kΩ]──┐                                  │
+│                       │                                  │
+│ GPIO18 (pin 12) ──────┴──── pulsador ──── GND (pin 14)   │
+│                                                          │
+│ GPIO17 (pin 11) ──[220Ω]──▶|── LED ── GND (pin 9)        │
+│                                                          │
+│ GPIO12 (pin 32) ──[220Ω]──▶|── LED ── GND (pin 30)       │
+└──────────────────────────────────────────────────────────┘
+</code></pre>
+<p><code>▶|</code> representa el LED: ánodo hacia la resistencia, cátodo hacia GND.</p>
+<h3 id="advertencias-electricas">Advertencias eléctricas</h3>
+<ul>
+<li><strong>GPIO es de 3,3 V.</strong> Aplicar 5 V puede dañar la Pi.</li>
+<li>Cada pin entrega pocos miliamperios (del orden de 16 mA, con recomendación práctica de ≤8 mA). <strong>No alimentes motores, bombas, relés ni tiras LED directamente.</strong></li>
+<li>Para cargas inductivas usá transistor/MOSFET, diodo de rueda libre y, si hace falta, optoacoplador.</li>
+<li>Un LED sin resistencia se quema y puede dañar el GPIO. Usá 220–330 Ω.</li>
+<li>Mantené una masa común entre la Pi y la etapa de potencia.</li>
+<li>No conectes 220 V a la protoboard. Para AC usá un módulo relé adecuado y respetá las normas de seguridad.</li>
+</ul>
+<h3 id="raspberry-pi-5">Raspberry Pi 5</h3>
+<p>La Pi 5 cambió el subsistema GPIO (RP1 + libgpiod). <code>node-red-node-pi-gpio</code> es de la generación anterior y puede no funcionar igual. Verificá compatibilidad o buscá una alternativa basada en <code>libgpiod</code>; no assumes que 17/18/12 responden sin probar.</p>
+<h3 id="permisos">Permisos</h3>
+<p>Si el nodo devuelve <code>Permission denied</code>:</p>
+<pre><code class="language-bash">ps -o user= -C node-red
+sudo usermod -aG gpio &lt;usuario&gt;
+</code></pre>
+<p>Cerrá sesión y reiniciá el servicio. No ejecutes Node-RED como <code>root</code> para "solucionar" permisos: es peor.</p>
+<hr/>
+<h2 id="postgresql-correo-y-archivos">PostgreSQL, correo y archivos</h2>
+<h3 id="postgresql">PostgreSQL</h3>
+<p>Los flujos <code>71</code>, <code>72</code> y <code>73</code> usan el nodo <code>postgres</code> de <code>node-red-contrib-postgresql</code>. La configuración <code>postgresdb</code> trae:</p>
+<pre><code class="language-text">host: 127.0.0.1
+port: 5432
+database: nombre_db
+username: usuario_db
+password: password_db
+</code></pre>
+<p>Son <strong>marcadores</strong>. El flujo <code>71</code> arma la consulta con un template string:</p>
+<pre><code class="language-javascript">msg.topic = `INSERT INTO sensores(nombre, valor)
+             VALUES('${msg.payload.nombre}', ${msg.payload.valor});`;
+return msg;
+</code></pre>
+<p>Eso es <strong>inyección SQL</strong> si <code>nombre</code> viene de un usuario o de un mensaje externo. Para producción, usá consultas parametrizadas según la API del nodo y validá los tipos. El flujo es didáctico, no seguro. El flujo <code>73</code> borra todo menos los últimos 10 registros:</p>
+<pre><code class="language-sql">DELETE FROM sensores
+WHERE id NOT IN (
+  SELECT id FROM sensores ORDER BY fecha DESC LIMIT 10
+);
+</code></pre>
+<h3 id="correo">Correo</h3>
+<p><code>09_alerta_email.json</code> usa <code>e-mail</code> con <code>smtp.tu-servidor.com</code>, puerto 465, <code>secure</code> y <code>tls</code> en true, y <code>tu@email.com</code>. La contraseña <strong>no viaja en el JSON</strong>: Node-RED la guarda aparte (<code>flows_cred.json</code>). Abrí el nodo y cargala. Para Gmail/Outlook usá una <strong>contraseña de aplicación</strong>, no la principal. El flujo solo envía si el aleatorio supera 30; cambialo por una condición real.</p>
+<h3 id="archivos">Archivos</h3>
+<p><code>22-file-in.json</code> lee <code>/tmp/miarchivo.txt</code>, pero <code>filename</code> está vacío en el export: configuralo. <code>23-file-out.json</code> escribe <code>/tmp/milog.log</code> y agrega salto de línea. El nodo <code>file</code> puede sobrescribir o appendear; revisá <code>overwriteFile</code> antes de apuntarlo a algo importante. No des permiso de escritura sobre directorios del sistema a un flujo de laboratorio.</p>
+<hr/>
+<h2 id="http-apis-y-camara-usb">HTTP, APIs y cámara USB</h2>
+<p><code>06_api_clima.json</code> consulta Open-Meteo (<code>latitude=-33.45&amp;longitude=-70.66&amp;current_weather=true</code>) y devuelve <code>current_weather.temperature</code>, <code>windspeed</code>, etc. No requiere API key para uso básico; cambiá las coordenadas por las tuyas. <code>12</code> y <code>47</code> usan <code>https://jsonplaceholder.typicode.com</code>, una API falsa para probar GET y POST.</p>
+<p><code>13</code> crea <code>GET http://localhost:1880/hola</code> y responde <code>{"mensaje":"Hola desde mi primera API en Node-RED!","timestamp":"..."}</code>. <code>http in</code> define ruta y método; <code>http response</code> cierra la petición; sin él, el cliente queda esperando.</p>
+<p><code>lab.json</code> pide un snapshot a <code>http://&lt;host-de-la-camara&gt;:8080/?action=snapshot</code> con <code>ret: bin</code>, convierte el buffer a Base64 (<code>data:image/jpeg;base64,...</code>) y lo muestra con <code>ui_template</code>. El <code>inject</code> corre cada <strong>0,2 s</strong> (el nombre dice "Cada 1s", pero <code>repeat</code> es <code>0.2</code>). El export usa una dirección de documentación reservada, no una IP real. A 5 fps el navegador acumula imágenes y la Pi consume CPU; para un dashboard, 1 snapshot cada 1–5 s suele alcanzar. La cámara no tiene autenticación por defecto: aislala en una VLAN o protegela con un proxy.</p>
+<p><code>Guía de Consulta Docker.pdf</code> (2 páginas) explica <code>sudo docker run -it --name random-python-edit random-python-interactive bash</code>: <code>sudo</code> eleva privilegios, <code>docker run</code> crea el contenedor, <code>-it</code> da consola interactiva, <code>--name</code> fija el nombre, <code>random-python-interactive</code> es la imagen y <code>bash</code> el proceso inicial. Al salir con <code>exit</code>, el contenedor se detiene. <code>Pro.rar</code> es un RAR v5 de 4 KB <strong>con contraseña</strong>; no hay clave en el repositorio y no corresponde fuerza bruta.</p>
+<hr/>
+<h2 id="ejemplos-de-uso-realistas">Ejemplos de uso realistas</h2>
+<h3 id="1-calibrar-un-sensor-de-temperatura">1. Calibrar un sensor de temperatura</h3>
+<p>Lectura cruda <code>raw</code> entre 0 y 1023; dos puntos: <code>raw=200</code> → 15 °C, <code>raw=800</code> → 35 °C.</p>
+<pre><code class="language-javascript">const raw = msg.payload;
+const rawBajo = 200, tempBaja = 15;
+const rawAlto = 800, tempAlta = 35;
+
+const pendiente = (tempAlta - tempBaja) / (rawAlto - rawBajo);
+const offset = tempBaja - pendiente * rawBajo;
+
+msg.payload = Number((pendiente * raw + offset).toFixed(2));
+msg.topic = "temperatura";
+return msg;
+</code></pre>
+<h3 id="2-filtrar-ruido-con-media-movil-exponencial">2. Filtrar ruido con media móvil exponencial</h3>
+<pre><code class="language-javascript">const alpha = 0.2;
+const anterior = flow.get("temp_filtrada") ?? msg.payload;
+const filtrada = alpha * msg.payload + (1 - alpha) * anterior;
+
+flow.set("temp_filtrada", filtrada);
+msg.payload = Number(filtrada.toFixed(2));
+return msg;
+</code></pre>
+<h3 id="3-escalar-01023-a-0100-con-range">3. Escalar 0–1023 a 0–100 con <code>range</code></h3>
+<pre><code class="language-text">Entrada: 0 .. 1023
+Salida:  0 .. 100
+Acción:  escalar y limitar
+</code></pre>
+<p>Es lo que propone <code>26-range.json</code>. Para un sensor real, cambiá los límites por los de su hoja de datos.</p>
+<h3 id="4-publicar-telemetria-por-mqtt">4. Publicar telemetría por MQTT</h3>
+<pre><code class="language-javascript">msg.topic = "casa/sala/temperatura";
+msg.payload = JSON.stringify({
+    valor: msg.payload,
+    unidad: "C",
+    ts: Date.now()
+});
+msg.qos = 1;
+msg.retain = true;
+return msg;
+</code></pre>
+<h3 id="5-guardar-en-postgresql-con-consulta-parametrizada">5. Guardar en PostgreSQL con consulta parametrizada</h3>
+<pre><code class="language-javascript">msg.topic = "INSERT INTO sensores(nombre, valor) VALUES($1, $2)";
+msg.params = [msg.payload.nombre, msg.payload.valor];
+return msg;
+</code></pre>
+<p>Verificá en la documentación de <code>node-red-contrib-postgresql</code> cómo se pasan los parámetros en tu versión; la idea es no interpolar texto.</p>
+<h3 id="6-alerta-por-correo-con-histeresis">6. Alerta por correo con histéresis</h3>
+<pre><code class="language-javascript">const T_ALTA = 30, T_BAJA = 28;
+const estado = flow.get("alerta_temp") || false;
+const t = msg.payload;
+
+if (!estado &amp;&amp; t &gt;= T_ALTA) {
+    flow.set("alerta_temp", true);
+    msg.payload = `Temperatura alta: ${t} °C`;
+    return msg;
+}
+if (estado &amp;&amp; t &lt;= T_BAJA) {
+    flow.set("alerta_temp", false);
+    msg.payload = `Temperatura normalizada: ${t} °C`;
+    return msg;
+}
+return null;
+</code></pre>
+<p>La histéresis evita correos repetidos cuando el valor oscila alrededor del umbral.</p>
+<h3 id="7-probar-el-endpoint-y-el-clima">7. Probar el endpoint y el clima</h3>
+<pre><code class="language-bash">curl -s http://localhost:1880/hola | jq .
+</code></pre>
+<p>El flujo <code>06</code> devuelve <code>current_weather</code>; tomá <code>temperature</code>, <code>windspeed</code> y <code>winddirection</code>. El backup de <code>flows.json</code> y <code>flows_cred.json</code> va fuera del repositorio.</p>
+<hr/>
+<h2 id="diagrama-de-conexion_1">Diagrama de conexión</h2>
+<pre><code>[ Sensores / APIs / MQTT / GPIO / TCP-UDP ]
+                    │ msg
+                    ▼
+[ Node-RED: editor + runtime + contexto ] ──▶ [ Dashboard / MQTT / PostgreSQL / SMTP / archivos ]
+
+Raspberry Pi 40 pines
+  3V3 (pin 1) ──[10kΩ]──┐
+  GPIO18 (pin 12) ──────┴── pulsador ── GND (pin 14)
+  GPIO17 (pin 11) ──[220Ω]──▶|── LED ── GND (pin 9)
+  GPIO12 (pin 32) ──[220Ω]──▶|── LED ── GND (pin 30)
+
+Red: navegador ──HTTP/WS──▶ :1880 · MQTT ──▶ :1883 · PostgreSQL ──▶ :5432
+     SMTP ──▶ :465 · cámara ──HTTP──▶ :8080 · TCP ──▶ :18800 · UDP ──▶ :4000
+</code></pre>
+<p><code>▶|</code> representa el LED: ánodo hacia la resistencia, cátodo hacia GND. No publiques direcciones IP privadas en issues, capturas o documentación; usá <code>&lt;host-del-broker&gt;</code> o <code>localhost</code>.</p>
+<hr/>
+<h2 id="calibracion">Calibración</h2>
+<p><strong>Sensor analógico:</strong> medí dos puntos con un instrumento de referencia, calculá <code>pendiente</code> y <code>offset</code> como en el ejemplo 1, aplicá la función y compará en tres puntos intermedios. Si es no lineal, usá interpolación o un polinomio.</p>
+<p><strong>Filtro:</strong> <code>alpha</code> cerca de 1 responde rápido y filtra poco; cerca de 0 suaviza y agrega retardo. Para temperatura, <code>0,1–0,3</code>; para un pulsador no filtres, usá debounce.</p>
+<p><strong>PWM y LED:</strong> la percepción del brillo no es lineal; si el LED se ve "todo o nada", aplicá <code>duty = Math.pow(valor/100, 2.2)*100</code>. 100 Hz puede parpadear en cámara: probá 500–1000 Hz o PWM por hardware. Un LED RGB necesita una resistencia por canal; no los alimentes en paralelo desde un pin.</p>
+<p><strong>Pulsador:</strong> <code>debounce: 25</code> ms es un buen inicio; subí a 50 ms si se dispara dos veces, bajá a 10–15 ms si se siente lento. Con <code>tri-state</code>, el pull-up externo es obligatorio.</p>
+<p><strong>Umbrales y hora:</strong> <code>10</code> alerta por encima de 28 °C; <code>50</code> clasifica humedad en <code>&lt;30</code>, <code>30–70</code> y <code>&gt;70</code>; <code>09</code> usa un aleatorio &gt;30. Ajustá los umbrales a tu proceso y documentá el cambio. <code>toLocaleString()</code> depende de la zona horaria y del locale del runtime; para una zona fija usá <code>Intl.DateTimeFormat</code> con <code>timeZone</code>.</p>
+<hr/>
+<h2 id="seguridad-y-buenas-practicas">Seguridad y buenas prácticas</h2>
+<p><strong>Antes de exponer Node-RED:</strong> no publiques el 1880 sin TLS y autenticación; configurá <code>adminAuth</code> en <code>settings.js</code> (hash con <code>node-red-admin hash-pw</code>); protegé el dashboard con <code>httpNodeAuth: { user: "demo", pass: "&lt;hash&gt;" }</code>; usá un reverse proxy (Caddy, Nginx, Traefik) con HTTPS; restringí por firewall; revisá <code>httpNodeCors</code> y <code>httpNodeRoot</code> si montás APIs.</p>
+<p><strong>Nodos peligrosos:</strong> <code>exec</code> ejecuta comandos (allowlist, sin entrada externa); <code>file</code>/<code>file in</code> leen o escriben rutas arbitrarias (rutas permitidas, permisos mínimos); <code>http request</code> puede ser SSRF (no permitas <code>file://</code> ni IPs internas); <code>postgres</code> puede sufrir inyección SQL (consultas parametrizadas); <code>ui_template</code> puede sufrir XSS (escapá HTML); <code>e-mail</code> puede enviar spam (credenciales de aplicación y límites).</p>
+<p><strong>Credenciales:</strong> no están en los JSON; Node-RED las guarda en <code>flows_cred.json</code>, cifrado con <code>credentialSecret</code>. Si perdés esa clave, no se descifran. No subas <code>flows_cred.json</code>, <code>.env</code>, claves privadas ni capturas con tokens. En este repositorio solo hay marcadores (<code>password_db</code>, <code>tu@email.com</code>, <code>smtp.tu-servidor.com</code>).</p>
+<p><strong>Broker público y anexos:</strong> <code>test.mosquitto.org</code> es de pruebas; cualquiera puede suscribirse. No envíes datos personales, coordenadas, credenciales ni comandos de actuadores reales. <code>Pro.rar</code> está cifrado y no se puede auditar; no lo descomprimas sin verificar el origen.</p>
+<hr/>
+<h2 id="limites-y-estado-real">Límites y estado real</h2>
+<p>Este es el punto más importante para no perder tiempo.</p>
+<h3 id="cobertura">Cobertura</h3>
+<ul>
+<li><strong>71 de 82</strong> archivos son JSON estricto e importables.</li>
+<li><strong>10</strong> son JSONC con comentarios y varios arrays; requieren limpieza.</li>
+<li><strong>1</strong> (<code>83-rpi-gpio-pwm-output.json</code>) empieza con una <code>n</code> espuria antes del <code>[</code>. Si se elimina ese primer byte, el resto es JSON válido. <strong>No se modificó el original</strong>; hacelo sobre una copia.</li>
+<li>Varios archivos están incompletos: no existen los flujos 24, 25, 34, 36, 38–40, 45, 48, 49 y 53–60 en <code>secuencia Ed</code>; <code>36 al 50.json</code> solo contiene el 36.</li>
+</ul>
+<h3 id="no-es-una-aplicacion-ejecutable">No es una aplicación ejecutable</h3>
+<p>No hay <code>package.json</code>, <code>flows.json</code>, <code>settings.js</code> ni <code>node_modules</code>; no hay tests automatizados, <code>docker-compose.yml</code>, migraciones ni seeds. Los flujos se probaron en un entorno de laboratorio, no en producción.</p>
+<h3 id="valores-que-hay-que-cambiar">Valores que hay que cambiar</h3>
+<p>Reemplazá <code>test.mosquitto.org</code> (<code>61</code>, <code>62</code>, <code>17</code>), <code>localhost:1883</code> (<code>08</code>), <code>your-mqtt-broker</code>, <code>127.0.0.1:5432</code>/<code>nombre_db</code> (<code>71</code>–<code>73</code>), <code>smtp.tu-servidor.com</code>/<code>tu@email.com</code> (<code>09</code>), la URL de la cámara (<code>lab.json</code>), <code>/tmp/miarchivo.txt</code> (<code>22</code>), <code>/tmp/milog.log</code> (<code>23</code>) y los pines 17/18/12 (<code>81</code>–<code>83</code>).</p>
+<h3 id="limitaciones-tecnicas">Limitaciones técnicas</h3>
+<ul>
+<li><strong>Dashboard 3.6.6</strong> es la generación Angular; no es Dashboard 2.0. Las plantillas no son portables sin cambios.</li>
+<li><strong>GPIO</strong> solo en Raspberry Pi; en Pi 5 puede requerir otra biblioteca.</li>
+<li><strong>Cámara</strong> a 5 fps puede saturar la Pi y el navegador; bajá la frecuencia.</li>
+<li><strong><code>ui_template</code></strong> inserta HTML; no es un lugar seguro para datos de usuario.</li>
+<li><strong><code>exec</code></strong> y <code>file</code> son nodos de alto privilegio; no los expongas a Internet.</li>
+<li><strong>JSONC</strong>: algunos archivos tienen caracteres de control y comillas mal escapadas; el limpiador automático no los repara todos.</li>
+<li><strong>Duplicados</strong>: <code>03_mensaje_con_hora - copia.json</code> es idéntico al original (mismo MD5). Se conserva por fidelidad histórica.</li>
+<li><strong>Etiquetas engañosas</strong>: <code>1-30.json</code> contiene 21–30; <code>lab.json</code> dice "Cada 1s" pero usa 0,2 s; <code>83</code> está roto; <code>25 al 5w vesion 2</code> tiene errores de tipeo en el nombre.</li>
+<li><strong>RAR</strong>: no se puede abrir sin contraseña; no se documenta su contenido.</li>
+<li><strong>Sin autenticación</strong>: el dashboard y el editor no traen auth configurada.</li>
+<li><strong>Sin control de versiones de dependencias</strong>: solo <code>lab.json</code> declara dashboard 3.6.6; el resto no fija versiones.</li>
+</ul>
+<h3 id="que-se-puede-usar-con-confianza">Qué se puede usar con confianza</h3>
+<p>Los flujos de <code>secuencia Ed</code> que son JSON válido, para aprender un nodo. Los dashboards <code>a</code>, <code>b</code>, <code>c</code>, <code>1-10</code>, <code>11-20</code> y <code>1-30</code> como ejemplos visuales. El flujo <code>50</code> como patrón de gauge + switch + toast. Los flujos <code>71</code>–<code>73</code> como punto de partida para PostgreSQL, después de parametrizar. <code>lab.json</code> como ejemplo de cámara, después de bajar la frecuencia y asegurar la red.</p>
+<hr/>
+<h2 id="solucion-de-problemas">Solución de problemas</h2>
+<table>
+<thead>
+<tr>
+<th>Síntoma</th>
+<th>Causa probable</th>
+<th>Solución</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>Cannot find module 'node-red-dashboard'</code></td>
+<td>Falta el paquete.</td>
+<td><code>cd ~/.node-red &amp;&amp; npm install node-red-dashboard@3.6.6</code> y reiniciar.</td>
+</tr>
+<tr>
+<td><code>unknown node type</code> al importar</td>
+<td>Falta el paquete del nodo.</td>
+<td>Instalar <code>node-red-node-pi-gpio</code>, <code>node-red-node-email</code> o <code>node-red-contrib-postgresql</code>.</td>
+</tr>
+<tr>
+<td>El import falla con <code>Unexpected token /</code></td>
+<td>El archivo es JSONC.</td>
+<td>Quitar comentarios <code>//</code> y unir los arrays; usar el limpiador.</td>
+</tr>
+<tr>
+<td>El import falla con <code>Unexpected token n</code></td>
+<td>Primer byte espurio en <code>83</code>.</td>
+<td>Copiar, eliminar la <code>n</code> inicial, validar con <code>python3 -m json.tool</code>.</td>
+</tr>
+<tr>
+<td>El widget no aparece o <code>group not found</code></td>
+<td>Grupo/pestaña no asignado o definido en otro archivo.</td>
+<td>Editar el nodo, elegir grupo; importar <code>29</code> y <code>33</code>; Deploy; abrir <code>/ui</code>.</td>
+</tr>
+<tr>
+<td>MQTT no conecta o no llegan mensajes</td>
+<td>Broker, puerto, TLS, firewall, tópico o QoS.</td>
+<td>Probar con <code>mosquitto_sub</code>; revisar configuración; probar <code>#</code> temporalmente.</td>
+</tr>
+<tr>
+<td><code>Permission denied</code> en GPIO</td>
+<td>Usuario sin permisos.</td>
+<td>Agregar al grupo <code>gpio</code>; reiniciar sesión/servicio.</td>
+</tr>
+<tr>
+<td>El pulsador se dispara solo</td>
+<td>Pin flotante o rebote.</td>
+<td>Pull-up externo; subir debounce; revisar cableado.</td>
+</tr>
+<tr>
+<td>El LED no enciende</td>
+<td>Polaridad, resistencia o pin.</td>
+<td>Verificar ánodo/cátodo; probar GPIO17 a 3,3 V con resistencia; medir.</td>
+</tr>
+<tr>
+<td>PostgreSQL <code>ECONNREFUSED</code></td>
+<td>Servicio caído, host/puerto mal, <code>pg_hba</code>.</td>
+<td><code>systemctl status postgresql</code>; probar <code>psql</code>; revisar <code>pg_hba.conf</code>.</td>
+</tr>
+<tr>
+<td>Error de autenticación SMTP</td>
+<td>Contraseña normal en vez de app password, puerto/TLS.</td>
+<td>Usar app password; probar 465/SSL o 587/STARTTLS.</td>
+</tr>
+<tr>
+<td>La cámara muestra vacío</td>
+<td>URL incorrecta, firewall o snapshot no disponible.</td>
+<td>Abrir la URL en el navegador; revisar <code>mjpg_streamer</code>; usar <code>ret: bin</code>.</td>
+</tr>
+<tr>
+<td>Node-RED no arranca</td>
+<td>Puerto 1880 ocupado o error en <code>flows.json</code>.</td>
+<td><code>ss -ltnp | grep 1880</code>; restaurar backup; revisar logs.</td>
+</tr>
+</tbody>
+</table>
+<hr/>
+<h2 id="estructura-del-repositorio">Estructura del repositorio</h2>
+<pre><code>nodered-lab/
+├── LICENSE · README.md
+├── docs/                 datasheet.md · developer.md · REFERENCES.md · BITACORA.md
+│   └── assets/           arquitectura-nodered.svg · mapa-flujos.svg · dashboard-mockup.svg
+└── versions/NodeRed/
+    ├── VERSION.md · Guía de Consulta Docker.pdf · Pro.rar
+    ├── secuencia Ini/     13 JSON
+    ├── secuencia Ed/      51 JSON + create.txt
+    └── secuencia eval/    18 JSON
+</code></pre>
+<p><code>secuencia Ed/NN-tema.json</code>: un nodo o técnica por archivo. <code>secuencia Ini/NN_tema.json</code>: ejercicios introductorios. <code>secuencia eval/</code>: colecciones por rango, con variantes (<code>version 2</code>, <code>version 3</code>, <code>vesion 2</code>). Los nombres con espacios y acentos son parte del material original; no se renombraron.</p>
+<hr/>
+<h2 id="documentacion-y-licencia">Documentación y licencia</h2>
+<ul>
+<li><a href="https://github.com/jmadasme/nodered-lab/blob/main/datasheet.md"><code>docs/datasheet.md</code></a>: manual de usuario, especificaciones, catálogo y troubleshooting.</li>
+<li><a href="https://github.com/jmadasme/nodered-lab/blob/main/developer.md"><code>docs/developer.md</code></a>: arquitectura, formato de flujo, API y extensión.</li>
+<li><a href="https://github.com/jmadasme/nodered-lab/blob/main/REFERENCES.md"><code>docs/REFERENCES.md</code></a>: enlaces oficiales, paquetes y protocolos.</li>
+<li><a href="https://github.com/jmadasme/nodered-lab/blob/main/BITACORA.md"><code>docs/BITACORA.md</code></a>: problemas, decisiones y lecciones aprendidas.</li>
+</ul>
+<p>El contenido se distribuye bajo <strong>MIT</strong> (ver <a href="LICENSE"><code>LICENSE</code></a>), con <code>Copyright (c) 2026 jmadasme</code>. Node-RED, <code>node-red-dashboard</code>, <code>node-red-node-pi-gpio</code>, <code>node-red-node-email</code>, <code>node-red-contrib-postgresql</code>, Mosquitto, PostgreSQL, Open-Meteo y JSONPlaceholder mantienen sus licencias.</p>
+<p>Créditos: Nick O'Leary, Dave Conway-Jones y la comunidad OpenJS Foundation; equipo de <code>node-red-dashboard</code>; Raspberry Pi Foundation; Open-Meteo y JSONPlaceholder; colección original <code>jmadasme/NodeRed</code>.</p>
+<hr/>
+<div align="center">
+
+**Node-RED Lab** · flujos de laboratorio · 2026
+
+Si algo no funciona, empezá por [Límites y estado real](#límites-y-estado-real) y [Solución de problemas](#solución-de-problemas).
+
+</div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">Lo que no funcionó</div><h2>Los tropiezos, documentados</h2><p class="section-sub">Las primeras versiones existen para que estos errores no se repitan: cada una dejó una decisión de diseño verificable.</p></div><div class="fail-grid reveal"><div class="fail"><div class="v">Borradores JSONC</div><h3>Diez flujos no importables</h3><p>Diez archivos usan comentarios // y varios arrays concatenados, formato que el editor de Node-RED rechaza al importar. Se incluyó un limpiador que elimina comentarios y une los arrays, pero no corrige todas las comillas malformadas; el README los marca como borradores y recomienda revisarlos antes de usarlos.</p></div><div class="fail"><div class="v">Archivo 83</div><h3>Byte inicial rompe el JSON</h3><p>83-rpi-gpio-pwm-output.json comienza con una letra n espuria antes del corchete de apertura, por lo que ningún parser lo acepta. El original se conservó sin modificar para no falsear el material histórico; el README explica cómo quitar ese byte sobre una copia antes de importarlo.</p></div><div class="fail"><div class="v">Dashboard 3.6.6</div><h3>Grupos definidos en otro flujo</h3><p>Los flujos 31, 32, 35, 37 y 50 usan los grupos some-ui-group y some-ui-tab, definidos en los archivos 29 y 33. Importarlos sueltos deja los widgets sin pestaña ni contenedor, un fallo que solo aparece al importar, no al leer el JSON. El README documenta el orden de importación necesario.</p></div><div class="fail"><div class="v">Dashboard 3.6.6</div><h3>Plantillas atadas a Angular</h3><p>Los ui_template usan ng-src y directivas de la generación Angular del dashboard, no compatibles con Dashboard 2.0. Migrarlos exige reescribir esas plantillas y revisar los nodos de UI; el README lo advierte y evita presentar la colección como portable entre versiones.</p></div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">Ficha de evaluación</div><h2>Cómo se mide este proyecto</h2><p class="section-sub">Seis criterios con la misma escala en todo el catálogo, para comparar sin marketing.</p></div><div class="rating-head reveal"><div class="rating-avg">3.5<small>/5</small></div><div><strong>Madurez global</strong><p>Archivo valioso de ejemplos Node-RED, mejor documentado que empaquetado: la mayoría de los flujos se importa, pero no hay configuración reproducible y los archivos rotos se asumen como parte del material.</p></div></div><div class="rating reveal"><div class="rating-row"><div class="rating-name">Madurez</div><div class="rating-bar"><i style="width:40%"></i></div><div class="rating-score">2/5</div><div class="rating-note">Colección de laboratorio con 71 flujos válidos de 82; sin aplicación ni pruebas.</div></div><div class="rating-row"><div class="rating-name">Reproducibilidad</div><div class="rating-bar"><i style="width:60%"></i></div><div class="rating-score">3/5</div><div class="rating-note">Los JSON válidos se importan, pero faltan package.json y settings.js y la configuración es manual.</div></div><div class="rating-row"><div class="rating-name">Documentación</div><div class="rating-bar"><i style="width:100%"></i></div><div class="rating-score">5/5</div><div class="rating-note">Índice por flujo, inventario de nodos, clasificación de borradores y guía de importación.</div></div><div class="rating-row"><div class="rating-name">Honestidad de límites</div><div class="rating-bar"><i style="width:100%"></i></div><div class="rating-score">5/5</div><div class="rating-note">Declara archivos rotos, duplicados, etiquetas engañosas y credenciales de marcador.</div></div><div class="rating-row"><div class="rating-name">Valor demostrativo</div><div class="rating-bar"><i style="width:80%"></i></div><div class="rating-score">4/5</div><div class="rating-note">Biblioteca amplia de patrones MQTT, GPIO y dashboard reutilizables en proyectos propios.</div></div><div class="rating-row"><div class="rating-name">Facilidad de despliegue</div><div class="rating-bar"><i style="width:40%"></i></div><div class="rating-score">2/5</div><div class="rating-note">Requiere instalar Node-RED, la paleta de dashboard y configurar brokers y pines a mano.</div></div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">Preguntas típicas</div><h2>Lo que suelen preguntar</h2></div><div class="faq reveal"><details><summary>¿Qué es este proyecto?</summary><p>Una colección de 82 flujos Node-RED (322 nodos, 62 tipos y 18 pestañas de dashboard) sobre MQTT, GPIO de Raspberry Pi, cámaras, bases de datos y paneles.</p></details><details><summary>¿Es una aplicación lista para ejecutar?</summary><p>No. No incluye package.json, settings.js, flows.json ni pruebas; los flujos se importan manualmente en una instalación de Node-RED.</p></details><details><summary>¿Cuántos flujos se pueden importar?</summary><p>71 de 82 son JSON estricto; 10 son borradores con comentarios y arrays concatenados, y 83-rpi-gpio-pwm-output.json tiene un byte inicial que rompe el parseo.</p></details><details><summary>¿Qué se puede reutilizar?</summary><p>Patrones de MQTT, GPIO, cámara y dashboard, incluidos ui_template; hay que reemplazar brokers públicos, credenciales de marcador, rutas y pines, y migrar las plantillas Angular si se usa Dashboard 2.0.</p></details></div></div></section>
 <section class="cta"><div class="wrap"><div class="cta-box reveal">
   <div class="kicker">Siguiente paso</div><h2>¿Te animás?</h2>
   <p>Usá esto como base y referencia para node-red lab. Este proyecto es la prueba de que se puede hacer con componentes reales.</p>
