@@ -205,6 +205,7 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
 
 </style>
 <link rel="stylesheet" href="assets/community.css?v=1">
+<link href="rec/player.css?v=1" rel="stylesheet"/>
 </head>
 <body>
 <header class="nav"><div class="wrap nav-in">
@@ -213,7 +214,8 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
     <a href="#proyecto">Proyecto</a>
     <a href="#versiones">Versiones</a>
     <a href="#stack">Stack</a>
-    <a href="#docs">Docs</a>
+    <a href="#video">Video</a>
+<a href="#docs">Docs</a>
     <a href="#comunidad">Comunidad</a>
     <a class="btn btn-ghost" style="padding:9px 15px" href="/iot/">← IoT</a>
   </nav>
@@ -237,7 +239,46 @@ h2{font-size:clamp(30px,4vw,46px);line-height:1.05;letter-spacing:-.04em;margin:
   </div>
 </div></section>
 
-<section class="stats"><div class="wrap stats-grid"><div class="stat"><div class="stat-num">3</div><div class="stat-label">secuencias</div></div><div class="stat"><div class="stat-num">MQTT</div><div class="stat-label">mensajería</div></div><div class="stat"><div class="stat-num">GPIO</div><div class="stat-label">Raspberry Pi</div></div><div class="stat"><div class="stat-num">JSON</div><div class="stat-label">importable</div></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El concepto</div><h2>Qué es y por qué existe</h2></div><div class="rich reveal"><p>Colección de 82 flujos Node-RED reunidos durante años de experimentación: 322 nodos de 62 tipos y 18 pestañas de dashboard que cubren MQTT, GPIO de Raspberry Pi, cámaras, bases de datos y paneles de control. Sirve como biblioteca de ejemplos y como registro de patrones de integración para quien ya opera Node-RED y busca recetas concretas que importar y adaptar.</p><p>No es una aplicación ejecutable ni un paquete: no incluye package.json, settings.js, flows.json ni pruebas. Su valor es documental y didáctico, con 71 archivos JSON estrictamente importables y un README que clasifica cada flujo, señala los borradores y advierte sobre brokers públicos, credenciales de marcador y rutas locales que deben reemplazarse.</p></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El proyecto en detalle</div><h2>Documentación preservada</h2><p class="section-sub">El README original, completo y en su contexto.</p></div><div class="detail rich reveal"><div align="center">
+<section class="stats"><div class="wrap stats-grid"><div class="stat"><div class="stat-num">3</div><div class="stat-label">secuencias</div></div><div class="stat"><div class="stat-num">MQTT</div><div class="stat-label">mensajería</div></div><div class="stat"><div class="stat-num">GPIO</div><div class="stat-label">Raspberry Pi</div></div><div class="stat"><div class="stat-num">JSON</div><div class="stat-label">importable</div></div></div></section>
+<section class="section tight rec-section" id="video" style="--accent:#2E7DFF;--accent2:#14F195">
+<div class="wrap">
+<div class="rec-kicker">REC · VIDEO · 3:03</div>
+<h2 class="rec-h2">Node-RED Lab</h2>
+<p class="rec-lead">Colección didáctica de 82 flujos Node-RED: fundamentos, catálogo de nodos y ejercicios con dashboard, MQTT, PostgreSQL y GPIO de Raspberry Pi.</p>
+<div class="rec-banner">
+<span class="rec-banner-icon">📋</span>
+<strong>Puedes copiar y pegar los comandos del video desde el video !!!</strong>
+<span>Pausá, seleccioná el texto de la terminal y copiá.</span>
+</div>
+<div class="rec-shell">
+<div class="rec-bar"><i></i><i></i><i></i><span class="rec-title">Node-RED Lab · asciinema</span><span class="rec-rec"><b></b>REC</span></div>
+<div class="rec-screen-wrap">
+<div class="rec-screen" id="rec-screen"></div>
+<div class="rec-poster" id="rec-poster">
+<div class="rec-kicker">ASCIINEMA · 3:03</div>
+<h3>Node-RED Lab</h3>
+<p>Colección didáctica de 82 flujos Node-RED: fundamentos, catálogo de nodos y ejercicios con dashboard, MQTT, PostgreSQL y GPIO de Raspberry Pi.</p>
+<div class="rec-poster-meta">nodered-lab · código real</div>
+<button class="rec-btn rec-primary" id="rec-start" type="button">▶ Reproducir</button>
+</div>
+</div>
+<div class="rec-controls">
+<button class="rec-btn rec-primary" id="rec-play" type="button">▶ Reproducir</button>
+<button class="rec-btn" id="rec-restart" type="button">↺ Reiniciar</button>
+<input class="rec-progress" id="rec-range" type="range" min="0" max="1000" value="0" aria-label="Progreso"/>
+<span class="rec-time" id="rec-time">0:00 / 3:03</span>
+<select class="rec-speed" id="rec-speed" aria-label="Velocidad"><option value="1">1×</option><option value="1.25">1.25×</option><option value="1.5">1.5×</option><option value="2">2×</option></select>
+<button class="rec-btn" id="rec-full" type="button" title="Pantalla completa">⛶</button>
+<button class="rec-btn" id="rec-copy" type="button">⧉ Copiar comandos</button>
+<a class="rec-download" href="rec/nodered-lab.cast" download>descargar .cast</a>
+</div>
+</div>
+<p class="rec-note">Los fragmentos son exportaciones reales de Node-RED. Los brokers públicos, credenciales de ejemplo y rutas locales aparecen en el repositorio como marcadores y deben reemplazarse antes de ejecutar.</p>
+<div class="rec-chapters"><span class="rec-chip"><b>0:06</b> EL PROBLEMA</span><span class="rec-chip"><b>0:21</b> QUÉ HAY</span><span class="rec-chip"><b>0:35</b> ANATOMÍA</span><span class="rec-chip"><b>0:49</b> DECISIONES</span><span class="rec-chip"><b>1:04</b> DASHBOARD</span><span class="rec-chip"><b>1:18</b> MQTT</span><span class="rec-chip"><b>1:32</b> BROKER</span><span class="rec-chip"><b>1:47</b> PUBLICAR</span><span class="rec-chip"><b>2:00</b> POSTGRESQL</span><span class="rec-chip"><b>2:13</b> INSERCIÓN</span><span class="rec-chip"><b>2:26</b> GPIO</span><span class="rec-chip"><b>2:41</b> IMPORTAR</span></div>
+</div>
+</section>
+
+<section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El concepto</div><h2>Qué es y por qué existe</h2></div><div class="rich reveal"><p>Colección de 82 flujos Node-RED reunidos durante años de experimentación: 322 nodos de 62 tipos y 18 pestañas de dashboard que cubren MQTT, GPIO de Raspberry Pi, cámaras, bases de datos y paneles de control. Sirve como biblioteca de ejemplos y como registro de patrones de integración para quien ya opera Node-RED y busca recetas concretas que importar y adaptar.</p><p>No es una aplicación ejecutable ni un paquete: no incluye package.json, settings.js, flows.json ni pruebas. Su valor es documental y didáctico, con 71 archivos JSON estrictamente importables y un README que clasifica cada flujo, señala los borradores y advierte sobre brokers públicos, credenciales de marcador y rutas locales que deben reemplazarse.</p></div></div></section><section class="section tight"><div class="wrap"><div class="section-head reveal"><div class="kicker">El proyecto en detalle</div><h2>Documentación preservada</h2><p class="section-sub">El README original, completo y en su contexto.</p></div><div class="detail rich reveal"><div align="center">
 
 # Node-RED Lab
 
@@ -1184,5 +1225,7 @@ Si algo no funciona, empezá por [Límites y estado real](#límites-y-estado-rea
 <script>window.PORTFOLIO_COMMUNITY={account:"jmadasme",repo:"nodered-lab",coinNamespace:"jmadasme-nodered-lab-coins-v1",faqs:[{"q": "¿Cómo importo un flujo?", "a": "En Node-RED: menú superior → Import → pegá el JSON o subí el archivo → Import."}, {"q": "¿Necesito Raspberry Pi?", "a": "No para los flujos de MQTT y dashboard. Los nodos de GPIO sí requieren una Raspberry Pi o un entorno compatible."}, {"q": "¿Los flujos vienen listos para producción?", "a": "No. Son ejercicios de laboratorio; hay que ajustar credenciales, tópicos y pines."}, {"q": "¿Qué es la secuencia Ed?", "a": "Una carpeta con flujos de edición/ejemplos más avanzados, separada de las secuencias de inicio y evaluación."}, {"q": "¿Dónde está la guía de Docker?", "a": "En el PDF incluido dentro de la versión NodeRed."}]};</script>
 <script src="assets/community.js?v=2" defer></script>
 
+<script defer src="rec/nodered-lab.cast.js?v=1"></script>
+<script defer src="rec/player.js?v=1"></script>
 </body>
 </html>
